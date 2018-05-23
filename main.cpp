@@ -17,18 +17,29 @@ int main(){
 	Cat tom, nancy, bob; //define objects within class "Cat"
 	
 	//Test public key "happy"
+	cout << "Status of Tommy kitty:" << endl;
 	tom.happy = true; 
 	tom.speak();
 	tom.jump();
 	cout << endl;
 
+	cout << "Status of Nancy kitty:" << endl;
 	nancy.happy = false;
 	nancy.speak();
 	cout << endl;
 
 	//Test private key "angry", which is a better coding practice
+	cout << "Status of Bobby kitty:" << endl;
 	bob.makeAngry();
 	bob.speak();
 
+    // cout << endl << endl;
+    // {
+    // 	cout << "Status of Jacky kitty:" << endl;
+    // 	Cat jacky ; 
+    // 	jacky.speak();
+    // }
+
+    cout << "Ending porgram..." <<endl;
 	return 0;
 }

@@ -6,6 +6,19 @@
 using std::cout;
 using std::endl;
 
+// Cat::Cat() //consructor function
+// {
+// 	/*3rd way to initialize variable angry*/
+// 	cout << "Cat consructor called, program created!" <<endl;
+// 	angry = false;
+// }
+
+Cat::~Cat() //destructor function
+{
+	cout << "Cat desructor called. Cat destroyed." <<endl;
+}
+
+
 void Cat::makeAngry(){
 	angry = true;
 }
@@ -29,4 +42,9 @@ void Cat::speak(){
 void Cat::jump(){
 	cout << "Jumping into muddy puddle!" << endl;
 }
+
+
+
+
+
 

@@ -8,13 +8,17 @@ while "angry" is only avaialbe within the calss
 
 class Cat{
 private:
-	//bool angry = false;
+	/*in class initialization, only in c++11, 1st way to do it*/
+	//bool angry = false; 
+
 	bool angry;
 
 public:
 	//if constructor is not used, uncomment "bool angry=false;" 
 	//and comment out "bool angry;"
-	Cat(): angry(false){} //ctor here 	
+	Cat(): angry(false){} /*constructor, 2nd way to initialize angry*/
+	//Cat(); /*3rd way to initialize angry, check cat.cpp*/
+	~Cat();  //destructor
 	
 
 	bool happy;
