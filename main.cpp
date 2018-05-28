@@ -13,6 +13,18 @@ In this program, name different cats like "tom", "nancy"
 using std::cout;
 using std::endl;
 
+//Return objects from functions
+Cat *createCat(){
+	Cat *pCat = new Cat();
+	pCat -> makeAngry();
+	return pCat;
+	/*when we return a pointer, we return a copy of pointer, however;
+		this is just copyng a 8 bite memory address, 
+		so even the "Cat" contains of mega bytes of data, 
+		this kind of operation will still be memory efficient 
+	*/
+}
+
 int main(){
 	Cat tom, nancy, bob; //define objects within class "Cat"
 	
@@ -33,13 +45,20 @@ int main(){
 	bob.makeAngry();
 	bob.speak();
 
-    // cout << endl << endl;
-    // {
-    // 	cout << "Status of Jacky kitty:" << endl;
-    // 	Cat jacky ; 
-    // 	jacky.speak();
-    // }
+	// use "new" operator
+	cout << endl << endl;
+	Cat *pJohn = new Cat();
+	(*pJohn).jump(); //dereference the pointer first to get the object,
+	pJohn -> speak(); //this is same as (*pJohn).speak()
+	delete pJohn;   //whenever "new" is called, "delete" shall be called as well 
 
-    cout << "Ending porgram..." <<endl;
+    cout << endl << endl;
+    // Return objets from functions 
+    Cat *pEmma = createCat();
+    pEmma -> speak();
+    delete pEmma;
+
+
+    cout << endl << "Ending porgram..." <<endl;
 	return 0;
 }
