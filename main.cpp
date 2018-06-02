@@ -19,9 +19,9 @@ Cat *createCat(){
 	pCat -> makeAngry();
 	return pCat;
 	/*when we return a pointer, we return a copy of pointer, however;
-		this is just copyng a 8 bite memory address, 
-		so even the "Cat" contains of mega bytes of data, 
-		this kind of operation will still be memory efficient 
+	this is just copyng a 8 bite memory address, 
+	so even the "Cat" contains of mega bytes of data, 
+	this kind of operation will still be memory efficient 
 	*/
 }
 
@@ -33,6 +33,7 @@ int main(){
 	tom.happy = true; 
 	tom.speak();
 	tom.jump();
+	cout << "Tommy ID: " << tom.getID() << endl;
 	cout << endl;
 
 	cout << "Status of Nancy kitty:" << endl;
@@ -56,7 +57,11 @@ int main(){
     // Return objets from functions 
     Cat *pEmma = createCat();
     pEmma -> speak();
+    cout << "Emma's ID: " << pEmma -> getID() << endl;
     delete pEmma;
+
+    cout << endl << endl;
+    cout << Cat::MAX << endl;
 
 
     cout << endl << "Ending porgram..." <<endl;

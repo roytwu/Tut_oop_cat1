@@ -13,14 +13,18 @@ private:
 
 	bool angry;
 
+	// use this varaible to count how many object have been created
+	static int countObject; 
+	int id;
+
+
 public:
 	//if constructor is not used, uncomment "bool angry=false;" 
 	//and comment out "bool angry;"
-	Cat(): angry(false){} /*constructor, 2nd way to initialize angry*/
-	//Cat(); /*3rd way to initialize angry, check cat.cpp*/
+	// Cat(): angry(false){} /*constructor, 2nd way to initialize angry*/
+	Cat(); /*3rd way to initialize angry, check cat.cpp*/
 	~Cat();  //destructor
 	
-
 	bool happy;
 	void speak();
 	void jump();
@@ -28,6 +32,10 @@ public:
 	void makeAngry();
 	void makeSad();
 
+	//Initialization of const must be done here
+	//make "MAX" read-only variable
+	static int const MAX = 99;
+	int getID();
 };
 
 

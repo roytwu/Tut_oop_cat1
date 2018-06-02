@@ -6,12 +6,17 @@
 using std::cout;
 using std::endl;
 
-// Cat::Cat() //consructor function
-// {
-// 	/*3rd way to initialize variable angry*/
-// 	cout << "Cat consructor called, program created!" <<endl;
-// 	angry = false;
-// }
+
+int Cat::countObject = 0;
+
+Cat::Cat() //consructor function
+{
+	/*3rd way to initialize variable angry*/
+	cout << "Cat consructor called, program created!" <<endl;
+	angry = false;
+	id = ++countObject;  //prefix increment
+}
+
 
 Cat::~Cat() //destructor function
 {
@@ -44,7 +49,9 @@ void Cat::jump(){
 }
 
 
-
+int Cat::getID(){
+	return id;
+}
 
 
 
