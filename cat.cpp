@@ -6,13 +6,14 @@
 using std::cout;
 using std::endl;
 
-
+//static variables can't be initialized in the class, so, 
+//it's common practive to initialize static variable in cpp file
 int Cat::countObject = 0;
 
 Cat::Cat() //consructor function
 {
 	/*3rd way to initialize variable angry*/
-	cout << "Cat consructor called, program created!" <<endl;
+	cout << "Cat consructor called, program created!" << endl;
 	angry = false;
 	id = ++countObject;  //prefix increment
 }
@@ -20,7 +21,7 @@ Cat::Cat() //consructor function
 
 Cat::~Cat() //destructor function
 {
-	cout << "Cat desructor called. Cat destroyed." <<endl;
+	cout << "Cat desructor called. Cat destroyed." << endl;
 }
 
 

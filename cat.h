@@ -14,7 +14,10 @@ private:
 	bool angry;
 
 	// use this varaible to count how many object have been created
+	// static variable is associated with the class, not with a particular object
 	static int countObject; 
+
+	// regular varialbe is associated with the object
 	int id;
 
 
