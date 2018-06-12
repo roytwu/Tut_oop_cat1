@@ -5,7 +5,6 @@ LFLAGS = -lm
 EXE_NAME = class_exe
 
 
-
 SRC_DIR = src
 BUILD_DIR = build
 # BIN_DIR = bin
@@ -15,15 +14,14 @@ INCLUDE = $(wildcard $(SRC_DIR)/*.h)
 
 OBJ = $(SOURCE:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 
+
 #$(BIN_DIR)/$(EXE_NAME): $(OBJ) #uncomment if there is a bin directory
 $(EXE_NAME): $(OBJ) 
 	$(CC) -o $@ $(LFLAGS) $(OBJ) 
 
-$(OBJ): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp 
+$(OBJ): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(BUILD_DIR) 	
 	$(CC) $(CFLAGS) -c $< -o $@  
-
-
-
 
 #all: 
 ##	g++ -Wall main.cpp cat.cpp -o $(EXE_NAME)
