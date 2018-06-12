@@ -14,8 +14,8 @@ Cat::Cat() //consructor function
 {
 	/*3rd way to initialize variable angry*/
 	cout << "Cat consructor called, program created!" << endl;
-	angry = false;
-	id = ++countObject;  //prefix increment
+	m_angry = false;
+	m_id = ++countObject;  //prefix increment
 }
 
 
@@ -26,18 +26,18 @@ Cat::~Cat() //destructor function
 
 
 void Cat::makeAngry(){
-	angry = true;
+	m_angry = true;
 }
 
 void Cat::makeSad(){
-	angry = false;
+	m_angry = false;
 }
 
 void Cat::speak(){
-	if(happy){
+	if(m_happy){
 		cout << "Meouww! kitty is happy!" << endl;	
 	} 
-	else if(angry){
+	else if(m_angry){
 		cout << "krrr!! Fuck off!" << endl;
 	}
 	else{
@@ -51,7 +51,7 @@ void Cat::jump(){
 
 
 int Cat::getID(){
-	return id;
+	return m_id;
 }
 
 

@@ -11,14 +11,14 @@ private:
 	/*in class initialization, only in c++11, 1st way to do it*/
 	//bool angry = false; 
 
-	bool angry;
+	bool m_angry;
 
 	// use this varaible to count how many object have been created
 	// static variable is associated with the class, not with a particular object
 	static int countObject; 
 
 	// regular varialbe is associated with the object
-	int id;
+	int m_id;
 
 
 public:
@@ -28,7 +28,7 @@ public:
 	Cat(); /*3rd way to initialize angry, check cat.cpp*/
 	~Cat();  //destructor
 	
-	bool happy;
+	bool m_happy;
 	void speak();
 	void jump();
 
