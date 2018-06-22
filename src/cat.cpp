@@ -24,14 +24,16 @@ Cat::~Cat() //destructor function
 	cout << "Cat desructor called. Cat destroyed." << endl;
 }
 
-
+//member functions can be defined outside the class body
 void Cat::makeAngry(){
 	m_angry = true;
 }
 
+
 void Cat::makeSad(){
 	m_angry = false;
 }
+
 
 void Cat::speak(){
 	if(m_happy){
@@ -44,6 +46,7 @@ void Cat::speak(){
 		cout << "Ssssss..." << endl;
 	}
 }
+
 
 void Cat::jump(){
 	cout << "Jumping into muddy puddle!" << endl;

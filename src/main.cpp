@@ -4,7 +4,7 @@ Structure of class "Cat" is defined in cat.h; functions of "Cat" are defined in 
 In this program, name different cats like "tom", "nancy"
 */
 //File name: main.cpp
-//Programmer: TWu
+//Author: Roy T Wu, roywu2018@gmail.com
 
 #include <iostream>
 #include "cat.h"
