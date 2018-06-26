@@ -13,8 +13,8 @@ private:
 
 	bool m_angry;
 
-	// use this varaible to count how many object have been created
 	// static variable is associated with the class, not with a particular object
+	// use this varaible to count how many object have been created
 	static int countObject; 
 
 	// regular varialbe is associated with the object
@@ -28,6 +28,9 @@ public:
 	Cat(); /*3rd way to initialize angry, check cat.cpp*/
 	~Cat();  //destructor
 	
+	//member functions must be delcared inside the class
+	//however, they can be defined inside or out side the class
+	//functions defined in the class are implicitly inline
 	bool m_happy;
 	void speak();
 	void jump();
