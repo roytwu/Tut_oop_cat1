@@ -1,3 +1,7 @@
+//File name: vector_basic.c
+//Author: Roy T Wu
+//basic commands and syntax about vectors
+
 #include <iostream>
 #include <vector>
 using std::cout;
@@ -36,7 +40,6 @@ int main(){
 		cout << x << " ";
 	}
 	cout << endl << endl;
-
 
 
 	//function returns vector
