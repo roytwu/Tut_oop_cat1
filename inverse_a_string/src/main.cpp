@@ -19,7 +19,11 @@ int main(){
   	cout << "After inverse... " << o_flip.flipString_xor(str1) << endl;
   	cout << endl;
 
+  	string newStr = o_flip.flipString_xor(str2);
   	cout << "Before inverse.. " << str2 << endl;
-  	cout << "After inverse... " << o_flip.flipString_xor(str2) << endl;
+  	cout << "After inverse... " << newStr << endl;
+
+  	o_flip.flipString_swap(str2); 
+  	cout << endl << str2 << endl;
 	return 0 ;
 }

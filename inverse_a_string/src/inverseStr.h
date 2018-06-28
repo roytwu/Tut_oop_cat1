@@ -6,11 +6,13 @@
 
 #include <string>
 using std::string;
+using std::swap;
 
 
 class StringInverse{
 public:
 	string flipString_xor(string str);
+	void flipString_swap(string& str);
 private:
 	void flipChar_xor(char *p_a, char *p_b);
 
@@ -20,17 +22,23 @@ private:
 string StringInverse::flipString_xor(string str){
 	char * p_first = &str[0]; //address of the first char in string
 	char * p_last =  &str[str.length()-1]; // address of the last char in string
-	while(p_start < p_end)
+	while(p_first < p_last)
 	{
 		flipChar_xor(p_first, p_last);
 
 		//moving toward to next pair of char
-		p_firt++;  
+		p_first++;  
 		p_last--;
 	} //while
 	return str;
 }
 
+void StringInverse::flipString_swap(string& str){
+	int len= str.length();
+	for(int i=0; i<len/2; i++){
+		swap(str[i], str[len-i-1]);
+	}
+}
 
 //inverse a pair of char using bitwise xor
 void StringInverse::flipChar_xor(char *p_a, char *p_b)
