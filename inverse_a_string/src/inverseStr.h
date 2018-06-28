@@ -18,7 +18,7 @@ private:
 
 };
 
-
+//passing string by value
 string StringInverse::flipString_xor(string str){
 	char * p_first = &str[0]; //address of the first char in string
 	char * p_last =  &str[str.length()-1]; // address of the last char in string
@@ -33,6 +33,7 @@ string StringInverse::flipString_xor(string str){
 	return str;
 }
 
+//passing string by reference, and use swap()
 void StringInverse::flipString_swap(string& str){
 	int len= str.length();
 	for(int i=0; i<len/2; i++){
