@@ -10,8 +10,8 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
-using std::copy;
-using std::ostream_iterator;
+using std::copy; //copy elements from its input range into elements in the destination
+using std::ostream_iterator; //writes an outpus stream
 
 vector<string>GetString();
 
@@ -41,23 +41,24 @@ int main(){
 	copy(vecB.begin(), vecB.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
 
-	vecA = vecB;  //copy elements of vecB into vecA
+	vecA = vecB;  //copy elements of vecB into vecA, 2 vectors must be the same type
 	cout << "After copy, vecA is ... ";
 	copy(vecA.begin(), vecA.end(), ostream_iterator<int>(cout, " "));
 	cout << endl << endl;
 
+
 	//initialize a vector like array
-	vector<double> vec3{1.1, 2.2, 3.3}; 
+	vector<double> vec3{1.01, 2.002, 3.0003}; 
 	//initialize a vector from another vector
 	vector<double> vec4( vec3.begin(), vec3.end()); 
 	
-	cout << "vec3 is ...";
-	for (double x : vec3){
+	cout << "vec3 is ... ";
+	for (double x : vec3){ //for each elements in vec3
 		cout << x << " ";
 	}
 	cout << endl;
 
-	cout << "vec4 is ...";
+	cout << "vec4 is ... ";
 	for (double x : vec4){
 		cout << x << " ";
 	}
@@ -72,7 +73,7 @@ int main(){
 }
 
 
-
+//push_back: takes a value and "pushes" that value onto the "back" of the vector
 vector<string> GetString(){
 	vector<string> str;
 	str.push_back("One");
@@ -80,6 +81,8 @@ vector<string> GetString(){
 	str.push_back("Three");
 	return str;
 }
+
+
 
 
 /*-----Note-----*/
