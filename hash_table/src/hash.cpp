@@ -54,15 +54,50 @@ void HashChain::insert_data(Dict data){
 	int index = hashFunc(data.m_key); 
 
 	//insert data at the front of linked list
-	m_table[index].push_front(data); 
+	mv_table[index].push_front(data); 
 }
 
 
 void HashChain::delete_data(string key_str){
 	//get index from the hash function
 	int index = hashFunc(key_str);
-	for() 
+	list<Dict>::iterator i;   //delcare a list iterator
+	for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
+		if( (*itr).m_key == key_str )
+			mv_table[index].erase(itr);
 
-
+	} 
 
 }
+
+string HashChain::search(string key_str){
+	//get index from the hash function
+	int index = hashFunc(key_str);
+	list<Dict>::iterator i;   //delcare a list iterator
+	for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
+		if( (*itr).m_key == key_str )
+			return (*itr).m_value;
+
+	} 
+
+	return "...\n NO SUCH DATA";
+}
+
+
+void HashChain::displayTb(){
+
+	for(int i=0; i<mv_table.length(); i++){
+		cout << "slot#" << i << ": ";
+		
+		list<Dict>::iterator i;   //delcare a list iterator
+		for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
+			cout << (*itr).m_key << ", " << (*itr).m_value;
+		} 
+		cout << endl;
+	}
+	cout << endl;
+}
+
+
+/*-----Note-----*/
+//See vector_basic.cpp in vector project to know more about vector iterators
