@@ -13,7 +13,7 @@ using std::vector;
 using std::copy; //copy elements from its input range into elements in the destination
 using std::ostream_iterator; //writes an outpus stream
 
-vector<string>GetString();
+vector<string> func_GetString();
 
 
 int main(){
@@ -65,16 +65,25 @@ int main(){
 	cout << endl << endl;
 
 
-	//function returns vector
-	vector<string> mystrings =GetString();
-	cout << mystrings[0] << endl;
+	//declare a function that returns vector
+	vector<string> vec_str = func_GetString();
+	cout << vec_str[0] << endl;   //print the first element in the vector
+
+	//delcaring a iterator itr
+	vector<string>::iterator itr; 
+
+	//accessing elements using iterators
+	for(itr=vec_str.begin(); itr!=vec_str.end(); itr++){
+		cout << *itr << " ";
+	}
+	cout << endl;
 	
 	return 0;
 }
 
 
 //push_back: takes a value and "pushes" that value onto the "back" of the vector
-vector<string> GetString(){
+vector<string> func_GetString(){
 	vector<string> str;
 	str.push_back("One");
 	str.push_back("Two");

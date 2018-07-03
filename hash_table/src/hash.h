@@ -24,7 +24,7 @@ private:
 	int m_size;
 	int m_count;
 
-	vector< list<Dict> > table; //hash table with linked list
+	vector< list<Dict> > m_table; //hash table with linked list
 
 	int preHashing(string key_str); //turn string_type_key to int_type_key
 	int hashFunc(string key_str); //using Division method
