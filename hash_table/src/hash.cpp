@@ -1,4 +1,11 @@
+#include <iostream>
 #include "hash.h"
+using std::cout;
+using std::endl;
+
+
+
+
 /*----- -----class Dict----- -----*/
 Dict::Dict(){
 	m_key = "";
@@ -30,7 +37,7 @@ int HashChain::preHashing(string key_str){
 
 int HashChain::hashFunc(string key_str){
 
-	int division = preHashing(key_str) % (this->m_size);
+	int division = preHashing(key_str) % (m_size);
 	return division;
 }
 
@@ -45,27 +52,31 @@ HashChain::HashChain(){
 
 //constructor overload
 HashChain::HashChain(int m){
-
+	m_size = m;
+	m_count = 0;
+	mv_table.resize(m_size);  //reszie the container
 }
 
 
-void HashChain::insert_data(Dict data){
+void HashChain::insertData(Dict o_data){
 	//get index from the hash function
-	int index = hashFunc(data.m_key); 
+	int index = hashFunc(o_data.m_key); 
 
 	//insert data at the front of linked list
-	mv_table[index].push_front(data); 
+	mv_table[index].push_front(o_data); 
 }
 
 
-void HashChain::delete_data(string key_str){
+void HashChain::deleteData(string key_str){
 	//get index from the hash function
+	cout << "hahahah";
 	int index = hashFunc(key_str);
+	cout << index << "------";
 	list<Dict>::iterator i;   //delcare a list iterator
 	for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
-		if( (*itr).m_key == key_str )
-			mv_table[index].erase(itr);
-
+		if( (*i).m_key == key_str ){
+			mv_table[index].erase(i);
+		}	
 	} 
 
 }
@@ -75,8 +86,8 @@ string HashChain::search(string key_str){
 	int index = hashFunc(key_str);
 	list<Dict>::iterator i;   //delcare a list iterator
 	for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
-		if( (*itr).m_key == key_str )
-			return (*itr).m_value;
+		if( (*i).m_key == key_str )
+			return (*i).m_value;
 
 	} 
 
@@ -86,12 +97,12 @@ string HashChain::search(string key_str){
 
 void HashChain::displayTb(){
 
-	for(int i=0; i<mv_table.length(); i++){
+	for(unsigned int i=0; i<mv_table.size(); i++){
 		cout << "slot#" << i << ": ";
 		
-		list<Dict>::iterator i;   //delcare a list iterator
-		for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
-			cout << (*itr).m_key << ", " << (*itr).m_value;
+		list<Dict>::iterator itr;   //delcare a list iterator
+		for(itr=mv_table[i].begin(); itr!=mv_table[i].end(); itr++){
+			cout << "(" << itr->m_key << ", " << (*itr).m_value << ")";
 		} 
 		cout << endl;
 	}

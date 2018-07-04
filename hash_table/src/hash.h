@@ -26,16 +26,16 @@ private:
 
 	vector< list<Dict> > mv_table; //hash table with linked list
 
-	int preHashing(string key_str); //turn string_type_key to int_type_key
-	int hashFunc(string key_str); //using Division method
+	int preHashing(string); //turn string_type_key to int_type_key
+	int hashFunc(string); //using Division method
 public:
 
 	HashChain(); //constructor
 	HashChain(int m); //constuctor overload
 
-	void insert_data(Dict data);
-	void delete_data(string key);
-	string search(string key);
+	void insertData(Dict o_data);
+	void deleteData(string);
+	string search(string);
 	void displayTb();
 
 };
