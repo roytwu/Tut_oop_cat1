@@ -1,6 +1,6 @@
 //File name: vector_basic.c
 //Author: Roy T Wu
-//basic commands and syntax about vectors
+//basic concepts and syntax about vectors
 
 #include <iostream>
 #include <vector>
@@ -69,10 +69,11 @@ int main(){
 	vector<string> vec_str = func_GetString();
 	cout << vec_str[0] << endl;   //print the first element in the vector
 
-	//delcaring a iterator itr
+	//delcaring a iterator itr, it can read and write vector<string> elements
 	vector<string>::iterator itr; 
 
 	//accessing elements using iterators
+	//One can dereference an iterator to obtain the element denoted by the iterator
 	for(itr=vec_str.begin(); itr!=vec_str.end(); itr++){
 		cout << *itr << " ";
 	}
@@ -84,11 +85,11 @@ int main(){
 
 //push_back: takes a value and "pushes" that value onto the "back" of the vector
 vector<string> func_GetString(){
-	vector<string> str;
-	str.push_back("One");
-	str.push_back("Two");
-	str.push_back("Three");
-	return str;
+	vector<string> v_str;
+	v_str.push_back("One");
+	v_str.push_back("Two");
+	v_str.push_back("Three");
+	return v_str;
 }
 
 
@@ -97,3 +98,6 @@ vector<string> func_GetString(){
 /*-----Note-----*/
 //Define a vector of specific size can result in poor performance
 //Starting with an empty vector and adding elements at run time is a better approach
+
+//iterator use the increment operator (++) to "advance the iterator by one poisiton"
+//which is logically similar to integer increment
