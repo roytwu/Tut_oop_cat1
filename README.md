@@ -1,5 +1,5 @@
 # Learn C++
-This is the repository about C++. The programs come with very verbose comments addressing concepts and syntax about c++.
+This is the repository about C++. The programs come with very verbose comments addressing concepts and syntax of C++.
 
 
 💾 Projects
@@ -34,6 +34,10 @@ Demonstrate how to build binary trees using class, and show 3 basic traversal me
 - post-order: LRV
 
 
+### 5. hash_table
+Create hash table using <vector> and demonstrate chaining with <list>.
+
+
 
 ### matrix_library
 Develope a demo library for matrix operation, obsolete project     
@@ -50,3 +54,4 @@ Roy T Wu
 - https://caveofprogramming.teachable.com/p/c-beginners  
 - http://alrightchiu.github.io/SecondRound/
 - LeetCode - unique paths
+- C++ Primer (5th edition) ISBN-10: 0321714113
