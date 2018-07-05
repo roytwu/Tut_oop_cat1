@@ -8,6 +8,7 @@ using std::string;
 using std::vector;
 using std::list;
 
+
 //self-defined dictionary
 class Dict{
 public:
@@ -33,7 +34,7 @@ public:
 	HashChain(); //constructor
 	HashChain(int m); //constuctor overload
 
-	void insertData(Dict o_data);
+	void insertData(Dict);
 	void deleteData(string);
 	string search(string);
 	void displayTb();

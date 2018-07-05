@@ -4,8 +4,8 @@ using std::cout;
 using std::endl;
 
 int main(){
-	cout << "Hello" << endl;
-	HashChain o_hash(7);
+
+	HashChain o_hash(5);
 
 	Dict o_dict1("Han", "Solo");
 	Dict o_dict2("Anakin", "Skywalker");
@@ -19,10 +19,10 @@ int main(){
 	o_hash.insertData(Dict("Darth", "Vader"));
 
 	o_hash.displayTb();
-	cout << "Obi-Wan's last name is.. " << o_hash.search("Obi-Wan") << endl;
+	//cout << "Obi-Wan's last name is.. " << o_hash.search("Obi-Wan") << endl;
 
-	//o_hash.deleteData("Luke");
-	//o_hash.displayTb();
+	o_hash.deleteData("Luke"); //simething is wrong here
+	o_hash.displayTb();
 
 	return 0;
 }

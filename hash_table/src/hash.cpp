@@ -4,8 +4,6 @@ using std::cout;
 using std::endl;
 
 
-
-
 /*----- -----class Dict----- -----*/
 Dict::Dict(){
 	m_key = "";
@@ -66,20 +64,21 @@ void HashChain::insertData(Dict o_data){
 	mv_table[index].push_front(o_data); 
 }
 
-
+         
 void HashChain::deleteData(string key_str){
 	//get index from the hash function
-	cout << "hahahah";
 	int index = hashFunc(key_str);
-	cout << index << "------";
+	
 	list<Dict>::iterator i;   //delcare a list iterator
 	for(i=mv_table[index].begin(); i!=mv_table[index].end(); i++){
 		if( (*i).m_key == key_str ){
 			mv_table[index].erase(i);
+			return;
 		}	
 	} 
 
 }
+
 
 string HashChain::search(string key_str){
 	//get index from the hash function
