@@ -3,7 +3,7 @@ two boolean variable are defined, "angry" is private and "happy" is public
 "happy" can be accessed beyounf the clss 
 while "angry" is only avaialbe within the calss
 */
-//file name: cat.h
+//file name: cat.h, header file of cat.cpp
 //Programmer: TWu
 
 class Cat{

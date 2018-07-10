@@ -1,9 +1,8 @@
 /* 
-main file for cat.cpp and cat.h
 Structure of class "Cat" is defined in cat.h; functions of "Cat" are defined in cat.cpp
 In this program, name different cats like "tom", "nancy"
 */
-//File name: main.cpp
+//File name: main.cpp, driver program of cat.cpp
 //Author: Roy T Wu, roywu2018@gmail.com
 
 #include <iostream>
