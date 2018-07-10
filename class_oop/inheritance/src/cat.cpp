@@ -12,8 +12,7 @@ int Cat::countObject = 0;
 
 Cat::Cat() //consructor function
 {
-	/*3rd way to initialize variable angry*/
-	cout << "Cat consructor called, program created!" << endl;
+	cout << "--Cat consructor called, Cat created!--" << endl;
 	m_angry = false;
 	m_id = ++countObject;  //prefix increment
 }
@@ -21,7 +20,7 @@ Cat::Cat() //consructor function
 
 Cat::~Cat() //destructor function
 {
-	cout << "Cat desructor called. Cat destroyed." << endl;
+	//cout << "Cat desructor called. Cat destroyed." << endl;
 }
 
 //member functions can be defined outside the class body
@@ -49,7 +48,7 @@ void Cat::makeSad(){
 
 
 void Cat::jump(){
-	cout << "Jumping into muddy puddle!" << endl;
+	cout << "Cat jumps into a muddy puddle!" << endl;
 }
 
 

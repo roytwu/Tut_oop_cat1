@@ -8,9 +8,16 @@
 using std::cout;
 using std::endl;
 
+//Animal is a super-calss of Cat
 class Animal{
 public:
-	void speak(){ cout << "\nGrrrrr....\n" << endl; }
+	//constructor
+	Animal(){
+		cout << "--Animal consructor called, Animal created!--" << endl;
+	}
+	void speak(){ 
+		cout << "Grrrrr...." << endl; 
+	}
 };
 
 
