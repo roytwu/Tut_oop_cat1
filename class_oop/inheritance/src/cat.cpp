@@ -12,7 +12,7 @@ int Cat::countObject = 0;
 
 Cat::Cat() //consructor function
 {
-	cout << "--Cat consructor called, Cat created!--" << endl;
+	cout << "--Cat no-argument consructor called.--" << endl;
 	m_angry = false;
 	m_id = ++countObject;  //prefix increment
 }

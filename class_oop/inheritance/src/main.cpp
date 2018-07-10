@@ -1,5 +1,5 @@
 //File name: main.cpp, 
-//           driver program of cat.cpp, animal.h
+//           driver program of cat.cpp, animal.cpp
 //Author: Roy T Wu, roywu2018@gmail.com
 
 #include <iostream>
@@ -21,11 +21,13 @@ int main(){
 	Animal o_am;
 	o_am.speak();
 
+
 	cout << endl << "***Child class-'Cat'***" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->speak(); //Cat can do what Animal can do
 	op_tom->jump();
 	delete op_tom;
+
 
 	cout << endl << "***Child class-'Tiger'***" << endl;
 	Tiger *op_bengal = new Tiger();

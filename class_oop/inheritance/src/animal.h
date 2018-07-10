@@ -10,14 +10,13 @@ using std::endl;
 
 //Animal is a super-calss of Cat
 class Animal{
+private:
+	int m_id;
+	
 public:
-	//constructor
-	Animal(){
-		cout << "--Animal consructor called, Animal created!--" << endl;
-	}
-	void speak(){ 
-		cout << "Grrrrr...." << endl; 
-	}
+	Animal(); //constructor
+
+	void speak();
 };
 
 
