@@ -11,12 +11,14 @@ using std::endl;
 //Animal is a super-calss of Cat
 class Animal{
 private:
-	int m_id;
+	int m_animalID;
 	
 public:
-	Animal(); //constructor
+	Animal();                //no-argument constructor
+	Animal(int m_animalID);  //parameterized contstructor
 
 	void speak();
+	void info();
 };
 
 

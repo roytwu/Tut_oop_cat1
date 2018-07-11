@@ -2,6 +2,7 @@
 //Programmer: TWu
 
 #include <iostream>
+#include "animal.h"
 #include "cat.h"
 using std::cout;
 using std::endl;
@@ -10,12 +11,21 @@ using std::endl;
 //it's common practive to initialize static variable in cpp file
 int Cat::countObject = 0;
 
-Cat::Cat() //consructor function
+Cat::Cat() //no-argument consructor
 {
-	cout << "--Cat no-argument consructor called.--" << endl;
+	cout << " --Cat no-argument consructor called.--" << endl;
 	m_angry = false;
 	m_id = ++countObject;  //prefix increment
 }
+
+//call a super-class constructor with an argument
+Cat::Cat(int m_animalID): Animal(m_animalID) //pameterized consructor inheritance
+{	
+	cout << " --Cat parameterized consructor called.--" << endl;
+	m_angry = false;
+	m_id = ++countObject;  //prefix increment
+}
+
 
 
 Cat::~Cat() //destructor function
@@ -48,7 +58,7 @@ void Cat::makeSad(){
 
 
 void Cat::jump(){
-	cout << "Cat jumps into a muddy puddle!" << endl;
+	cout << " Cat jumps into a muddy puddle!" << endl;
 }
 
 

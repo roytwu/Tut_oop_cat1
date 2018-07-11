@@ -18,8 +18,9 @@ using std::endl;
 
 int main(){
 	cout << "***Super class-'Animal'***" << endl;
-	Animal o_am;
+	Animal o_am(99);
 	o_am.speak();
+	o_am.info();
 
 
 	cout << endl << "***Child class-'Cat'***" << endl;
@@ -27,6 +28,12 @@ int main(){
 	op_tom->speak(); //Cat can do what Animal can do
 	op_tom->jump();
 	delete op_tom;
+
+	cout << endl;
+	Cat *op_kitty = new Cat(108);
+	op_kitty->info();
+	delete op_kitty;
+
 
 
 	cout << endl << "***Child class-'Tiger'***" << endl;

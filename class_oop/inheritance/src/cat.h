@@ -15,7 +15,8 @@ private:
 	bool m_angry;
 
 public:
-	Cat(); /*3rd way to initialize angry, check cat.cpp*/
+	Cat();  //constructor
+	Cat(int m_animalID);
 	~Cat();  //destructor
 	
 	bool m_happy;

@@ -13,10 +13,11 @@ using std::endl;
 class Tiger: public Cat{
 public:
 	Tiger(){
-		cout << "--Tiger no-argument consructor called.--" << endl;
+		cout << " --Tiger no-argument consructor called--" << endl;
 	}
+	
 	void attackAntelope(){ 
-		cout << "Tiger is attacking a entelope" << endl; 
+		cout << " Tiger is attacking an entelope" << endl; 
 	} 
 };
 
