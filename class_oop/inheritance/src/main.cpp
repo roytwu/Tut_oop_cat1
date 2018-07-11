@@ -21,6 +21,7 @@ int main(){
 	Animal o_am(99);
 	o_am.speak();
 	o_am.info();
+	//o_am.jump(); //error!! Animal can't access its child class
 
 
 	cout << endl << "*** Child class-'Cat' ***" << endl;
@@ -55,3 +56,15 @@ int main(){
     cout << endl << "Ending porgram..." <<endl;
 	return 0;
 }
+
+
+/*
+  ---------------------------------
+  super-calss      Animal  
+  ---------------------------------               
+  sub-class          |--> Cat
+  ---------------------------------
+  sub-sub-class        |--> Tiger
+  ---------------------------------
+
+*/
