@@ -1,5 +1,5 @@
 //File name: cat.cpp
-//Programmer: TWu
+//Programmer: Roy T Wu
 
 #include <iostream>
 #include "animal.h"

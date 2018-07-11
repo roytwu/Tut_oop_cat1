@@ -4,21 +4,16 @@
 #ifndef TIGER_H_
 #define TIGER_H_
 
-#include "cat.h"
-
 #include <iostream>
+#include "cat.h"
 using std::cout;
 using std::endl;
 
 class Tiger: public Cat{
 public:
-	Tiger(){
-		cout << " --Tiger no-argument consructor called--" << endl;
-	}
-	
-	void attackAntelope(){ 
-		cout << " Tiger is attacking an entelope" << endl; 
-	} 
+	Tiger();
+
+	void attackAntelope();
 };
 
 #endif //TIGER_H_

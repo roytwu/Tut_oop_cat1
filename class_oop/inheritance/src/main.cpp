@@ -1,5 +1,5 @@
 //File name: main.cpp, 
-//           driver program of cat.cpp, animal.cpp
+//           driver program of cat.cpp, animal.cpp, and tiger.cpp
 //Author: Roy T Wu, roywu2018@gmail.com
 
 #include <iostream>
@@ -17,13 +17,13 @@ using std::endl;
 // }
 
 int main(){
-	cout << "***Super class-'Animal'***" << endl;
+	cout << "*** Super class-'Animal' ***" << endl;
 	Animal o_am(99);
 	o_am.speak();
 	o_am.info();
 
 
-	cout << endl << "***Child class-'Cat'***" << endl;
+	cout << endl << "*** Child class-'Cat' ***" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->speak(); //Cat can do what Animal can do
 	op_tom->jump();
@@ -36,8 +36,9 @@ int main(){
 
 
 
-	cout << endl << "***Child class-'Tiger'***" << endl;
+	cout << endl << "*** Child class-'Tiger' ***" << endl;
 	Tiger *op_bengal = new Tiger();
+	op_bengal->info();
 	op_bengal->speak();  //Tiger can do what Animal can do
 	op_bengal->jump();  //Tiger can do what Cat can do
 	op_bengal->attackAntelope();
@@ -50,12 +51,6 @@ int main(){
 	// o_tom.jump();
 	// cout << "Tommy ID: " << o_tom.getID() << endl;
 
-	// // use "new" operator
-	// cout << endl << endl;
-	// Cat *op_john = new Cat();
-	// (*op_john).jump();  //dereference the pointer first to get the object,
-	// op_john -> speak(); //this is same as (*pJohn).speak()
-	// delete op_john;     
 
     cout << endl << "Ending porgram..." <<endl;
 	return 0;
