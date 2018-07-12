@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string> //getline()
 #include <fstream> //fstream, ofstream, ios
 using std::cout;
 using std::endl;
@@ -13,7 +13,7 @@ int main(){
 	string fileName1 = "demoFile1.txt";
 	string fileName2 = "demoFile2.txt";
 
-	//write files
+	//write text files
 	ofstream outFile1; //outFile1 is an output_file_stream object
 	fstream  outFile2;
 
@@ -40,42 +40,42 @@ int main(){
 	}
 
 
-	//reading files
+	//read text files
 	//ifstream: input stream class to operate on files
-	ifstream inFile1;
-	ifstream inFile2;
-	inFile1.open(fileName1);
-	inFile2.open(fileName2);
+	ifstream o_inFile1; //o_inFile1 is an object of class ifstream
+	ifstream o_inFile2;
+	o_inFile1.open(fileName1);
+	o_inFile2.open(fileName2);
 
-	if(inFile1.is_open()){
+	if(o_inFile1.is_open()){
 		string line;
 		//inFile >> line;
 
-		while(!inFile1.eof())
+		while(!o_inFile1.eof())
 		{
-			getline(inFile1, line);
+			getline(o_inFile1, line);
 			cout << line << endl;
 		}
-		inFile1.close();
+		o_inFile1.close();
 	} else{
 		cout << "Could not open file " << fileName1 << endl;
 	}
 
 
-	if(inFile2.is_open()){
+	if(o_inFile2.is_open()){
 		string line;
-		while(inFile2)  //equivalent to while(!inFile2.eof())
+		while(o_inFile2)  //equivalent to while(!inFile2.eof())
 		{
-			getline(inFile2, line);
+			getline(o_inFile2, line);
 			cout << line << endl;
 		}
-		inFile2.close();
+		o_inFile2.close();
 	} else{
 		cout << "Could not open file " << fileName2 << endl;
 	}
 
 
-	//parse a file
+	//parse a text file
 	string fileName3 = "demo.txt";
 	ifstream o_input;
 	o_input.open(fileName3);
@@ -86,16 +86,16 @@ int main(){
 
 	while(o_input){
 		string line;
-		int populaiton;
+		int population;
 
 		getline(o_input, line, ':');
-		o_input >> populaiton; //reading directly from the stream
+		o_input >> population; //reading directly from the stream
 		//o_input.get();    //C++98
 		o_input  >> std::ws; //ws is used to extract whitespaces, C++11
 		if(!o_input){
 			break;
 		}
-		cout << line << " ---> " << populaiton << endl;
+		cout << line << " ---> " << population << endl;
 	}
 	o_input.close();
 
