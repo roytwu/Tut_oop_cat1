@@ -7,11 +7,9 @@ using std::string;
 using std::ofstream; 
 using std::fstream;
 using std::ios;
+using std::ifstream; 
 
-
-int main(){
-	cout << "Program starts here....." << endl;
-	
+int main(){	
 	ofstream outFile1; //outFile1 is an output_file_stream object
 	fstream  outFile2;
 
@@ -25,6 +23,7 @@ int main(){
 	if(outFile1.is_open()){
 		outFile1 << "Writing file with ofstream!" << endl;
 		outFile1 << 12345 << endl;
+		outFile1 << "This is the third line." << endl;
 		outFile1.close();
 	} else{
 		cout << "Could not create file: " << fileName1 << endl;
@@ -34,10 +33,51 @@ int main(){
 	if(outFile2.is_open()){
 		outFile2 << "Write file with fstream..." << endl;
 		outFile2 << 999.99 << endl;
+		outFile2 << "Go go power rangers!!" << endl;
 		outFile2.close();
 	} else{
 		cout << "Could not create file: " << fileName2 << endl;
 	}
+
+
+	//reading files
+	//ifstream: input stream class to operate on files
+	ifstream inFile1;
+	ifstream inFile2;
+	inFile1.open(fileName1);
+	inFile2.open(fileName2);
+
+	if(inFile1.is_open()){
+		string line;
+		//inFile >> line;
+
+		while(!inFile1.eof())
+		{
+			getline(inFile1, line);
+			cout << line << endl;
+		}
+		inFile1.close();
+	} else{
+		cout << "Could not open file " << fileName1 << endl;
+	}
+
+
+	if(inFile2.is_open()){
+		string line;
+		while(inFile2)  //equivalent to while(!inFile2.eof())
+		{
+			getline(inFile2, line);
+			cout << line << endl;
+		}
+		inFile2.close();
+	} else{
+		cout << "Could not open file " << fileName2 << endl;
+	}
+
+
+
+
+
 
 	return 0;
 }

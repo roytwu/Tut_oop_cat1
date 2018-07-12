@@ -1,0 +1,3 @@
+Writing file with ofstream!
+12345
+This is the third line.

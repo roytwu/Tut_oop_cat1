@@ -1,0 +1,3 @@
+Write file with fstream...
+999.99
+Go go power rangers!!
