@@ -1,0 +1,4 @@
+Population UK: 6400000
+Population France: 66400000
+Population Taiwan: 23000000
+Populaiton US: 325000000 

@@ -10,15 +10,15 @@ using std::ios;
 using std::ifstream; 
 
 int main(){	
-	ofstream outFile1; //outFile1 is an output_file_stream object
-	fstream  outFile2;
-
 	string fileName1 = "demoFile1.txt";
 	string fileName2 = "demoFile2.txt";
 
+	//write files
+	ofstream outFile1; //outFile1 is an output_file_stream object
+	fstream  outFile2;
+
 	outFile1.open(fileName1);
 	outFile2.open(fileName2, ios::out);  //see Note for reference
-
 
 	if(outFile1.is_open()){
 		outFile1 << "Writing file with ofstream!" << endl;
@@ -75,8 +75,29 @@ int main(){
 	}
 
 
+	//parse a file
+	string fileName3 = "demo.txt";
+	ifstream o_input;
+	o_input.open(fileName3);
 
+	if(!o_input.is_open()){
+		return 1;
+	}
 
+	while(o_input){
+		string line;
+		int populaiton;
+
+		getline(o_input, line, ':');
+		o_input >> populaiton; //reading directly from the stream
+		//o_input.get();    //C++98
+		o_input  >> std::ws; //ws is used to extract whitespaces, C++11
+		if(!o_input){
+			break;
+		}
+		cout << line << " ---> " << populaiton << endl;
+	}
+	o_input.close();
 
 
 	return 0;
