@@ -12,14 +12,9 @@ This is a project about implementing class in C++.
   Creating a class called "cat", which different cats can be named
   And these cats can have different actions/mood defined as objects
   constructor & destructor
-  1. Constructor is not necessary if in-class initialization is applied
-  2. There are two ways of defining constructor:   
-    - In cat.h, under public key, type: `Cat()`; 
-      In cat.cpp, write a constructor function `Cat::Cat(){...}`      
-    - In cat.h, under public key, type: `Cat():...{}`
    
  - ### 1-b. inheritance
- Creat a super-class animal and its few childe classes
+   Creat a super-class animal and its few childe classes
 	
 ## 2. vector
 The project is about how to use vector container in C++
