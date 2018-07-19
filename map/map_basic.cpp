@@ -3,10 +3,11 @@
 #include <map>
 using std::cout;
 using std::endl;
-using std::string;
-using std::map;
 using std::pair;
 using std::make_pair;
+using std::string;
+using std::map;
+
 
 int main(){
 	map<string, int> ages;
