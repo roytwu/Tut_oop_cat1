@@ -1,3 +1,7 @@
+//file name: map_basic.cpp
+//programmer: Roy T Wu
+//Basic commands about <map> in C++
+
 #include <iostream>
 #include <string>
 #include <map>
