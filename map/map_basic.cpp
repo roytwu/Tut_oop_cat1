@@ -6,16 +6,29 @@ using std::endl;
 using std::string;
 using std::map;
 using std::pair;
+using std::make_pair;
 
 int main(){
 	map<string, int> ages;
 
+	//adding members to map, method#1
 	ages["Mike"] = 40;
 	ages["Raj"] = 25;
 	ages["Vicky"] = 30;
-
 	ages["Mike"] = 67;
 
+	//adding members to map, method#2
+	pair<string, int> addToMap("Peter", 99);
+	ages.insert(addToMap);
+
+	//adding members to map, method#3
+	ages.insert(pair<string, int>("Annie", 1));
+
+	//adding members to map, method#4
+	ages.insert(make_pair("Andy", 28));
+
+
+	//access the value
 	cout << ages["Raj"] << endl;
 
 
@@ -25,6 +38,7 @@ int main(){
 	}else {
 		cout << "Key is not found.." << endl;
 	}
+
 
 	//print out the map, mathod1
 	map<string, int>::iterator itr;
