@@ -26,6 +26,7 @@ int main(){
 
 	cout << endl << "*** Child class-'Cat' ***" << endl;
 	Cat *op_tom = new Cat(); 
+	op_tom->m_happy = true;
 	op_tom->speak(); //Cat can do what Animal can do
 	op_tom->jump();
 	delete op_tom;
@@ -36,7 +37,6 @@ int main(){
 	delete op_kitty;
 
 
-
 	cout << endl << "*** Child class-'Tiger' ***" << endl;
 	Tiger *op_bengal = new Tiger();
 	op_bengal->info();
@@ -44,13 +44,12 @@ int main(){
 	op_bengal->jump();  //Tiger can do what Cat can do
 	op_bengal->attackAntelope();
 	delete op_bengal;
+
 	
-	// //Test public key "happy"
-	// cout << endl << "Status of Tommy kitty:" << endl;
-	// o_tom.m_happy = true; 
-	// o_tom.speak();
-	// o_tom.jump();
-	// cout << "Tommy ID: " << o_tom.getID() << endl;
+	cout << endl << "*** Polymorphism ***" << endl;
+	Animal *op_animal = new Cat;  
+	op_animal->speak();
+	delete op_animal;
 
 
     cout << endl << "Ending porgram..." <<endl;

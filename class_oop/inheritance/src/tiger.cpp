@@ -10,10 +10,10 @@ using std::endl;
 //no-argument constructor for Tiger
 //call a super-class constructor with an argument
 Tiger::Tiger(): Cat(77){
-	cout << " --Tiger no-argument consructor called--" << endl;
+	cout << "  --Tiger no-argument consructor called--" << endl;
 }
 
 
 void Tiger::attackAntelope(){ 
-	cout << " Tiger is attacking an entelope" << endl; 
+	cout << "  Tiger is attacking an entelope" << endl; 
 } 

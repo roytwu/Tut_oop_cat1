@@ -20,7 +20,7 @@ public:
 	~Cat();  //destructor
 	
 	bool m_happy;
-	//void speak();
+	void speak();
 	void jump();
 
 	void makeAngry();

@@ -11,20 +11,25 @@ using std::endl;
 //no-argument constructor
 Animal::Animal(){
 	int m_animalID =0;
-	cout << " --Animal no-argument consructor called--" << endl;
+	cout << "  --Animal no-argument consructor called--" << endl;
 }
 
 //parameterized constructor
 Animal::Animal(int m_animalID){
 	this->m_animalID = m_animalID;
-	cout << " --Animal parameterized consructor called--" << endl;
+	cout << "  --Animal parameterized consructor called--" << endl;
 }
 
-	
+//destructor
+Animal::~Animal(){
+
+}	
+
+
 void Animal::speak(){ 
-	cout << " Grrrrr...." << endl; 
+	cout << "  Grrrrr...(animal speaking)" << endl; 
 }
 
 void Animal::info(){ 
-	cout << " animalID is ... " << m_animalID << endl; 
+	cout << "  animalID is ... " << m_animalID << endl; 
 }

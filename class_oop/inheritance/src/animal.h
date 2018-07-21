@@ -16,8 +16,9 @@ private:
 public:
 	Animal();                //no-argument constructor
 	Animal(int m_animalID);  //parameterized contstructor
+	virtual ~Animal();       //make destructor virtual for polymorphism
 
-	void speak();
+	virtual void speak();    //virtual for polymorphism
 	void info();
 };
 
