@@ -14,6 +14,8 @@ using std::map;
 
 
 int main(){
+	//Since map is a templeate, 
+	//both the keya and value type must be specified to define a map 
 	map<string, int> ages;
 
 	//adding members to map, method#1
@@ -26,14 +28,15 @@ int main(){
 	pair<string, int> addToMap("Peter", 99);
 	ages.insert(addToMap);
 
-	//adding members to map, method#3
-	ages.insert(pair<string, int>("Annie", 1));
+	//adding members to map, method#3, C++11 standard
+	ages.insert( pair<string, int>("Annie", 1) );
 
 	//adding members to map, method#4
 	ages.insert(make_pair("Andy", 28));
 
 
 	//access the value
+	//values in a map are accessed by a key rather than by their position
 	cout << ages["Raj"] << endl;
 
 
@@ -61,3 +64,12 @@ int main(){
 
 	return 0;
 }
+
+
+/*Note*/
+/*
+	-The keys in a map must be unique, and there can be onlt one element with 
+	 a given key. 'multimap' containers have no such restriction.
+
+	-pair is also a template.
+*/
