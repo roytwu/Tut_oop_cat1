@@ -3,39 +3,68 @@
 * platform: Visual Studio 2015
 */
 
-/* 
-* Function templates are special functions that can operate with generic types.
-* This allows us to create a function template whose functionality can be adapted to 
-* more than one type or class without repeating the entire code for each type.
-*/
-
 #include "stdafx.h"
 #include <iostream>
-
 using std::cout;
 using std::endl;
 
+
 // function template accept single parameter
-template <class T>
-T getMax(T a, T b) {
-	T result;
+template <class FT>
+FT getMax(FT a, FT b) {
+	FT result;
 	result = (a>b) ? a : b;
 	return(result);
 }
 
 // function template accept more than one parameter
-template <class T, class U>
-T getMin(T a, U b) {
-	T result;
+template <class FT1, class FT2>
+FT1 getMin(FT1 a, FT2 b) {
+	FT1 result;
 	result = (a < b) ? a : b;
 	return(result);
 }
 
+
+// class template
+template <class CT>
+class Cus_Array {
+private:
+	CT  *ptr;
+	int size;
+public:
+	Cus_Array(CT arr[], int s);
+	void print();
+};
+
+template <class CT>
+Cus_Array<CT>::Cus_Array(CT arr[], int s) {
+	ptr = new CT[s];
+	size = s;
+	for (int i = 0; i < size; i++) {
+		ptr[i] = arr[i];
+	}
+}
+
+template <class CT>
+void Cus_Array<CT>::print() {
+	for (int i = 0; i < size; i++) {
+		cout << " " << *(ptr + i);
+	}
+	cout << endl;
+}
+
 int main(){
+	//function template output
 	cout << getMax<int>(5, 6) << endl;
 	cout << getMax<double>(7.9, 3.1) << endl;
-
 	cout << getMin<double, int>(1.3, 9) << endl;
+
+	//class template output
+	cout << endl;
+	int arr[5] = { 1, 2, 3, 4, 5 };
+	Cus_Array<int>  foo(arr, 5);
+	foo.print();
 
 	return 0;
 
