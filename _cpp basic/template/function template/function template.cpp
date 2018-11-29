@@ -15,7 +15,7 @@
 using std::cout;
 using std::endl;
 
-// class template accept single parameter
+// function template accept single parameter
 template <class T>
 T getMax(T a, T b) {
 	T result;
@@ -23,7 +23,7 @@ T getMax(T a, T b) {
 	return(result);
 }
 
-// class template accept more than one parameter
+// function template accept more than one parameter
 template <class T, class U>
 T getMin(T a, U b) {
 	T result;
