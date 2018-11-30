@@ -1,14 +1,17 @@
 # Learn C++
-This is the repository about C++. The programs come with very verbose comments addressing concepts and syntax of C++.
+This is the repository about C++. The programs come with very verbose comments addressing concepts and syntax of C++. Most projects are developed under Linux environment, and a few are with Visual Studio.
 
 
 💾 Projects
 ------------
 
 ## _cpp basic 
-This is a dirctory including many basic concepts about C++
-- ### template -- about function templates
-- ### virtual  -- about virtual void operator()()
+This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015
+- ### template
+  Sample code about function templates
+
+- ### virtual  
+  Sample code about `virtual void operator()()`
 
 ## class_oop
 This is a project about implementing class in C++. 
