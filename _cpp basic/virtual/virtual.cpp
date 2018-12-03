@@ -1,9 +1,10 @@
-
-#include "stdafx.h"
 #include <iostream>
+//#include <string>
+
 
 using std::cout; 
 using std::endl;
+using std::string;
 
 class Foo {
 public:
@@ -23,6 +24,9 @@ public:
 
 int main()
 {
+	const string cmake_system_name = SYSTEM_NAME;
+	cout << "Hello from " << cmake_system_name << endl << endl;
+
 	Bar o_bar;
 
 	//using pointer
