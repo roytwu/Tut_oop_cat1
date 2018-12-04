@@ -9,9 +9,9 @@ using std::endl;
 
 class Message{
 public:
-	Message(strubg &m) : message_(m) {}
+	Message(const string &m) : message_(m) {}
 
-	firend ostream & operator << (ostream &os, Message &obj) {
+	friend ostream & operator << (ostream &os, Message &obj) {
 		return obj.printObject(os);
 	}
 private:
@@ -19,9 +19,3 @@ private:
 	ostream &printObject(ostream &os);
 };
 
-ostream &Message::printObject(ostream &os) {
-	os << "This is my very nice message" << endl;
-	os << message_;
-
-	return os;
-}
