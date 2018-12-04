@@ -1,11 +1,11 @@
 ## set minimum cmake version
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
 ## project name and language
-project(virtual LANGUAGES CXX)
+PROJECT(virtual LANGUAGES CXX)
 
 ## define executable and its source file
-add_executable(executableFile virtual.cpp)
+ADD_EXECUTABLE(executable virtual.cpp)
 
 #set(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
 #set(CMAKE_CXX_EXTENSIONS OFF)
@@ -19,7 +19,7 @@ add_executable(executableFile virtual.cpp)
 
 
 # Print the system name in the CPP code
-target_compile_definitions(executableFile
+TARGET_COMPILE_DEFINITIONS(executable
 	PUBLIC 
 	"SYSTEM_NAME=\"${CMAKE_SYSTEM_NAME}\""
 )
