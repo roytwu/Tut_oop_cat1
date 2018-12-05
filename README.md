@@ -6,12 +6,15 @@ This is the repository about C++. The programs come with very verbose comments a
 ------------
 
 ## _cpp basic 
-This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015
+This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015 and CMake.
 - ### template
   Sample code about function templates
 
 - ### virtual  
   Sample code about `virtual void operator()()`
+  
+- ### cmake_example
+  A good start to learn CMake
 
 ## class_oop
 This is a project about implementing class in C++. 
