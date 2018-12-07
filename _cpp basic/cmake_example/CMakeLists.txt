@@ -14,18 +14,20 @@ SET(BUILD_SHARED_LIBS OFF)
 MESSAGE(STATUS "Compile sources into a library?${USE_LIBRARY}$")
 LIST(APPEND _sources message.hpp message.cpp)
 
-## Two behaviors:
+## Two apporaches:
 ## 1. Build message.hpp/.cpp into a library, and then linke the resulting library
 ##    into the executable
 ## 2. Buld message.hpp/.cpp and cmakeBaisc.cpp into a single executable,
 ##    without producing the library
 
 IF(USE_LIBRARY)
+  ## approach 1:
   ## ADD_LIBRARY will create a static library since BUILD_SHARED_LIBS is OFF
   ADD_LIBRARY(message ${_sources})
   ADD_EXECUTABLE(executable ${SOURCE_FILES})
   TARGET_LINK_LIBRARIES(executable message)
 else()
+  ## approach 2:
   ADD_EXECUTABLE(executable cmakeBasics.cpp ${_sources})
 endif() 
  
@@ -42,7 +44,3 @@ endif()
 
 ## tell CMake that the library target has to be linked into the executable target
 #TARGET_LINK_LIBRARIES(executable message)
-
-
-
-

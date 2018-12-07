@@ -40,14 +40,14 @@ template <class CT>
 Cus_Array<CT>::Cus_Array(CT arr[], int s) {
 	ptr = new CT[s];
 	size = s;
-	for (int i = 0; i < size; i++) {
+	for (int i=0; i<size; i++) {
 		ptr[i] = arr[i];
 	}
 }
 
 template <class CT>
 void Cus_Array<CT>::print() {
-	for (int i = 0; i < size; i++) {
+	for (int i=0; i<size; i++) {
 		cout << " " << *(ptr + i);
 	}
 	cout << endl;
@@ -55,15 +55,20 @@ void Cus_Array<CT>::print() {
 
 int main(){
 	//function template output
-	cout << getMax<int>(5, 6) << endl;
-	cout << getMax<double>(7.9, 3.1) << endl;
+	cout << getMax<int>(5, 6)           << endl;
+	cout << getMax<double>(7.9, 3.1)    << endl;
 	cout << getMin<double, int>(1.3, 9) << endl;
 
 	//class template output
 	cout << endl;
-	int arr[5] = { 1, 2, 3, 4, 5 };
-	Cus_Array<int>  foo(arr, 5);
+	int arr_int[5] = { 1, 2, 3, 4, 5 };
+	double arr_dou[5] = { 0.1, 2.2, 33.3, 0.444, 5 };
+	Cus_Array<int>  foo(arr_int, 5);
 	foo.print();
+
+	Cus_Array<double> bar(arr_dou, 5);
+	bar.print();
+
 
 	return 0;
 
