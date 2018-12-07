@@ -53,6 +53,21 @@ void Cus_Array<CT>::print() {
 	cout << endl;
 }
 
+
+//no-type template -- template metaporgramming 
+template <int N>
+struct Factorial {
+	enum { value = N*Factorial<N-1>::value };
+};
+
+template <>
+struct Factorial<0> {
+	enum { value=1 };
+};
+
+
+
+//main body
 int main(){
 	//function template output
 	cout << getMax<int>(5, 6)           << endl;
@@ -70,7 +85,11 @@ int main(){
 	bar.print();
 
 
-	return 0;
+	//no-type template
+	int toto = Factorial<5>::value;
+	int tata = Factorial<0>::value;
+	cout << endl << toto << ", " << tata << endl; 
 
+	return 0;
 }
 
