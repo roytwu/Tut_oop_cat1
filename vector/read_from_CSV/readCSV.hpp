@@ -1,3 +1,8 @@
+/* file name: readCSV.hpp
+*  programmer: Roy T Wu
+*  Project:  reading data from a CSV file
+*  Reference: https://thispointer.com/how-to-read-data-from-a-csv-file-in-c/  */
+
 #ifndef READCSV_H_
 #define READCSV_H_
 
@@ -44,7 +49,7 @@ vector< vector<string> > CSVReader::getData(){
 		}
 		o_inFile.close();
 	} else {
-		cout << "could not open file" << fileName << endl;
+		cout << "Could not open file" << fileName << endl;
 	}
 
 

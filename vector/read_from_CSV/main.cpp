@@ -1,3 +1,7 @@
+/* file name: main.cpp
+ * programmer: Roy T Wu
+ * Project: reading data from a CSV file*/
+
 //#include <iostream>
 #include <vector>
 #include "readCSV.hpp"
