@@ -1,6 +1,6 @@
 /* file name: readCSV.hpp
 *  programmer: Roy T Wu
-*  Project:  reading data from a CSV file
+*  Project: reading data from a CSV file
 *  Reference: https://thispointer.com/how-to-read-data-from-a-csv-file-in-c/  */
 
 #ifndef READCSV_H_

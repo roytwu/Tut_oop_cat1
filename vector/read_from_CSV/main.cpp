@@ -12,8 +12,28 @@ using std::vector;
 
 int main()
 {
-	CSVReader o_reader("imu_log.csv");
+	// Approach 1 -- basic version 
+	string logFileName = "imu_log.csv";
+	ifstream o_IMULogFile;
+	o_IMULogFile.open(logFileName);
 
+
+	if (o_IMULogFile.is_open()) {
+		string line;
+		while (o_IMULogFile) {
+			//getline(o_IMULogFile, line, ',');
+			getline(o_IMULogFile, line);
+
+			cout << line << endl;
+		}
+		o_IMULogFile.close();
+	}
+	else {
+		cout << "Could not open file " << logFileName << endl;
+	}
+
+	// Apporach 2- use readCSV.hpp
+	CSVReader o_reader("imu_log.csv");
 	vector< vector<std::string> > v_dataList = o_reader.getData();
 
 	for (vector<std::string> vec : v_dataList) {
