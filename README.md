@@ -15,6 +15,9 @@ This is a dirctory including many basic concepts about C++. Projects under this 
   
 - ### cmake_example
   A good start to learn CMake
+  
+ - ### inverse_a_string
+   Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference	  
 
 ## class_oop
 This is a project about implementing class in C++. 
@@ -28,33 +31,30 @@ This is a project about implementing class in C++.
    Creat a super-class animal and its few childe classes
 	
 ## vector
-The project is about how to use vector container in C++
+The project is about how to use the vector container in C++
 - **vector_basic.cpp**: basic commands about vectors  
 - **unique_paths.cpp**: a dynamic programming (DP) problem invovles using vectors
+- ### read_from_CSV
+  Reading .csv files, this project includes vectors, file stream, boost libraries, and constructor overloading
 
+##  data_structures 
+- ### binary_tree
+  Demonstrate how to build binary trees using class, and show 3 basic traversal methods in binary tree
+  - pre-order: VLR  
+  - in-order: LVR
+  - post-order: LRV
 
-## inverse_a_string
-Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference
+- ### hash_table
+  Create hash table using <vector> and demonstrate chaining with `<list>`
 
+- ### matrix_library
+  Develope a demo library for matrix operation, obsolete project   
 
-## binary_tree
-Demonstrate how to build binary trees using class, and show 3 basic traversal methods in binary tree
-- pre-order: VLR  
-- in-order: LVR
-- post-order: LRV
-
-
-## hash_table
-Create hash table using <vector> and demonstrate chaining with `<list>`
 	
-	
-## file
+## file_stream
 Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
 
 
-
-## matrix_library
-Develope a demo library for matrix operation, obsolete project     
    
 
 🤖 Author 
