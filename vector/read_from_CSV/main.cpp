@@ -32,6 +32,7 @@ int main()
 		cout << "Could not open file " << logFileName << endl;
 	}
 
+
 	// Apporach 2- use readCSV.hpp
 	CSVReader o_reader("imu_log.csv");
 	vector< vector<std::string> > v_dataList = o_reader.getData();

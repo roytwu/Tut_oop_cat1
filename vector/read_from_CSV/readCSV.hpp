@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <locale>
 
 using std::cout;
 using std::endl;
@@ -18,6 +19,19 @@ using std::string;
 using std::vector;
 using std::ifstream;
 using std::getline;
+
+
+class IMUData {
+public:
+	vector<double> m_accel(3);
+	vector<double> m_gyro(3);
+	vector<double> m_compass(3);
+	double m_temptaure;
+
+	friend class CSVReader;
+};
+
+
 
 class CSVReader{
 public:
@@ -29,12 +43,13 @@ public:
 
 	//* function to fetch data from a CSV file
 	vector< vector<string> > getData(); 
-	
+	vector< vector<IMUData> > getData2();
+	vector<double> convertStrToDou(vector<string> svec); 
+
 private:	
 	string ms_fileName;
 	string ms_delimeter;
 };
-
 
 //* Constructor Overloading
 CSVReader::CSVReader(string filename, string delim = ",") {
@@ -64,6 +79,54 @@ vector< vector<string> > CSVReader::getData(){
 
 
 	return dataList;
+}
+
+
+//* Parses through csv file line by line and returns the data in vector of vector IMUData
+vector< vector<IMUData> > CSVReader::getData2() {
+	ifstream o_inFile;
+	o_inFile.open(ms_fileName);
+
+	vector< vector<IMUData> > dataList;
+
+	string line;
+
+	if (o_inFile.is_open()) {
+		while (getline(o_inFile, line)) {
+			vector<string> v_str;
+			vector<IMUData> v_IMU;
+			boost::algorithm::split(v_str, line, boost::algorithm::is_any_of(ms_delimeter));
+			dataList.push_back(v_foo);
+		}
+		o_inFile.close();
+	}
+	else {
+		cout << "Could not open file" << ms_fileName << endl;
+	}
+
+
+	return dataList;
+}
+
+
+
+
+vector<double> CSVReader::convertStrToDou( vector<string> svec ) { 
+	for (vector<string>::iterator iter = svec.begin(); iter!=svec.end(); ++iter){
+		vector<double> dvec;
+		string element = *iter;
+		double result = std::stod(element);
+
+		//* use a stringstream to get a double value:
+		//std::istringstream ctype::is(element);
+		//double result;
+		//is >> result;
+
+
+		// add the double value to the result vector:
+		dvec.push_back(result);
+		return dvec;
+	}
 }
 
 
