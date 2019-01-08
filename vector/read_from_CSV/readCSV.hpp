@@ -23,15 +23,47 @@ using std::getline;
 
 class IMUData {
 public:
-	vector<double> m_accel(3);
-	vector<double> m_gyro(3);
-	vector<double> m_compass(3);
-	double m_temptaure;
+	vector<string> m_accel ;
+	vector<string> m_gyro ;
+	vector<string> m_mag ;
+	string m_tem; 
+	void getValue( vector<string> );
+	void printValue();
+
 
 	friend class CSVReader;
 };
 
 
+void IMUData::getValue(vector<string> v_str) {
+	m_accel.push_back(v_str[1]);
+	m_accel.push_back(v_str[2]);
+	m_accel.push_back(v_str[3]);
+	m_gyro.push_back(v_str[4]);
+	m_gyro.push_back(v_str[5]);
+	m_gyro.push_back(v_str[6]);
+	m_mag.push_back(v_str[7]);
+	m_mag.push_back(v_str[8]);
+	m_mag.push_back(v_str[9]);
+	m_tem = v_str[10];
+}
+
+void IMUData::printValue() {
+	vector<string>::iterator itr;
+	for (itr = m_accel.begin(); itr != m_accel.end(); itr++) {
+		cout << *itr << " ";
+	}
+	cout << ", ";
+	for (itr = m_gyro.begin(); itr != m_gyro.end(); itr++) {
+		cout << *itr << " ";
+	}
+	cout << ", ";
+	for (itr = m_mag.begin(); itr != m_mag.end(); itr++) {
+		cout << *itr << " ";
+	}
+	cout << ", ";
+	cout << m_tem << ". " << endl;
+}
 
 class CSVReader{
 public:
@@ -43,13 +75,14 @@ public:
 
 	//* function to fetch data from a CSV file
 	vector< vector<string> > getData(); 
-	vector< vector<IMUData> > getData2();
+	vector< IMUData > getData2();
 	vector<double> convertStrToDou(vector<string> svec); 
 
 private:	
 	string ms_fileName;
 	string ms_delimeter;
 };
+
 
 //* Constructor Overloading
 CSVReader::CSVReader(string filename, string delim = ",") {
@@ -72,6 +105,7 @@ vector< vector<string> > CSVReader::getData(){
 			boost::algorithm::split(v_foo, line, boost::algorithm::is_any_of(ms_delimeter));
 			dataList.push_back(v_foo);
 		}
+
 		o_inFile.close();
 	} else {
 		cout << "Could not open file" << ms_fileName << endl;
@@ -83,20 +117,22 @@ vector< vector<string> > CSVReader::getData(){
 
 
 //* Parses through csv file line by line and returns the data in vector of vector IMUData
-vector< vector<IMUData> > CSVReader::getData2() {
+vector<IMUData> CSVReader::getData2() {
 	ifstream o_inFile;
 	o_inFile.open(ms_fileName);
 
-	vector< vector<IMUData> > dataList;
+	vector<IMUData> dataList;
 
 	string line;
 
 	if (o_inFile.is_open()) {
 		while (getline(o_inFile, line)) {
 			vector<string> v_str;
-			vector<IMUData> v_IMU;
 			boost::algorithm::split(v_str, line, boost::algorithm::is_any_of(ms_delimeter));
-			dataList.push_back(v_foo);
+			IMUData o_imuData;
+			o_imuData.getValue(v_str);
+
+			dataList.push_back(o_imuData);
 		}
 		o_inFile.close();
 	}
@@ -107,7 +143,6 @@ vector< vector<IMUData> > CSVReader::getData2() {
 
 	return dataList;
 }
-
 
 
 

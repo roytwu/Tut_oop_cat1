@@ -33,15 +33,25 @@ int main()
 	}
 
 
-	// Apporach 2- use readCSV.hpp
-	CSVReader o_reader("imu_log.csv");
-	vector< vector<std::string> > v_dataList = o_reader.getData();
+	// Apporach 2 -- use readCSV.hpp
+	//CSVReader o_reader("imu_log.csv");
+	//vector< vector<std::string> > v_dataList = o_reader.getData();
+	//cout << "# of rows in CSV file: " << v_dataList.size() << endl;
 
-	for (vector<std::string> vec : v_dataList) {
-		for (std::string data : vec) {
-			cout << data << ", ";
-		}
-		cout << endl;
+	//for (vector<std::string> vec : v_dataList) {
+	//	//cout << "# of columns in CSV file: " << vec.size() << endl;
+	//	for (std::string data : vec) {
+	//		cout << data << ", ";
+	//	}
+	//	cout << endl;
+	//}
+
+	// Apporach 3 -- use readCSV.hpp
+	CSVReader o_reader("imu_log.csv");
+	vector<IMUData> v_dataList = o_reader.getData2();
+	
+	for (IMUData foo : v_dataList) {
+		foo.printValue();
 	}
 
     return 0;
