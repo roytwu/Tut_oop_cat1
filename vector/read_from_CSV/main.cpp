@@ -12,7 +12,7 @@ using std::vector;
 
 int main()
 {
-	// Approach 1 -- basic version 
+	//* Approach 1 -- basic version 
 	string logFileName = "imu_log.csv";
 	ifstream o_IMULogFile;
 	o_IMULogFile.open(logFileName);
@@ -33,7 +33,7 @@ int main()
 	}
 
 
-	// Apporach 2 -- use readCSV.hpp
+	//* Apporach 2 -- use readCSV.hpp 
 	//CSVReader o_reader("imu_log.csv");
 	//vector< vector<std::string> > v_dataList = o_reader.getData();
 	//cout << "# of rows in CSV file: " << v_dataList.size() << endl;
@@ -46,7 +46,7 @@ int main()
 	//	cout << endl;
 	//}
 
-	// Apporach 3 -- use readCSV.hpp
+	//* Apporach 3 -- use readCSV.hpp with getData2()
 	CSVReader o_reader("imu_log.csv");
 	vector<IMUData> v_dataList = o_reader.getData2();
 	

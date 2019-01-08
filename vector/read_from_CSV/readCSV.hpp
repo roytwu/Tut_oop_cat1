@@ -23,10 +23,10 @@ using std::getline;
 
 class IMUData {
 public:
-	vector<string> m_accel ;
-	vector<string> m_gyro ;
-	vector<string> m_mag ;
-	string m_tem; 
+	vector<string> m_accel ; //* accelerometer 
+	vector<string> m_gyro ;  //* gyroscope
+	vector<string> m_mag ;   //* magnetometer 
+	string m_tem;            //* temperature sensor
 	void getValue( vector<string> );
 	void printValue();
 
@@ -34,7 +34,7 @@ public:
 	friend class CSVReader;
 };
 
-
+//* parse and assign string data to different containers
 void IMUData::getValue(vector<string> v_str) {
 	m_accel.push_back(v_str[1]);
 	m_accel.push_back(v_str[2]);
@@ -158,7 +158,7 @@ vector<double> CSVReader::convertStrToDou( vector<string> svec ) {
 		//is >> result;
 
 
-		// add the double value to the result vector:
+		//* add the double value to the result vector:
 		dvec.push_back(result);
 		return dvec;
 	}
