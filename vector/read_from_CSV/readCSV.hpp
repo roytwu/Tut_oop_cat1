@@ -27,15 +27,17 @@ public:
 	vector<double> m_gyro ;  //* gyroscope
 	vector<double> m_mag ;   //* magnetometer 
 	double m_tem;            //* temperature sensor
-	void parseData( vector<string> );
+	
+	IMUData(vector<string>);  //overloaded constructor
+
 	void printData();
 
 
-	friend class CSVReader;
+	//friend class CSVReader;
 };
 
-//* parse and assign string data to different containers
-void IMUData::parseData(vector<string> v_str) {
+//overloaded constructor
+IMUData::IMUData(vector<string> v_str) {
 	m_accel.push_back(std::stod(v_str[1]));
 	m_accel.push_back(std::stod(v_str[2]));
 	m_accel.push_back(std::stod(v_str[3]));
@@ -50,6 +52,7 @@ void IMUData::parseData(vector<string> v_str) {
 
 	m_tem = std::stod(v_str[10]);
 }
+
 
 void IMUData::printData() {
 	vector<double>::iterator itr;
@@ -132,8 +135,7 @@ vector<IMUData> CSVReader::getData2() {
 		while (getline(o_inFile, line)) {
 			vector<string> v_str;
 			boost::algorithm::split(v_str, line, boost::algorithm::is_any_of(ms_delimeter));
-			IMUData o_imuData;
-			o_imuData.parseData(v_str);
+			IMUData o_imuData(v_str); //use overloaded constructor
 
 			dataList.push_back(o_imuData);
 		}
