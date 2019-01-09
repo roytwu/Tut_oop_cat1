@@ -51,7 +51,7 @@ int main()
 	vector<IMUData> v_dataList = o_reader.getData2();
 	
 	for (IMUData foo : v_dataList) {
-		foo.printValue();
+		foo.printData();
 	}
 
     return 0;

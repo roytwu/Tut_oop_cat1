@@ -23,33 +23,36 @@ using std::getline;
 
 class IMUData {
 public:
-	vector<string> m_accel ; //* accelerometer 
-	vector<string> m_gyro ;  //* gyroscope
-	vector<string> m_mag ;   //* magnetometer 
-	string m_tem;            //* temperature sensor
-	void getValue( vector<string> );
-	void printValue();
+	vector<double> m_accel ; //* accelerometer 
+	vector<double> m_gyro ;  //* gyroscope
+	vector<double> m_mag ;   //* magnetometer 
+	double m_tem;            //* temperature sensor
+	void parseData( vector<string> );
+	void printData();
 
 
 	friend class CSVReader;
 };
 
 //* parse and assign string data to different containers
-void IMUData::getValue(vector<string> v_str) {
-	m_accel.push_back(v_str[1]);
-	m_accel.push_back(v_str[2]);
-	m_accel.push_back(v_str[3]);
-	m_gyro.push_back(v_str[4]);
-	m_gyro.push_back(v_str[5]);
-	m_gyro.push_back(v_str[6]);
-	m_mag.push_back(v_str[7]);
-	m_mag.push_back(v_str[8]);
-	m_mag.push_back(v_str[9]);
-	m_tem = v_str[10];
+void IMUData::parseData(vector<string> v_str) {
+	m_accel.push_back(std::stod(v_str[1]));
+	m_accel.push_back(std::stod(v_str[2]));
+	m_accel.push_back(std::stod(v_str[3]));
+
+	m_gyro.push_back(std::stod(v_str[4]));
+	m_gyro.push_back(std::stod(v_str[5]));
+	m_gyro.push_back(std::stod(v_str[6]));
+
+	m_mag.push_back(std::stod(v_str[7]));
+	m_mag.push_back(std::stod(v_str[8]));
+	m_mag.push_back(std::stod(v_str[9]));
+
+	m_tem = std::stod(v_str[10]);
 }
 
-void IMUData::printValue() {
-	vector<string>::iterator itr;
+void IMUData::printData() {
+	vector<double>::iterator itr;
 	for (itr = m_accel.begin(); itr != m_accel.end(); itr++) {
 		cout << *itr << " ";
 	}
@@ -130,7 +133,7 @@ vector<IMUData> CSVReader::getData2() {
 			vector<string> v_str;
 			boost::algorithm::split(v_str, line, boost::algorithm::is_any_of(ms_delimeter));
 			IMUData o_imuData;
-			o_imuData.getValue(v_str);
+			o_imuData.parseData(v_str);
 
 			dataList.push_back(o_imuData);
 		}
