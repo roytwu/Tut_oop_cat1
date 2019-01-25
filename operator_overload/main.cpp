@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 
-
 using std::cout; 
 using std::endl;
 using std::string;
@@ -21,25 +20,49 @@ public:
 };
 
 
+class Test {
+public:
+	//* default constructor
+	Test() : id(0), name("") {}
 
-int main()
-{
-	const string cmake_system_name = SYSTEM_NAME;
-	cout << "Hello from " << cmake_system_name << endl << endl;
+	//* overloaded constructor
+	Test(int id, string name): id(id), name(name){}
 
+	void print() {
+		cout << id << ": " << name << endl;
+	}
+
+private:
+	int id;
+	string name;
+};
+
+
+
+int main(){
 	Bar o_bar;
 
-	//using pointer
+	//* using pointer
 	Foo *ptr = &o_bar;
-	(*ptr)(); //clumsy! - prints bar!
+	(*ptr)(); //* clumsy! - prints bar!
 
-	//using reference 
+	//* using reference 
 	Foo &ref = o_bar;
-	ref(); //better - prints bar!
+	ref(); //* better - prints bar!
 
-	//also correct
-	o_bar(); //prints bar!
+	//* also correct
+	o_bar(); //* prints bar!
 
-    return 0;
+    
+	//* overloading assignment operator
+	cout << endl << endl;
+	Test o_test1(01, "Tiguan");
+	Test o_test2(02, "Atlas");
+	Test o_test3(03, "Passat");
+	o_test1.print();
+	
+	
+	
+	return 0;
 }
 

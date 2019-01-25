@@ -48,7 +48,6 @@ int main()
 	//* only one level of conversion works, so "SuperTim" must be wrapped by std::string
 	UserRecord tim ( "Tim", string("SuperTim"), 16);
 	UserRecord nano { "Nathan", boost::none, boost::none };
-
 	cout << tim << endl;
 	cout << nano << endl;
     return 0;

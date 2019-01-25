@@ -2,7 +2,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
 ## project name and language
-PROJECT(operatorOverload LANGUAGES CXX)
+PROJECT(optOverload LANGUAGES CXX)
 
 ## set source files
 SET(SOURCE_FILES main.cpp)
