@@ -1,14 +1,16 @@
-/*
-* function template.cpp 
-* platform: Visual Studio 2015
-*/
+//* File name:  function template.cpp 
+//* Programmer: Roy Wu
+//* Description: Templates allows you to create a single function/class to 
+//*              work with different data types.
+//*              Templates are often used in larger codebase for the purpose of code 
+//*              reusability and flexibility of the programs.
 
 #include <iostream>
 using std::cout;
 using std::endl;
 
 
-// function template accept single parameter
+//* function template accept single parameter
 template <class FT>
 FT getMax(FT a, FT b) {
 	FT result;
@@ -16,7 +18,7 @@ FT getMax(FT a, FT b) {
 	return(result);
 }
 
-// function template accept more than one parameter
+//* function template accept more than one parameter
 template <class FT1, class FT2>
 FT1 getMin(FT1 a, FT2 b) {
 	FT1 result;
@@ -25,7 +27,7 @@ FT1 getMin(FT1 a, FT2 b) {
 }
 
 
-// class template
+//* class template
 template <class CT>
 class Cus_Array {
 private:
@@ -54,7 +56,7 @@ void Cus_Array<CT>::print() {
 }
 
 
-//no-type template -- template metaporgramming 
+//* no-type template -- template metaporgramming 
 template <int N>
 struct Factorial {
 	enum { value = N*Factorial<N-1>::value };
@@ -67,25 +69,25 @@ struct Factorial<0> {
 
 
 
-//main body
+//* main body
 int main(){
-	//function template output
+	//* function template output
 	cout << getMax<int>(5, 6)           << endl;
 	cout << getMax<double>(7.9, 3.1)    << endl;
 	cout << getMin<double, int>(1.3, 9) << endl;
 
-	//class template output
+	//* class template output
 	cout << endl;
 	int arr_int[5] = { 1, 2, 3, 4, 5 };
 	double arr_dou[5] = { 0.1, 2.2, 33.3, 0.444, 5 };
-	Cus_Array<int>  foo(arr_int, 5);
-	foo.print();
+	Cus_Array<int>  o_foo(arr_int, 5);
+	o_foo.print();
 
-	Cus_Array<double> bar(arr_dou, 5);
-	bar.print();
+	Cus_Array<double> o_bar(arr_dou, 5);
+	o_bar.print();
 
 
-	//no-type template
+	//* no-type template
 	int toto = Factorial<5>::value;
 	int tata = Factorial<0>::value;
 	cout << endl << toto << ", " << tata << endl; 
