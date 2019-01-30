@@ -10,6 +10,7 @@ using std::endl;
 using std::vector;
 using std::string; 
 
+//* declare the funciton parameters as reference rather then as normal variables
 void equalizeLength(string& str_1, string& str_2) {
 	if (str_1.size() > str_2.size()) {
 		while (str_1.size() > str_2.size()) {
@@ -22,6 +23,15 @@ void equalizeLength(string& str_1, string& str_2) {
 }
 
 
+void swapNumber(int& i, int& j) {
+	//* when the funciton is called, i and j will become a reference to the argument
+	//* since a reference to a variable is treated exactly the same as the variable itself,
+	//* any changes made to the reference are passed through to the argument
+	int temp = i;
+	i = j;
+	j = temp;
+}
+
 
 int main()
 {
@@ -30,7 +40,11 @@ int main()
 
 	equalizeLength(foo, bar);
 	cout << foo << endl;
-	cout << bar << endl;
+	cout << bar << endl << endl;
+
+	int a=99, b = 77;
+	swapNumber(a, b);
+	cout << a << " " << b << endl;
 
     return 0;
 }
