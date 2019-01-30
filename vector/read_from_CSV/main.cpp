@@ -2,7 +2,7 @@
  * programmer: Roy T Wu
  * Project: reading data from a CSV file*/
 
-//#include <iostream>
+#include <iostream>
 #include <vector>
 #include "readCSV.hpp"
 
@@ -47,7 +47,8 @@ int main()
 	//}
 
 	//* Apporach 3 -- use readCSV.hpp with getData2()
-	CSVReader o_reader("imu_log.csv");
+	string delimeter = ",";
+	CSVReader o_reader(logFileName, delimeter);
 	vector<IMUData> v_dataList = o_reader.getData2();
 	
 	for (IMUData foo : v_dataList) {

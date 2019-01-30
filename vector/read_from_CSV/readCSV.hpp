@@ -32,7 +32,6 @@ public:
 
 	void printData();
 
-
 	//friend class CSVReader;
 };
 
@@ -77,7 +76,7 @@ public:
 	// CSVReader(string filename, string delim = ","): fileName(filename), delimeter(delim) {}
 	//* which is equivalent to:
 	// CSVReader(string filename, string delim = ","): {fileName=filename; delimeter=delim;}  
-	CSVReader(string, string);
+	CSVReader(string,  string);
 
 	//* function to fetch data from a CSV file
 	vector< vector<string> > getData(); 
@@ -91,7 +90,7 @@ private:
 
 
 //* Constructor Overloading
-CSVReader::CSVReader(string filename, string delim = ",") {
+CSVReader::CSVReader(string filename, string delim) {
 	ms_fileName = filename;  
 	ms_delimeter = delim;
 }
@@ -114,7 +113,7 @@ vector< vector<string> > CSVReader::getData(){
 
 		o_inFile.close();
 	} else {
-		cout << "Could not open file" << ms_fileName << endl;
+		cout << "Could not open file " << ms_fileName << endl;
 	}
 
 
@@ -142,7 +141,7 @@ vector<IMUData> CSVReader::getData2() {
 		o_inFile.close();
 	}
 	else {
-		cout << "Could not open file" << ms_fileName << endl;
+		cout << "Could not open file " << ms_fileName << endl;
 	}
 
 
