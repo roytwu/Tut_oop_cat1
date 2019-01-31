@@ -7,6 +7,9 @@ This is the repository about C++. The programs come with very verbose comments a
 
 ## _cpp basic 
 This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015 and CMake.
+- ### function pointer
+  beginner level example of function pointer
+  
 - ### template
   Sample code about function templates
 
@@ -15,8 +18,11 @@ This is a dirctory including many basic concepts about C++. Projects under this 
   
 - ### cmake_example
   A good start to learn CMake
-  
- - ### inverse_a_string
+ 
+- ### pass_by_reference
+  Straightforward example of passing strings and integers by reference 
+   
+- ### inverse_a_string
    Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference	  
 
 ## class_oop
@@ -32,10 +38,11 @@ This is a project about implementing class in C++.
 	
 ## vector
 The project is about how to use the vector container in C++
-- **vector_basic.cpp**: basic commands about vectors  
-- **unique_paths.cpp**: a dynamic programming (DP) problem invovles using vectors
+- ### _basic
+  Basic functions about vectors. Aslo have a example of using range-based for loop
 - ### read_from_CSV
   Reading .csv files, this project includes vectors, file stream, boost libraries, and constructor overloading
+- **unique_paths.cpp**: a dynamic programming (DP) problem invovles using vectors
 
 ##  data_structures 
 - ### binary_tree
