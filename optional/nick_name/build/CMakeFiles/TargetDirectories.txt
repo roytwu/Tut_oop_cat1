@@ -1,3 +1,0 @@
-C:/Users/wur/Documents/learn_cpp/optional/nick name/build/CMakeFiles/executable.dir
-C:/Users/wur/Documents/learn_cpp/optional/nick name/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/wur/Documents/learn_cpp/optional/nick name/build/CMakeFiles/ZERO_CHECK.dir
