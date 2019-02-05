@@ -2,10 +2,10 @@
  * programmer: Roy T Wu
  * Project: reading data from a CSV file*/
 
-
 #include <fstream>
 #include <iostream>
 #include <vector>
+//#include "estimation.h"
 #include "imuData.h"
 #include "readCSV.h"
 
@@ -58,14 +58,18 @@ int main(int argc, char** argv)
 	//	foo.printData();
 	//}
 
-	int i = 0;
-	while(i < v_dataList.size()) {
-		IMUData o_imuData = v_dataList.at(i);
-		o_imuData.printData();
-		i++;
-		cout << i << endl;
-	//	i = i%v_dataList.size();
-	}
+	//int i = 0;
+	//while(i < v_dataList.size()) {
+	//	IMUData o_imuData = v_dataList.at(i);
+	//	o_imuData.printData();
+	//	i++;
+	//	cout << i << endl;
+	////	i= i%v_dataList.size();
+	//}
+
+	IMUData o_imuData = v_dataList.at(0);
+	o_imuData.accel_process();
+
 
     return 0;
 }

@@ -1,7 +1,7 @@
-/* file name: readCSV.hpp
-*  programmer: Roy T Wu
-*  Project: reading data from a CSV file
-*  Reference: https://thispointer.com/how-to-read-data-from-a-csv-file-in-c/  */
+//* file name:  readCSV.h
+//* programmer: Roy T Wu
+//* Project:    reading data from a CSV file
+//* Reference: https://thispointer.com/how-to-read-data-from-a-csv-file-in-c/  
 
 #ifndef READCSV_H_
 #define READCSV_H_
@@ -11,10 +11,7 @@
 #include <locale>
 #include "imuData.h"
 
-
 using std::ifstream;
-
-
 
 class CSVReader{
 public:

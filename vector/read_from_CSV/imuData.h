@@ -1,3 +1,4 @@
+//* file name:  imuData.h
 #pragma once
 
 #include <iostream>
@@ -12,14 +13,27 @@ using std::vector;
 
 class IMUData {
 public:
-	vector<double> m_accel; //* accelerometer 
-	vector<double> m_gyro;  //* gyroscope
-	vector<double> m_mag;   //* magnetometer 
-	double m_tem;           //* temperature sensor
+	vector<double> m_rawAccel; //* accelerometer 
+	vector<double> m_rawGyro;  //* gyroscope
+	vector<double> m_rawMag;   //* magnetometer 
+	double m_rawTem;           //* temperature sensor
 
-	IMUData(vector<string>);  //overloaded constructor
+	vector<double> m_acc;      //* accelerometer 
+	vector<double> m_gyro;     //* gyroscope
+	vector<double> m_mag;      //* magnetometer 
+
+	IMUData(vector<string>);  //* overloaded constructor
 
 	void printData();
 
-	//friend class CSVReader;
+	vector<double> accel_process();
+
+private:
+	double x_acc_offset = 0;
+	double y_acc_offset = 0;
+	double z_acc_offset = 0;
+	double acc_scale  = 1/16384;
+	double gyro_scale = 1/131;
+	double mag_scale  = 0.15;
+
 };
