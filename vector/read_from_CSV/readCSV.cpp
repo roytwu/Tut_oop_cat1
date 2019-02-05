@@ -40,7 +40,7 @@ vector<IMUData> CSVReader::getData2() {
 	ifstream o_inFile;
 	o_inFile.open(ms_fileName);
 
-	vector<IMUData> dataList;
+	vector<IMUData> v_dataList;
 
 	string line;
 
@@ -50,7 +50,7 @@ vector<IMUData> CSVReader::getData2() {
 			boost::algorithm::split(v_str, line, boost::algorithm::is_any_of(ms_delimeter));
 			IMUData o_imuData(v_str); //use overloaded constructor
 
-			dataList.push_back(o_imuData);
+			v_dataList.push_back(o_imuData);
 		}
 		o_inFile.close();
 	}
@@ -59,7 +59,7 @@ vector<IMUData> CSVReader::getData2() {
 	}
 
 
-	return dataList;
+	return v_dataList;
 }
 
 

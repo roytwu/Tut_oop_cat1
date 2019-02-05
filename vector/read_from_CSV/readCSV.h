@@ -9,12 +9,11 @@
 #include <boost/algorithm/string.hpp>
 #include <fstream>
 #include <locale>
-
 #include "imuData.h"
 
 
 using std::ifstream;
-using std::getline;
+
 
 
 class CSVReader{

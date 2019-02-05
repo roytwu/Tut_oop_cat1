@@ -6,6 +6,7 @@
 
 using std::cout;
 using std::endl;
+using std::getline;
 using std::string;
 using std::vector;
 
@@ -14,7 +15,7 @@ public:
 	vector<double> m_accel; //* accelerometer 
 	vector<double> m_gyro;  //* gyroscope
 	vector<double> m_mag;   //* magnetometer 
-	double m_tem;            //* temperature sensor
+	double m_tem;           //* temperature sensor
 
 	IMUData(vector<string>);  //overloaded constructor
 
