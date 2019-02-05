@@ -5,14 +5,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 PROJECT(_readCSV LANGUAGES CXX)
 
 ## set source files
-SET(SOURCE_FILES main.cpp)
+SET(SOURCE_FILES main.cpp imuData.cpp readCSV.cpp)
 SET(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
 
 
 SET(USE_LIBRARY       ON)
 SET(BUILD_SHARED_LIBS OFF)
 MESSAGE(STATUS "Compile sources into a library?${USE_LIBRARY}$")
-LIST(APPEND _sources readCSV.hpp readCSV.cpp)
+LIST(APPEND _sources imuData.h readCSV.h )
 
 ## Two apporaches:
 ## 1. Build message.hpp/.cpp into a library, and then linke the resulting library

@@ -4,7 +4,8 @@
 
 #include <iostream>
 #include <vector>
-#include "readCSV.hpp"
+#include "imuData.h"
+#include "readCSV.h"
 
 //using std::cout; 
 //using std::endl;
