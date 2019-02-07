@@ -5,6 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <opencv2/core/matx.hpp>
+#include <opencv2/opencv.hpp>
 //#include "estimation.h"
 #include "imuData.h"
 #include "readCSV.h"
@@ -67,9 +69,12 @@ int main(int argc, char** argv)
 	////	i= i%v_dataList.size();
 	//}
 
-	IMUData o_imuData = v_dataList.at(0);
-	o_imuData.accel_process();
+	//IMUData o_imuData = v_dataList.at(0);
+	//o_imuData.accel_process();
 
+	//cv::Mat test(100, 100, CV_8U, cv::Scalar::all(150));
+	//cv::imshow("test_window", test);
+	//cv::waitKey(0); //wait infinitely until any keystroke in the window
 
     return 0;
 }

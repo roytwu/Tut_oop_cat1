@@ -1,5 +1,9 @@
 //* file name:  imuData.cpp
+#include <cmath>
+#include <string>
+//#include <opencv2/core/matx.hpp>
 #include "imuData.h"
+using std::pow;  //* cmath
 
 //* overloaded constructor
 IMUData::IMUData(vector<string> v_str) {
@@ -44,8 +48,8 @@ vector<double> IMUData::accel_process() {
 	m_acc.push_back(y_acc);
 	m_acc.push_back(z_acc);
 
-	double  alpha = atan2(-y_acc,x_acc)
-	double  beta = atan2(-x_acc, sqrt(y_acc^2+z_acc^2))
+	double  alpha = atan2(-y_acc, x_acc);
+	double  beta = atan2(-x_acc, sqrt(pow(y_acc, 2) + pow(z_acc,2)));
 
 	return m_acc;
 }

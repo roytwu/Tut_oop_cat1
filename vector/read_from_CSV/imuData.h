@@ -1,9 +1,13 @@
 //* file name:  imuData.h
 #pragma once
+#ifndef IMUDATA_H_
+#define IMUDATA_H_
+
 
 #include <iostream>
 #include <string>
 #include <vector>
+
 
 using std::cout;
 using std::endl;
@@ -37,3 +41,5 @@ private:
 	double mag_scale  = 0.15;
 
 };
+
+#endif //*IMUDATA_H_
