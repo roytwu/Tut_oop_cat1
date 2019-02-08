@@ -1,22 +1,30 @@
-## set minimum cmake version
+#* Use OpenCV without Trunk 
+#* Last update: 02/08/2019
+
+#* set minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
-## project name and language
+#* project name and language
 PROJECT(_openCVDemo LANGUAGES CXX)
 
-## set source files
-SET(SOURCE_FILES main.cpp)
+FIND_PACKAGE(OpenCV REQUIRED)
+
+#*Read environment variable to custom name
+SET(OpenCV_DIR       $ENV{OpenCV_DIR})
+
+INCLUDE_DIRECTORIES(
+  ${OpenCV_INCLUDE_DIRS} #* defined by OpenCV in OpenCVConfig.cmake 
+)
+
+#* set source files
+SET(SOURCE_FILES 
+  main.cpp
+)
+
 SET(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
-
-
 SET(USE_LIBRARY       ON)
 SET(BUILD_SHARED_LIBS OFF)
 
-
-
-ADD_EXECUTABLE(executable main.cpp ${_sources})
-
- 
 #ADD_LIBRARY(message
 # STATIC #option: STATIC or SHARED
 #  message.hpp
@@ -24,9 +32,12 @@ ADD_EXECUTABLE(executable main.cpp ${_sources})
 #)
 
 
-## add an executable to the project using the specified source files.
-#ADD_EXECUTABLE(executable ${SOURCE_FILES})
+#* add an executable to the project using the specified source files.
+ADD_EXECUTABLE(executable 
+  ${SOURCE_FILES}
+)
 
-
-## tell CMake that the library target has to be linked into the executable target
-#TARGET_LINK_LIBRARIES(executable message)
+#* tell CMake that the library target has to be linked into the executable target
+TARGET_LINK_LIBRARIES(executable
+  ${OpenCV_LIBS}
+)
