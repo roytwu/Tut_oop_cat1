@@ -32,19 +32,19 @@ int main()
 	cout << CV_32F << endl;
 	cout << CV_32FC1 << endl << endl;
 
-	double m[3][3] = { { 1.1, 1.2, 1.3 }, { 2.1, 2.2, 2.3 }, { 3.1, 3.2, 3.3} };
-	cv::Mat o_matA = cv::Mat(3, 3, CV_32F, m); //*load the array to Mat
-	cv::Mat o_matB = o_matA.inv();
-	cout << o_matA << endl;
-	cout << o_matB << endl <<endl;
+	float arr[3][3] = { { 1.1, 1.2, 1.3 }, { 2.1, 2.2, 2.3 }, { 3.1, 3.2, 3.3} };
+	cv::Mat o_matArr = cv::Mat(3, 3, CV_32FC1, arr); //* load the array to Mat
+	cv::Mat o_matArrInv = o_matArr.inv();            //* Mat::inv, inverse
+	cout << o_matArr << endl;
+	cout << o_matArrInv << endl <<endl;
 
 
 	float foo[2][2] = { {1, 0}, {0, 1} };
-	float bar[2][2] = { {1, 1}, {1, 1} };
-	cv::Mat o_matC = cv::Mat(2, 2, CV_32FC1, foo);
-	cv::Mat o_matD = cv::Mat(2, 2, CV_32FC1, bar);
-	cv::Mat o_matE = o_matC + o_matD;
-	cout << o_matB << endl;
+	float bar[2][2] = { {99, 99}, {99, 99} };
+	cv::Mat o_matFoo = cv::Mat(2, 2, CV_32FC1, foo);
+	cv::Mat o_matBar = cv::Mat(2, 2, CV_32FC1, bar);
+	cv::Mat o_matFB = o_matFoo * o_matBar;  //* matrix multiplication
+	cout << o_matFB << endl;
 
 
 
