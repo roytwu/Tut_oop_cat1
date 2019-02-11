@@ -1,12 +1,11 @@
-/* file name: main.cpp
- * programmer: Roy T Wu
- * Project: OpenCV demo*/
+//* File name:   main.cpp
+//* Programmer:  Roy T Wu
+//* Description: Demo aoubt matrix operations in OpenCV
 
 #include <iostream>
 #include <vector>
 #include <string>
 #include <opencv2/opencv.hpp>
-
 using std::cout; 
 using std::endl;
 using std::string; 
@@ -22,7 +21,12 @@ int main()
 	//* CV_32FC2 means a 2-channel (complex) floating-point array
 	//* CV_8UC1 means a 8-bit single chaneel array
 	cv::Mat o_mat1(7, 7, CV_32FC2, cv::Scalar(1, 3));
-	cout << o_mat1 << endl;
+	cout << o_mat1 << endl << endl;
+
+	//* conver Mat reference to Mat_ reference
+	cv::Mat_<float>& o_matA = (cv::Mat_<float>&)o_mat1;
+	cout << o_matA << endl;
+
 
 	//* Mat::type and Mat::depth
 	cout << "Type is..." <<	o_mat1.type() << endl;
@@ -60,17 +64,24 @@ int main()
 
     //* access columns in Matx
 	cout << o_xMF.col(0) << endl;                //* c-out 1st column
-	cv::Matx41f o_mat2 = o_xMF.col(3);           //* c-out 4th column, by default its a 4 by 1 matrix 
-	cv::Mat     o_mat3 = cv::Mat(o_xMF.col(3));  //* c-out 4th column, change to Mat format
+	cv::Matx41f o_mat2 = o_xMF.col(3);           //* 4th column, by default its a 4 by 1 matrix 
+	cv::Mat     o_mat3 = cv::Mat(o_xMF.col(3));  //* 4th column, change to cv::Mat format
 	cout << o_mat2 << endl;
-	cout << o_mat3 << endl;
+	cout << o_mat3 << endl << endl;
 
-    //std::vector<double> v_4thCol;
-	
+	// colRange() and rowRange()
+	cv::Mat o_mat4 = cv::Mat(o_xMF).colRange(0,3);  //* 1st to 3rd column, change to cv::Mat format
+	cv::Mat o_mat5 = o_mat4.rowRange(0,3);         
+	cout << o_mat5 << endl << endl;
 	
 
-	
-
+	//* convert cv::Mat to std::vector
+    std::vector<double> v_4thCol;
+	v_4thCol.assign(o_mat3.begin<float>(), o_mat3.end<float>());
+	for (auto i : v_4thCol) {
+		cout << i << " ";
+	}
+	cout << endl << endl;
 
 
 
