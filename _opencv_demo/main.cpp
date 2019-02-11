@@ -9,7 +9,6 @@
 
 using std::cout; 
 using std::endl;
-using std::vector;
 using std::string; 
 
 
@@ -40,14 +39,37 @@ int main()
 
 
 	float foo[2][2] = { {1, 0}, {0, 1} };
-	float bar[2][2] = { {99, 99}, {99, 99} };
+	float bar[2][2] = { {22, 33}, {77, 88} };
 	cv::Mat o_matFoo = cv::Mat(2, 2, CV_32FC1, foo);
 	cv::Mat o_matBar = cv::Mat(2, 2, CV_32FC1, bar);
 	cv::Mat o_matFB = o_matFoo * o_matBar;  //* matrix multiplication
-	cout << o_matFB << endl;
+	cv::Mat o_matToto = o_matBar.t();       //* matrix transpose
+	cout << o_matFB << endl << o_matToto << endl << endl;
 
 
+	//* cv::Matx with 4 by 4 float
+	cv::Matx44f o_xMF(11, 12, 13, 14,
+		21, 22, 23, 24,
+		31, 32, 33, 34,
+		41, 42, 43, 44);
+	cv::Matx44f o_xEye44 = cv::Matx44f::eye();	
+    cout << o_xMF << endl;
+	cout << o_xEye44 << endl << endl;;
+	cout << o_xMF.t() << endl;               //* matrix transpose
+	cout << o_xMF*o_xEye44 << endl << endl;  //* matrix multiplacation 
 
+    //* access columns in Matx
+	cout << o_xMF.col(0) << endl;                //* c-out 1st column
+	cv::Matx41f o_mat2 = o_xMF.col(3);           //* c-out 4th column, by default its a 4 by 1 matrix 
+	cv::Mat     o_mat3 = cv::Mat(o_xMF.col(3));  //* c-out 4th column, change to Mat format
+	cout << o_mat2 << endl;
+	cout << o_mat3 << endl;
+
+    //std::vector<double> v_4thCol;
+	
+	
+
+	
 
 
 
