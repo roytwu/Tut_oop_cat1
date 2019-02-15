@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <opencv2/opencv.hpp>
 
 
 using std::cout;
@@ -33,7 +34,7 @@ public:
 	vector<double> accel_process();
 	vector<double> gyro_process();
 	vector<double> mag_process();
-	void initial_att();
+	cv::Matx33d initial_att();
 
 private:
 	double x_acc_offset = 0;

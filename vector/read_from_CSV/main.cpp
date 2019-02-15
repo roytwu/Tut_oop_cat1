@@ -51,14 +51,20 @@ int main(int argc, char** argv)
 	//}
 
 	//* Apporach 3 -- use readCSV.hpp with getData2()
-	string logFile = "imu_log.csv";
+	//string logFile = "imu_log.csv";
+	string logFile = "imu_stable_LSB.csv";
 	string delimeter = ",";
 	CSVReader o_reader(logFile, delimeter);
 	vector<IMUData> v_dataList = o_reader.getData2();
 	
-	//for (IMUData foo : v_dataList) {
-	//	foo.printData();
-	//}
+	for (IMUData o_foo : v_dataList) {
+		//o_foo.printData(); //* print data
+		o_foo.accel_process();
+		o_foo.mag_process();
+
+		cv::Matx33d R0= o_foo.initial_att();
+		cout << R0 << endl;
+	}
 
 	//int i = 0;
 	//while(i < v_dataList.size()) {

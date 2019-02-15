@@ -77,13 +77,20 @@ vector<double> IMUData::mag_process() {
 	return m_mag;
 }
 
-void IMUData::initial_att() {
+cv::Matx33d IMUData::initial_att() {
 	//double theta = atan2(y_acc, z_acc); //*radian
 	//double phi = atan2(x_acc, sqrt(pow(y_acc, 2) + pow(z_acc, 2))); //* radian
 	double theta = atan2(m_acc.at(1), m_acc.at(2));
 	double phi = atan2(m_acc.at(0), sqrt(pow(m_acc.at(1), 2) + pow(m_acc.at(2), 2)));
 
 	double Hx = m_mag.at(0)*cos(theta) - m_mag.at(1)*sin(phi)*sin(theta) - m_mag.at(2)*sin(phi)*sin(theta);
-	double Hy = -m_mag.at(1)*cos(theta) + m_mag.at(z)*sin(theta);
+	double Hy = -m_mag.at(1)*cos(theta) + m_mag.at(2)*sin(theta);
 	double psi = atan2(Hx, Hy);
+
+	cv::Matx33d Rx(1, 0, 0, 0, cos(theta), -sin(theta), 0, sin(theta), cos(theta));
+	cv::Matx33d Ry(cos(phi), 0, sin(phi), 0, 1, 0, -sin(phi), 0, cos(phi));
+	cv::Matx33d Rz(cos(psi), -sin(psi), 0, sin(psi), cos(psi), 0, 0, 0, 1);
+	cv::Matx33d Rzyx = Rz*Ry*Rx;
+	
+	return Rzyx;
 }
