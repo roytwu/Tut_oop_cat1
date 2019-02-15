@@ -31,11 +31,20 @@ public:
 	void printData();
 
 	vector<double> accel_process();
+	vector<double> gyro_process();
+	vector<double> mag_process();
+	void initial_att();
 
 private:
 	double x_acc_offset = 0;
 	double y_acc_offset = 0;
 	double z_acc_offset = 0;
+	double x_gyro_offset = 0;
+	double y_gyro_offset = 0;
+	double z_gyro_offset = 0;
+	double x_mag_offset = 0;
+	double y_mag_offset = 0;
+	double z_mag_offset = 0;
 	double acc_scale  = 1/16384;
 	double gyro_scale = 1/131;
 	double mag_scale  = 0.15;
