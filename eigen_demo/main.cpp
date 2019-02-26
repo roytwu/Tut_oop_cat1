@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <Eigen/Dense> 
+#include <Eigen/Dense>  
+#include <Eigen/Geometry>
 
 using std::cout; 
 using std::endl;
@@ -8,6 +9,7 @@ using std::string;
 
 int main()
 {
+	//* ===== Matrix Class =====
 	//* declare a 3x3 matrix of double
 	Eigen::Matrix3d eye3 = Eigen::Matrix3d::Identity();
 	cout << eye3 << endl  << endl;
@@ -31,6 +33,26 @@ int main()
 	Eigen::Matrix3d m1T = m1.transpose();
 	cout << m1T << endl;
 
+	//* ===== Quaternion Class =====
+	//* quaternion for double
+	Eigen::Quaterniond q1(2, 0, 1, -3);
+	cout << "scalar part of the quaternion is ... " << q1.w() << endl;
+	cout << "vector part of the quaternion is ... " << endl	<< q1.vec() << endl;
+
+	//* length of the quaternion 
+	cout << "length of q1 is ... " << q1.norm() << endl << endl;
+
+	//* quaternion identity
+	Eigen::Quaterniond eyeQ = Eigen::Quaterniond::Identity();
+	cout << eyeQ.w() << endl;
+	cout << eyeQ.vec() << endl;
+
+	//* quaternion multiplication
+	Eigen::Quaterniond q2 = q1*eyeQ;
+
+	//* convert a quatternion to a rotation matrix
+	Eigen::Matrix3d r1 = eyeQ.toRotationMatrix();
+	cout << r1 << endl;
 
 }
 
