@@ -1,7 +1,10 @@
+#define _USE_MATH_DEFINES
+
 #include <iostream>
 #include <string>
-#include <Eigen/Dense>  
-#include <Eigen/Geometry>
+#include <cmath>          //* M_PI
+#include <Eigen/Dense>    //* Matrix
+#include <Eigen/Geometry> //* Quaternion, AngleAxis
 
 using std::cout; 
 using std::endl;
@@ -35,7 +38,7 @@ int main()
 
 
 	cout << "===== Quaternion Class =====" << endl;
-	//* quaternion for double
+	//* quaternion for double, equivalent to Eigen::Quaternion<double>
 	Eigen::Quaterniond q1(2, 0, 1, -3);
 	cout << "scalar part of the quaternion is ... " << q1.w() << endl;
 	cout << "vector part of the quaternion is ... " << endl	<< q1.vec() << endl;
@@ -62,7 +65,7 @@ int main()
 	cout << r1 << endl << endl;
 
 	cout << "===== Angle-axis Class =====" << endl;
-	//* angle-axis, note the axis must be normalized
+	//* angle-axis, note the axis must be normalized, angle is in radian
 	Eigen::Vector3d axis1(0, 1, 0);
 	Eigen::AngleAxisd aa1(0, axis1);
 	
@@ -79,6 +82,20 @@ int main()
 	cout << aa_foo.angle() << endl;
 	cout << aa_foo.axis()  << endl;
 	Eigen::Matrix3d r_foo = aa_foo.toRotationMatrix();
-	cout << r_foo << endl;
+	cout << r_foo << endl << endl;
+
+
+	cout << "===== Euler Angle =====" << endl;
+	double roll  = M_PI;  //* M_PI = 3.14159265358979323846
+	double pitch = 0; 
+	double yaw   = 0;
+	Eigen::AngleAxisd R_roll(roll, Eigen::Vector3d::UnitX());
+	Eigen::AngleAxisd R_pitch(pitch, Eigen::Vector3d::UnitY());
+	Eigen::AngleAxisd R_yaw(yaw, Eigen::Vector3d::UnitZ());
+
+	Eigen::Quaternion<double> q_euler = R_yaw*R_pitch*R_roll;
+	Eigen::Matrix3d R_euler = q_euler.matrix();
+	cout << R_euler << endl;
+	
 }
 
