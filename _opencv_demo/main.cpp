@@ -6,10 +6,10 @@
 #include <vector>
 #include <string>
 #include <Eigen/Core>             //* this needs to added before <opencv2/core/eigen.hpp>
-#include <Eigen/Dense>            //* Eigen Matrix
-#include <Eigen/Geometry>         //* Eigen quaternion
+#include <Eigen/Dense>            //* Eigen library: Matrix
+#include <Eigen/Geometry>         //* Eigen library: quaternion
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/eigen.hpp>
+#include <opencv2/core/eigen.hpp> 
 
 using std::cout; 
 using std::endl;
@@ -88,14 +88,16 @@ int main()
 	}
 	cout << endl << endl;
 
-	//* conversion between Eigen matrix and OpenCV matrix
+	cout << "-----Conversion between Eigen matrix and OpenCV matrix-----" << endl;
 	Eigen::MatrixXf em;       //* Eigen library, Dynamic float matrix 
 	cv::cv2eigen(o_xMF, em);
 	cout << em << endl << endl;
 
 	Eigen::Quaternion<double> eyeQ = Eigen::Quaterniond::Identity();
-	Eigen::Matrix3d R_eye = eyeQ.toRotationMatrix();
-	cv::Matx33d cvR;
+	Eigen::Matrix3d R_eye;  //* 3x3 matrix of double (Eigen)
+	cv::Matx33d cvR;        //* 3x3 matrix of double (OpenCV) 
+
+	R_eye = eyeQ.toRotationMatrix(); //* convert quaternion to rotation matrix 
 	cv::eigen2cv(R_eye, cvR);
 	cout << cvR << endl;
 
