@@ -57,6 +57,16 @@ int main(int argc, char** argv)
 	CSVReader o_reader(logFile, delimeter);
 	vector<IMUData> v_dataList = o_reader.getData2();
 	
+
+	int odr = 500; //* output data rate
+
+	double t = 0.0;
+	double dt = 1.0f; 
+
+	
+
+
+	//* attitude part
 	for (IMUData o_foo : v_dataList) {
 		//o_foo.printData(); //* print data
 		o_foo.accel_process();
@@ -66,21 +76,6 @@ int main(int argc, char** argv)
 		cout << R0 << endl;
 	}
 
-	//int i = 0;
-	//while(i < v_dataList.size()) {
-	//	IMUData o_imuData = v_dataList.at(i);
-	//	o_imuData.printData();
-	//	i++;
-	//	cout << i << endl;
-	////	i= i%v_dataList.size();
-	//}
-
-	//IMUData o_imuData = v_dataList.at(0);
-	//o_imuData.accel_process();
-
-	//cv::Mat test(100, 100, CV_8U, cv::Scalar::all(150));
-	//cv::imshow("test_window", test);
-	//cv::waitKey(0); //wait infinitely until any keystroke in the window
 
     return 0;
 }

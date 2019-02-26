@@ -27,6 +27,9 @@ public:
 	vector<double> m_gyro;     //* gyroscope
 	vector<double> m_mag;      //* magnetometer 
 
+	vector<double> m_pos;      //* position
+	vector<double> m_vel;      //* velocity
+
 	IMUData(vector<string>);  //* overloaded constructor
 
 	void printData();
@@ -35,6 +38,9 @@ public:
 	vector<double> gyro_process();
 	vector<double> mag_process();
 	cv::Matx33d initial_att();
+
+	vector<double> integ_pos(double);
+
 
 private:
 	double x_acc_offset = 0;

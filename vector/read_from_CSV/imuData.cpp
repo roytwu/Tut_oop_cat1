@@ -94,3 +94,19 @@ cv::Matx33d IMUData::initial_att() {
 	
 	return Rzyx;
 }
+
+
+//* in progress
+vector<double> IMUData::integ_pos(double dt) {
+	while () {
+
+	double x_vel = m_acc.at(0)*dt;
+	double y_vel = m_acc.at(1)*dt;
+	double z_vel = m_acc.at(2)*dt;
+
+	m_mag.push_back(x_mag);
+	m_mag.push_back(y_mag);
+	m_mag.push_back(z_mag);
+
+	return m_mag;
+}
