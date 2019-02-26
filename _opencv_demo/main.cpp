@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <opencv2/opencv.hpp>
+#include <Eigen/Dense>          //* Eigen Matrix
 using std::cout; 
 using std::endl;
 using std::string; 

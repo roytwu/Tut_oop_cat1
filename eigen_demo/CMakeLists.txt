@@ -1,5 +1,6 @@
 #* Use OpenCV without Trunk 
-#* Last update: 02/08/2019
+#* History: 
+#*   02/25/2019 initial version
 
 #* set minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)

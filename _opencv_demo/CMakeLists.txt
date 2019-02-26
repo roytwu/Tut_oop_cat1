@@ -1,6 +1,8 @@
 #* Use OpenCV without Trunk 
-#* Last update: 02/08/2019
-
+#* History: 
+#*   02/08/2019  initial version
+#*   02/26/2019  adding Eigen library
+ 
 #* set minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
@@ -11,9 +13,11 @@ FIND_PACKAGE(OpenCV REQUIRED)
 
 #*Read environment variable to custom name
 SET(OpenCV_DIR       $ENV{OpenCV_DIR})
+SET(EIGEN            $ENV{EIGEN_DIR})
 
 INCLUDE_DIRECTORIES(
   ${OpenCV_INCLUDE_DIRS} #* defined by OpenCV in OpenCVConfig.cmake 
+  ${EIGEN}/include/eigen3/
 )
 
 #* set source files
