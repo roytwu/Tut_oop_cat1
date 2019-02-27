@@ -1,19 +1,16 @@
 //* File name:   main.cpp
 //* Programmer:  Roy T Wu
-//* Description: Demo aoubt matrix operations in OpenCV
+//* Description: Demo aoubt 3D rotations in OpenCV
 
 #include <iostream>
 #include <vector>
 #include <string>
-#include <Eigen/Core>             //* this needs to added before <opencv2/core/eigen.hpp>
-#include <Eigen/Dense>            //* Eigen library: Matrix
-#include <Eigen/Geometry>         //* Eigen library: quaternion
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/eigen.hpp> 
+#include "mapping.h"
 
 using std::cout; 
 using std::endl;
 using std::string; 
+
 
 
 int main()
@@ -26,5 +23,8 @@ int main()
 	cv::Rodrigues(mx_xPi, rv_xPi);
 	cout << rv_xPi << endl;
 
+	cv::Matx33d R = cv::Matx33d::eye();
+	Eigen::MatrixXd eigenM;       //* Eigen library, Dynamic float matrix 
+	cv::cv2eigen(R, eigenM);
     return 0;
 }

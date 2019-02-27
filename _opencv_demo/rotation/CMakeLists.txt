@@ -6,7 +6,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
 #* project name and language
-PROJECT(_openCVDemo LANGUAGES CXX)
+PROJECT(_rotation LANGUAGES CXX)
 
 FIND_PACKAGE(OpenCV REQUIRED)
 
@@ -22,6 +22,7 @@ INCLUDE_DIRECTORIES(
 #* set source files
 SET(SOURCE_FILES 
   main.cpp
+  mapping.cpp
 )
 
 SET(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
