@@ -15,9 +15,9 @@
 class SO3Mapping {
 public:
 	Eigen::Quaterniond SO3ToEigenQuat(cv::Matx33d);
+	cv::Vec4d SO3ToCVQuat(cv::Matx33d);
 	cv::Vec4d RotationVectorToQuat(cv::Matx31d rv);
-
-
+	cv::Matx33d EulerToSO3(cv::Vec3d);
 
 	void printEigenQuat(Eigen::Quaterniond);
 	
