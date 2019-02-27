@@ -105,6 +105,14 @@ int main()
 	cv::eigen2cv(R_eye, cvR);
 	cout << cvR << endl;
 
+	cout << endl << "----- Rodrigues formula -----" << endl;
+	//* cv::Rodrigues transform between a rotation matrix to a rotation 
+	cv::Matx33d o_xEye33 = cv::Matx33d::eye();        //* identity matrix
+	cv::Matx33d mx_xPi(1, 0, 0, 0, -1, 0, 0, 0, -1);  //* rotate pi along x-axis
+	cv::Matx31d rv_xPi;
+	cv::Rodrigues(mx_xPi, rv_xPi);
+	cout << rv_xPi << endl;
+
     return 0;
 }
 
