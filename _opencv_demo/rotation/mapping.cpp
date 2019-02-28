@@ -3,10 +3,10 @@
 
 Eigen::Quaterniond SO3Mapping::SO3ToEigenQuat(cv::Matx33d cvR) {
 	Eigen::Matrix3d eigenR;
-	cv::cv2eigen(cvR, eigenR);
+	cv::cv2eigen(cvR, eigenR); //* convert from OpenCV SO(3) to Eigen SO(3)
 
 	Eigen::Quaterniond eigenQ;
-	eigenQ = eigenR; //* convert SO(3) to quaternion
+	eigenQ = eigenR;           //* convert  Eigen SO(3) to Eigen quaternion
 	return eigenQ;
 }
 
@@ -14,7 +14,7 @@ Eigen::Quaterniond SO3Mapping::SO3ToEigenQuat(cv::Matx33d cvR) {
 cv::Vec4d SO3Mapping::SO3ToCVQuat(cv::Matx33d cvR) {
 	cv::Vec3d rot_vec;
 	cv::Vec4d quat;
-	cv::Rodrigues(cvR, rot_vec);  //* map rotation matrix to rotation vector
+	cv::Rodrigues(cvR, rot_vec);  //* map CV SO(3) to CV rotation vector
 
 	double rv_x = rot_vec(0);  
 	double rv_y = rot_vec(1);
