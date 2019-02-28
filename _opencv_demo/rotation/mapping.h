@@ -20,11 +20,14 @@ public:
 	//* mapping SO(3) to OpenCV's quaternion
 	cv::Vec4d SO3ToCVQuat(cv::Matx33d);             
 
-	//* mapping rotation vector to OpenCV's quaternion
+	//* convert rotation vector to OpenCV's quaternion
 	cv::Vec4d RotationVectorToQuat(cv::Matx31d rv); 
 
-	//* mapping Euler angles to SO(3)
+	//* convert Euler angles to SO(3)
 	cv::Matx33d EulerToSO3(cv::Vec3d);
+
+	//* conver Eigen's quaternion to CV SO(3)
+	cv::Matx33d EGQuatToSO3(Eigen::Quaterniond);
 
 	//* print out Eigen's quaternion
 	void printEigenQuat(Eigen::Quaterniond);

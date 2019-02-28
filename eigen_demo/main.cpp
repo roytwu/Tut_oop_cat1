@@ -64,6 +64,17 @@ int main()
 	Eigen::Matrix3d r1 = uq1.toRotationMatrix();
 	cout << r1 << endl << endl;
 
+	//* mapp from SO(3) to quaternion
+	Eigen::Quaterniond uq11;
+	uq11 = r1;  //*uq11 shall be equivalent to uq1 
+ 
+	//* quaternion inverse
+	Eigen::Quaterniond uq_result;
+	uq_result = uq11.conjugate() * uq1; //* this shall output identity
+	cout << "scalar part of the result is ... " << uq_result.w() << endl;
+	cout << "vector part of the result is ... " << endl << uq_result.vec() << endl;
+
+
 	cout << "===== Angle-axis Class =====" << endl;
 	//* angle-axis, note the axis must be normalized, angle is in radian
 	Eigen::Vector3d axis1(0, 1, 0);

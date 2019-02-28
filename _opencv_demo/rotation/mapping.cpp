@@ -59,6 +59,14 @@ cv::Matx33d SO3Mapping::EulerToSO3(cv::Vec3d euler) {
 	return cvR;
 }
 
+cv::Matx33d SO3Mapping::EGQuatToSO3(Eigen::Quaterniond egQ) {
+	Eigen::Matrix3d egR;
+	cv::Matx33d cvR;
+	egR = egQ.toRotationMatrix();
+	cv::eigen2cv(egR, cvR);
+
+	return cvR;
+}
 
 
 //* ----- ----- Priting functions ----- -----
