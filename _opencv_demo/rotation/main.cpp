@@ -24,10 +24,14 @@ int main()
 	cv::Vec3d v_euler(0.5, pi, 0.7);  
 	cv::Matx33d rm_euler = o_mapping.EulerToSO3(v_euler); //* create arbitrary rotation matrix
 	cout << rm_euler << endl << endl;
+
 	//* verify the mapping is legit
 	cout << "(Rotation matrix check) shall output identity matrix... " << endl;
-	cout << rm_euler* rm_euler.t() << endl << endl;
+	cv::Matx33d  result = rm_euler* rm_euler.t();
+	o_mapping.roundTinyDoubleToZero(result);
+	cout << result << endl << endl;
 	
+
 	//* Step 2, map SO(3) to Eigen quaternion and OpenCV quaternion, respectively
 	Eigen::Quaterniond eigenQ = o_mapping.SO3ToEigenQuat(rm_euler);
 	o_mapping.printEigenQuat(eigenQ);

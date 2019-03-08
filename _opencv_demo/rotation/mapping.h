@@ -31,6 +31,9 @@ public:
 
 	//* print out Eigen's quaternion
 	void printEigenQuat(Eigen::Quaterniond);
+
+	//* round very small double to zero
+	void roundTinyDoubleToZero(cv::Matx33d &);
 	
 
 private:

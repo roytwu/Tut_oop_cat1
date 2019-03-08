@@ -44,6 +44,7 @@ cv::Vec4d SO3Mapping::RotationVectorToQuat(cv::Matx31d rv) {
 }
 
 
+//* ----- ----- convert Euler angles to SO(3) ----- -----
 cv::Matx33d SO3Mapping::EulerToSO3(cv::Vec3d euler) {
 	double roll  = euler(0);
 	double pitch = euler(1);
@@ -59,6 +60,8 @@ cv::Matx33d SO3Mapping::EulerToSO3(cv::Vec3d euler) {
 	return cvR;
 }
 
+
+//* ----- ----- conver Eigen's quaternion to CV SO(3) ----- -----
 cv::Matx33d SO3Mapping::EGQuatToSO3(Eigen::Quaterniond egQ) {
 	Eigen::Matrix3d egR;
 	cv::Matx33d cvR;
@@ -73,4 +76,16 @@ cv::Matx33d SO3Mapping::EGQuatToSO3(Eigen::Quaterniond egQ) {
 void SO3Mapping::printEigenQuat(Eigen::Quaterniond q){
 	std::cout << q.w() << std::endl;
 	std::cout << q.vec() << std::endl;
+}
+
+
+//* ----- ----- round very small double to zero ----- -----
+void SO3Mapping::roundTinyDoubleToZero(cv::Matx33d & cvR) {
+	for (int i = 0; i <= 2; i++) {
+		for (int j = 0; j <= 2; j++) {
+			if (std::abs(cvR(i, j)) < 0.0000001) {
+				cvR(i, j) = 0;
+			}
+		}
+	}
 }
