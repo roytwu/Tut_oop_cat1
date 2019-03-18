@@ -10,11 +10,9 @@
 #include <Eigen/Geometry>         //* Eigen library: quaternion
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp> 
-
 using std::cout; 
 using std::endl;
 using std::string; 
-
 
 int main()
 {
@@ -31,7 +29,6 @@ int main()
 	//* conver Mat reference to Mat_ reference
 	cv::Mat_<float>& o_matA = (cv::Mat_<float>&)o_mat1;
 	cout << o_matA << endl;
-
 
 	//* Mat::type and Mat::depth
 	cout << "Type is..." <<	o_mat1.type() << endl;
@@ -70,6 +67,13 @@ int main()
 	cout << o_xMF.t() << endl;                 //* matrix transpose
 	//cout << o_xMF*o_xEye44 << endl << endl;    //* matrix multiplacation 
 
+	//* cross and dot product in vectors
+	cout << endl << "----- Mat::cross, Mat::dot -----" << endl;
+	cv::Vec3d v_toto(1, 0.2, 0.7);
+	cv::Vec3d v_tata(0, -0.2, 1);
+	cout << v_toto.cross(v_tata) << endl; //*cross product
+	cout << v_toto.dot(v_tata) << endl;   //*dot product
+
     //* access columns in Matx
 	cout << endl << "----- access columns in Matx -----" << endl;
 	cout << o_xMF.col(0) << endl;                //* c-out 1st column
@@ -105,13 +109,22 @@ int main()
 	cv::eigen2cv(R_eye, cvR);
 	cout << cvR << endl;
 
-	cout << endl << "----- Rodrigues formula -----" << endl;
-	//* cv::Rodrigues transform between a rotation matrix to a rotation 
-	cv::Matx33d o_xEye33 = cv::Matx33d::eye();        //* identity matrix
+	//* cv::Rodrigues transform between a rotation matrix to a rotation vector or vice versa
+	cout << endl << "----- cv::Rodrigues -----" << endl;
 	cv::Matx33d mx_xPi(1, 0, 0, 0, -1, 0, 0, 0, -1);  //* rotate pi along x-axis
 	cv::Matx31d rv_xPi;
 	cv::Rodrigues(mx_xPi, rv_xPi);
 	cout << rv_xPi << endl;
+
+
+	cout << endl << "----- cv::norm -----" << endl;
+	//* vector norm, by default, normType is NORM_L2
+	cout << cv::norm(rv_xPi) << endl;  
+
+	//* matrix norm, SO(3) shall have norm of 1
+	cout << cv::norm(mx_xPi, cv::NORM_INF) << endl;
+
+	
 
     return 0;
 }
