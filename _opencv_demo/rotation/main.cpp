@@ -20,7 +20,7 @@ int main()
 	
 	SO3Mapping o_mapping;
 
-	//* Step 1, start from Euler angle, conver to SO(3)
+	//* ---Step 1---, start from Euler angle, conver to SO(3)
 	cv::Vec3d v_euler(0.5, pi, 0.7);  
 	cv::Matx33d rm_euler = o_mapping.EulerToSO3(v_euler); //* create arbitrary rotation matrix
 	cout << rm_euler << endl << endl;
@@ -32,18 +32,25 @@ int main()
 	cout << result << endl << endl;
 	
 
-	//* Step 2, map SO(3) to Eigen quaternion and OpenCV quaternion, respectively
+	//* ---Step 2---, map SO(3) to Eigen quaternion and OpenCV quaternion, respectively
 	Eigen::Quaterniond eigenQ = o_mapping.SO3ToEigenQuat(rm_euler);
 	o_mapping.printEigenQuat(eigenQ);
 	cout << endl;
 	cv::Vec4d v_quat = o_mapping.SO3ToCVQuat(rm_euler);
 	cout << v_quat << endl << endl;
 
-	//* Step 3, convert both quaternions back to SO(3)
-	cv::Matx33d rm_resultA;
-	cv::Matx33d rm_resultB;
-	rm_resultA = o_mapping.EGQuatToSO3(eigenQ);
-	cout << rm_resultA -rm_euler << endl;
+	//* ---Step 3---, convert both quaternions back to SO(3)
+	cv::Matx33d so3_A, so3_B;
+	so3_A = o_mapping.EGQuatToSO3(eigenQ);  
+	cout << so3_A << endl;
+
+	//* OpenCV
+	so3_B = o_mapping.CVQuatToSO3(v_quat); 
+	cout << so3_B << endl;
+
+	//* shall output identity
+	cout << so3_A*so3_B.t() << endl;
+
 
 
 	return 0;

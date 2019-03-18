@@ -29,6 +29,9 @@ public:
 	//* conver Eigen's quaternion to CV SO(3)
 	cv::Matx33d EGQuatToSO3(Eigen::Quaterniond);
 
+	//* conver CV's quaternion to CV SO(3)
+	cv::Matx33d CVQuatToSO3(cv::Vec4d &);
+
 	//* print out Eigen's quaternion
 	void printEigenQuat(Eigen::Quaterniond);
 
@@ -37,8 +40,8 @@ public:
 	
 
 private:
-	cv::Matx33d R;
-	Eigen::MatrixXd eigenM;       //* Eigen library, Dynamic float matrix 
+	//* hat map
+	cv::Matx33d hat(cv::Vec3d);
 };
 
 

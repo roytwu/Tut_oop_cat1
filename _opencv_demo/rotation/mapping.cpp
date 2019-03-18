@@ -71,6 +71,17 @@ cv::Matx33d SO3Mapping::EGQuatToSO3(Eigen::Quaterniond egQ) {
 	return cvR;
 }
 
+//* ----- ----- conver CV's custom quaternion to CV SO(3) ----- -----
+cv::Matx33d SO3Mapping::CVQuatToSO3(cv::Vec4d &q) {
+	double q0 = q(0);
+	cv::Vec3d q_vec(q(1), q(2), q(3));
+
+	cv::Matx33d result;
+	result = cv::Matx33d::eye() + 2*hat(q_vec)*hat(q_vec) +2*q0*hat(q_vec);
+	return result;
+}
+
+
 
 //* ----- ----- Priting functions ----- -----
 void SO3Mapping::printEigenQuat(Eigen::Quaterniond q){
@@ -88,4 +99,15 @@ void SO3Mapping::roundTinyDoubleToZero(cv::Matx33d & cvR) {
 			}
 		}
 	}
+}
+
+
+//* ----- ----- hat map ----- -----
+cv::Matx33d SO3Mapping::hat(cv::Vec3d v) {
+	double v1 = v(0);
+	double v2 = v(1);
+	double v3 = v(2);
+	cv::Matx33d result(0, -v3, v2, v3, 0, -v1, -v2, v1, 0);
+	
+	return result;
 }
