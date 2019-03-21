@@ -14,14 +14,13 @@ using std::string;
 
 int main()
 {
-	double pi = 3.14159265359;
 	cv::Matx33d rm_eye33 = cv::Matx33d::eye();        //* identity matrix
 	cv::Matx33d rm_x_Pi(1, 0, 0, 0, -1, 0, 0, 0, -1); //* rotate pi along x-axis
 	
 	SO3Mapping o_mapping;
 
 	//* ---Step 1---, start from Euler angle, conver to SO(3)
-	cv::Vec3d v_euler(0.5, pi, 0.7);  
+	cv::Vec3d v_euler(0.5, CV_PI, 0.7);   //* CV_PI is the OpenCV defined constant
 	cv::Matx33d rm_euler = o_mapping.EulerToSO3(v_euler); //* create arbitrary rotation matrix
 	cout << rm_euler << endl << endl;
 
@@ -49,9 +48,17 @@ int main()
 	cout << so3_B << endl;
 
 	//* shall output identity
-	cout << so3_A*so3_B.t() << endl;
+	cout << "This shall output identiy.. \n" << so3_A*so3_B.t() << endl;
 
 
+	//* -creating SO(3) from Euler angle
+	cv::Vec3d euler1(0, CV_PI, 0);
+	cv::Matx33d rm1 = o_mapping.EulerToSO3(euler1);
+	
+	//* mapping SO(3) to S(3) and then performing reverse map to  
+	cv::Vec4d quat1 = o_mapping.SO3ToCVQuat(rm1);
+	cv::Matx33d rm11 = o_mapping.CVQuatToSO3(quat1);
+	cout << rm1*rm11.t() << endl;
 
 	return 0;
 }

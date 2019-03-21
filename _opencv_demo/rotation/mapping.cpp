@@ -16,16 +16,12 @@ cv::Vec4d SO3Mapping::SO3ToCVQuat(cv::Matx33d cvR) {
 	cv::Vec4d quat;
 	cv::Rodrigues(cvR, rot_vec);  //* map CV SO(3) to CV rotation vector
 
-	double rv_x = rot_vec(0);  
-	double rv_y = rot_vec(1);
-	double rv_z = rot_vec(2); 
-	double rv_norm = sqrt(pow(rv_x, 2) + pow(rv_y, 2) + pow(rv_z, 2));
-
 	//* convert rotation vector to quaternion
+	double rv_norm = cv::norm(rot_vec);  //* calculate vector L2 norm
 	quat(0) = cos(rv_norm / 2);
-	quat(1) = sin(rv_norm / 2) * rv_x / rv_norm;
-	quat(2) = sin(rv_norm / 2) * rv_y / rv_norm;
-	quat(3) = sin(rv_norm / 2) * rv_z / rv_norm;
+	quat(1) = sin(rv_norm / 2) * rot_vec(0) / rv_norm;
+	quat(2) = sin(rv_norm / 2) * rot_vec(1) / rv_norm;
+	quat(3) = sin(rv_norm / 2) * rot_vec(2) / rv_norm;
 	return quat;
 }
 
@@ -35,7 +31,7 @@ cv::Vec4d SO3Mapping::RotationVectorToQuat(cv::Matx31d rv) {
 	double rv_x = rv(0, 0);  //*access element from 0-th row, 0-th cloumn
 	double rv_y = rv(1, 0);  //*access element from 1-th row, 0-th cloumn
 	double rv_z = rv(2, 0);  //*access element from 2-th row, 0-th cloumn
-	double rv_norm = sqrt(pow(rv_x, 2) + pow(rv_y, 2) + pow(rv_z, 2));
+	double rv_norm = cv::norm(rv);
 	quat(0) = cos(rv_norm/2);
 	quat(1) = sin(rv_norm/2) * rv_x / rv_norm;
 	quat(2) = sin(rv_norm/2) * rv_y / rv_norm;
@@ -71,10 +67,10 @@ cv::Matx33d SO3Mapping::EGQuatToSO3(Eigen::Quaterniond egQ) {
 	return cvR;
 }
 
-//* ----- ----- conver CV's custom quaternion to CV SO(3) ----- -----
+//* ----- ----- convert CV's custom quaternion to CV SO(3) ----- -----
 cv::Matx33d SO3Mapping::CVQuatToSO3(cv::Vec4d &q) {
-	double q0 = q(0);
-	cv::Vec3d q_vec(q(1), q(2), q(3));
+	double q0 = q(0);                   //* scalar part of quaternion
+	cv::Vec3d q_vec(q(1), q(2), q(3));  //* vector part of quaternion
 
 	cv::Matx33d result;
 	result = cv::Matx33d::eye() + 2*hat(q_vec)*hat(q_vec) +2*q0*hat(q_vec);
