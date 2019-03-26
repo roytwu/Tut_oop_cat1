@@ -17,8 +17,10 @@ This is a dirctory including many basic concepts about C++. Projects under this 
 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
-1. **basic**
-2. **rotation** 
+1. **basic** -- 
+  This project demonstrate how to create matrices in OpenCV, and it also shows basic operations such as matrix multiplication, matrix transpose, matrix concatenation, etc.
+2. **rotation** --
+  This project works on roation matices and unit quaternions specifically. And it demonstrate how to convert between OpenCV and Eigen.
 
 ## eigen_demo
 Using Eigen libraray for quaternion related operations
