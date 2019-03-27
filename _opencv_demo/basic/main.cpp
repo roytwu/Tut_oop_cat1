@@ -48,7 +48,7 @@ int main()
 
 	//* --- Matx are template class whose size are known at comilation time ---
 	cout << endl << "----- class Matx -----\n";
-	double arr[3][3] = { { 1.1, 1.2, 1.3 },{ 2.1, 2.2, 2.3 },{ 3.1, 3.2, 3.3 } };
+	double arr[3][3] = { {1.1, 1.2, 1.3}, {2.1, 2.2, 2.3}, {3.1, 3.2, 3.3} };
 
 	//* Matx33d represents 3x3 matrix of double type
 	//* for double type array, use CV_64
@@ -67,13 +67,6 @@ int main()
 	cout << o_xMF.t() << endl;                 //* matrix transpose
 	//cout << o_xMF*o_xEye44 << endl << endl;    //* matrix multiplacation 
 
-	//* --- cross and dot product in vectors ---
-	cout << endl << "----- Mat::cross, Mat::dot -----\n";
-	cv::Vec3d v_toto(1, 0.2, 0.7);
-	cv::Vec3d v_tata(0, -0.2, 1);
-	cout << v_toto.cross(v_tata) << endl; //*cross product
-	cout << v_toto.dot(v_tata) << endl;   //*dot product
-
     //* --- access columns in Matx ---
 	cout << endl << "----- access columns in Matx -----\n";
 	cout << o_xMF.col(0) << endl;                //* c-out 1st column
@@ -87,16 +80,6 @@ int main()
 	cv::Mat o_mat5 = o_mat4.rowRange(0,3);         
 	cout << o_mat5 << endl << endl;
 	
-
-	//* --- convert cv::Mat to std::vector ---
-    std::vector<double> v_4thCol;
-	v_4thCol.assign(o_mat3.begin<float>(), o_mat3.end<float>());
-	for (auto i : v_4thCol) {
-		cout << i << " ";
-	}
-	cout << endl;
-
-
 	cout << "\n----- conversion between Eigen matrix and OpenCV matrix -----\n";
 	Eigen::MatrixXf em;       //* Eigen library, Dynamic float matrix 
 	cv::cv2eigen(o_xMF, em);
@@ -117,7 +100,6 @@ int main()
 	cv::Rodrigues(mx_xPi, rv_xPi);
 	cout << rv_xPi << endl;
 
-
 	cout << "\n----- cv::norm -----\n";
 	//* vector norm, by default, normType is NORM_L2
 	cout << cv::norm(rv_xPi) << endl;  
@@ -134,6 +116,36 @@ int main()
 	cv::Matx43d output2;
 	cv::vconcat(mx_xPi, rv_xPi.t(), output2); //* vertical concatenation 
 	cout << "Output of vertical concatenation: \n"  << output2 << endl;
+
+	//* -------------------------------------------
+	//* ----- ----- ----- Vectors ----- ----- -----
+	//* --------------------------------------------
+
+	//* --- cross and dot product in vectors ---
+	cout << "\n----- Mat::cross, Mat::dot -----\n";
+	cv::Vec3d v_toto(1, 0.2, 0.7);
+	cv::Vec3d v_tata(0, -0.2, 1);
+	cout << v_toto.cross(v_tata) << endl; //*cross product
+	cout << v_toto.dot(v_tata) << endl;   //*dot product
+	cout << v_toto.mul(v_tata) << endl;   //*per-element multiplication
+
+	cout << "\n----- vector conjugate -----\n";
+	//* a handy funciton in quaternion operation
+	cv::Vec4d qv1(0, 1, 2, 3);
+	cv::Vec4d qv1_conj = qv1.conj();
+	cout << qv1_conj << endl;
+
+	//* --- convert cv::Mat to std::vector ---
+	cout << "\n----- convert cv::Mat to std::vector -----\n";
+	std::vector<double> v_4thCol;
+	v_4thCol.assign(o_mat3.begin<float>(), o_mat3.end<float>());
+	for (auto i : v_4thCol) {
+		cout << i << " ";
+	}
+	cout << endl;
+
+
+
     return 0;
 }
 
