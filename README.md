@@ -1,5 +1,5 @@
 # Learn C++
-This is the repository about C++. The programs come with very verbose comments addressing concepts and syntax of C++. Most projects are developed under Linux environment, and a few are with Visual Studio.
+This is the repository about C++ and related open source libaries such as OpenCV and Eigen. The programs come with very verbose comments to address concepts and syntax of C++. Most projects are developed under Visual Studio 2015, and a few are developed under Linux GCC.
 
 
 💾 Projects
@@ -18,7 +18,7 @@ This is a dirctory including many basic concepts about C++. Projects under this 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
 1. **basic** -- 
-  This project demonstrate how to create matrices in OpenCV, and it also shows basic operations such as matrix multiplication, matrix transpose, matrix concatenation, etc.
+  This project demonstrate how to create matrices and vectors in OpenCV, it also shows basic operations such as matrix multiplication, matrix transpose, matrix concatenation, inner product and cross product between 2 vectors, etc.
 2. **rotation** --
   This project works on roation matices and unit quaternions specifically. And it demonstrate how to convert between OpenCV and Eigen.
 
