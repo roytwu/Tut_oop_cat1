@@ -11,18 +11,16 @@ Eigen::Quaterniond SO3Mapping::SO3ToEigenQuat(cv::Matx33d cvR) {
 }
 
 
-cv::Vec4d SO3Mapping::SO3ToCVQuat(cv::Matx33d cvR) {
-	cv::Vec3d rot_vec;
-	cv::Vec4d quat;
-	cv::Rodrigues(cvR, rot_vec);  //* map CV SO(3) to CV rotation vector
+cv::Vec4d SO3Mapping::SO3ToCVQuat(cv::Matx33d rotm) {
+	double tr = cv::trace(rotm);
+	double q0 = sqrt(tr + 1.0) / 2;
+	
+	cv::Vec3d dummy = vee(rotm - rotm.t());
+	dummy = dummy / (4 * q0);
 
-	//* convert rotation vector to quaternion
-	double rv_norm = cv::norm(rot_vec);  //* calculate vector L2 norm
-	quat(0) = cos(rv_norm / 2);
-	quat(1) = sin(rv_norm / 2) * rot_vec(0) / rv_norm;
-	quat(2) = sin(rv_norm / 2) * rot_vec(1) / rv_norm;
-	quat(3) = sin(rv_norm / 2) * rot_vec(2) / rv_norm;
-	return quat;
+	cv::Vec4d q(q0, dummy(0), dummy(1), dummy(2));
+
+	return q;
 }
 
 
