@@ -78,6 +78,16 @@ cv::Matx33d SO3Mapping::CVQuatToSO3(cv::Vec4d &q) {
 }
 
 
+////* ----- ----- convert SO(3) to Rodrigues formula ----- -----
+//cv::Vec4d so3ToRodrigues(cv::Matx44d & rotm) {
+//	double tr = cv::trace(rotm);
+//	double theta = std::acos((tr - 1) / 2);
+//
+//
+//}
+
+
+//* ----------------------------------------------
 
 //* ----- ----- Priting functions ----- -----
 void SO3Mapping::printEigenQuat(Eigen::Quaterniond q){
@@ -99,11 +109,22 @@ void SO3Mapping::roundTinyDoubleToZero(cv::Matx33d & cvR) {
 
 
 //* ----- ----- hat map ----- -----
-cv::Matx33d SO3Mapping::hat(cv::Vec3d v) {
+cv::Matx33d SO3Mapping::hat(cv::Vec3d &v) {
 	double v1 = v(0);
 	double v2 = v(1);
 	double v3 = v(2);
 	cv::Matx33d result(0, -v3, v2, v3, 0, -v1, -v2, v1, 0);
 	
+	return result;
+}
+
+
+//* ----- ----- vee map ----- -----
+cv::Vec3d SO3Mapping::vee(cv::Matx33d &m) {
+	double v1 = m(2, 1);  //* row 3, column 2
+	double v2 = m(0, 2);  //* row 1, column 3 
+	double v3 = m(1, 0);  //* row 2, column 1 
+
+	cv::Vec3d result(v1, v2, v3);
 	return result;
 }

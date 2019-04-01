@@ -18,7 +18,7 @@ int main()
 
 	//* ===== ===== Eigen version ===== =====
 	//* ---Step 1, start from Euler angle, conver to SO(3)
-	cv::Vec3d v_euler(0.5, CV_PI, 0.7);   //* CV_PI is the OpenCV defined constant
+	cv::Vec3d v_euler(0.5, CV_PI, 0.7);                   //* CV_PI is the OpenCV defined constant
 	cv::Matx33d rm_euler = o_mapping.EulerToSO3(v_euler); //* create arbitrary rotation matrix
 	cout << rm_euler << endl << endl;
 
@@ -48,13 +48,30 @@ int main()
 
 	//* ===== ===== OpenCV version ===== =====
 	//* ---Step 1, creating SO(3) from Euler angle
-	cv::Vec3d euler1(0, CV_PI, 0);
+	cv::Vec3d euler1(0.3, CV_PI, 0.7);
 	cv::Matx33d rm1 = o_mapping.EulerToSO3(euler1);
 	
 	//* ---Step 2, mapping SO(3) to S(3) and then performing reverse map to  
 	cv::Vec4d quat1 = o_mapping.SO3ToCVQuat(rm1);
 	cv::Matx33d rm11 = o_mapping.CVQuatToSO3(quat1);
 	cout << rm1*rm11.t() << endl;
+
+
+	//* ===== ===== Rotation Vector ===== =====
+	cout << "\n----- verify hat() and vee() -----\n";
+	cv::Vec3d vec_foo(0.3, -1.5, 0.7);
+	auto mat_foo = o_mapping.hat(vec_foo);
+	auto vec_foo2 = o_mapping.vee(mat_foo);
+	cout << mat_foo << endl;
+	cout << vec_foo2 << endl;
+
+
+	//* ===== ===== Rotation Vector ===== =====
+	cout << "\n----- testing cv::Rodrigues() -----\n";
+	cv::Mat rv;
+	cv::Rodrigues(rm1, rv);
+	cout << rv << endl;
+
 
 	return 0;
 }

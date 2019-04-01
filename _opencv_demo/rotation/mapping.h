@@ -26,11 +26,17 @@ public:
 	//* convert Euler angles to SO(3)
 	cv::Matx33d EulerToSO3(cv::Vec3d);
 
-	//* conver Eigen's quaternion to CV SO(3)
+	//* convert Eigen's quaternion to CV SO(3)
 	cv::Matx33d EGQuatToSO3(Eigen::Quaterniond);
 
-	//* conver CV's quaternion to CV SO(3)
+	//* convert CV's quaternion to CV SO(3)
 	cv::Matx33d CVQuatToSO3(cv::Vec4d &);
+
+	//* convert SO(3) to Rodrigues formula
+	//cv::Vec4d so3ToRodrigues(cv::Matx44d &);
+
+
+	//* ----------------------------------------------
 
 	//* print out Eigen's quaternion
 	void printEigenQuat(Eigen::Quaterniond);
@@ -39,9 +45,12 @@ public:
 	void roundTinyDoubleToZero(cv::Matx33d &);
 	
 
-private:
+//private:
 	//* hat map
-	cv::Matx33d hat(cv::Vec3d);
+	cv::Matx33d hat(cv::Vec3d &);
+
+	//*vee map 
+	cv::Vec3d vee(cv::Matx33d &);
 };
 
 
