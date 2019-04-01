@@ -26,20 +26,6 @@ cv::Vec4d SO3Mapping::SO3ToCVQuat(cv::Matx33d cvR) {
 }
 
 
-cv::Vec4d SO3Mapping::RotationVectorToQuat(cv::Matx31d rv) {
-	cv::Vec4d quat;
-	double rv_x = rv(0, 0);  //*access element from 0-th row, 0-th cloumn
-	double rv_y = rv(1, 0);  //*access element from 1-th row, 0-th cloumn
-	double rv_z = rv(2, 0);  //*access element from 2-th row, 0-th cloumn
-	double rv_norm = cv::norm(rv);
-	quat(0) = cos(rv_norm/2);
-	quat(1) = sin(rv_norm/2) * rv_x / rv_norm;
-	quat(2) = sin(rv_norm/2) * rv_y / rv_norm;
-	quat(3) = sin(rv_norm/2) * rv_z / rv_norm;
-	return quat;
-}
-
-
 //* ----- ----- convert Euler angles to SO(3) ----- -----
 cv::Matx33d SO3Mapping::EulerToSO3(cv::Vec3d euler) {
 	double roll  = euler(0);
@@ -78,13 +64,21 @@ cv::Matx33d SO3Mapping::CVQuatToSO3(cv::Vec4d &q) {
 }
 
 
-////* ----- ----- convert SO(3) to Rodrigues formula ----- -----
-//cv::Vec4d so3ToRodrigues(cv::Matx44d & rotm) {
-//	double tr = cv::trace(rotm);
-//	double theta = std::acos((tr - 1) / 2);
-//
-//
-//}
+//* ----- ----- convert SO(3) to Rodrigues formula ----- -----
+cv::Vec4d SO3Mapping::so3ToRodrigues(cv::Matx33d &rotm) {
+	double tr = cv::trace(rotm);
+	double theta = std::acos((tr - 1) / 2);
+	if (theta == 0) {
+		cv::Vec4d zeros(0, 1, 0, 0);
+		return zeros;
+	}
+
+	cv::Matx33d dummy = (1/(2*sin(theta)))*(rotm - rotm.t());
+	cv::Vec3d v = vee(dummy);
+
+	cv::Vec4d result(theta, v(0), v(1), v(2));
+	return result;
+}
 
 
 //* ----------------------------------------------
@@ -109,7 +103,7 @@ void SO3Mapping::roundTinyDoubleToZero(cv::Matx33d & cvR) {
 
 
 //* ----- ----- hat map ----- -----
-cv::Matx33d SO3Mapping::hat(cv::Vec3d &v) {
+cv::Matx33d SO3Mapping::hat(const cv::Vec3d &v) const {
 	double v1 = v(0);
 	double v2 = v(1);
 	double v3 = v(2);
@@ -120,7 +114,7 @@ cv::Matx33d SO3Mapping::hat(cv::Vec3d &v) {
 
 
 //* ----- ----- vee map ----- -----
-cv::Vec3d SO3Mapping::vee(cv::Matx33d &m) {
+cv::Vec3d SO3Mapping::vee(const cv::Matx33d &m) const {
 	double v1 = m(2, 1);  //* row 3, column 2
 	double v2 = m(0, 2);  //* row 1, column 3 
 	double v3 = m(1, 0);  //* row 2, column 1 

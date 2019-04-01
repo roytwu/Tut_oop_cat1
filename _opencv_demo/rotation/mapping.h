@@ -20,9 +20,6 @@ public:
 	//* mapping SO(3) to OpenCV's quaternion
 	cv::Vec4d SO3ToCVQuat(cv::Matx33d);             
 
-	//* convert rotation vector to OpenCV's quaternion
-	cv::Vec4d RotationVectorToQuat(cv::Matx31d rv); 
-
 	//* convert Euler angles to SO(3)
 	cv::Matx33d EulerToSO3(cv::Vec3d);
 
@@ -33,7 +30,7 @@ public:
 	cv::Matx33d CVQuatToSO3(cv::Vec4d &);
 
 	//* convert SO(3) to Rodrigues formula
-	//cv::Vec4d so3ToRodrigues(cv::Matx44d &);
+	cv::Vec4d so3ToRodrigues(cv::Matx33d &);
 
 
 	//* ----------------------------------------------
@@ -47,10 +44,10 @@ public:
 
 //private:
 	//* hat map
-	cv::Matx33d hat(cv::Vec3d &);
+	cv::Matx33d hat(const cv::Vec3d &) const;
 
 	//*vee map 
-	cv::Vec3d vee(cv::Matx33d &);
+	cv::Vec3d vee(const cv::Matx33d &) const;
 };
 
 

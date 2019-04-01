@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "mapping.h"
+#include "rotationVector.h"
 
 using std::cout; 
 using std::endl;
@@ -57,7 +58,7 @@ int main()
 	cout << rm1*rm11.t() << endl;
 
 
-	//* ===== ===== Rotation Vector ===== =====
+	//* ===== ===== hat map and vee map ===== =====
 	cout << "\n----- verify hat() and vee() -----\n";
 	cv::Vec3d vec_foo(0.3, -1.5, 0.7);
 	auto mat_foo = o_mapping.hat(vec_foo);
@@ -72,6 +73,8 @@ int main()
 	cv::Rodrigues(rm1, rv);
 	cout << rv << endl;
 
+	auto rv_1 = o_mapping.so3ToRodrigues(rm1);
+	cout << rv_1 << endl;
 
 	return 0;
 }
