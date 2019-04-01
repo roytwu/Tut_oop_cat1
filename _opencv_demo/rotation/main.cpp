@@ -70,10 +70,12 @@ int main()
 	//* ===== ===== Rotation Vector ===== =====
 	cout << "\n----- testing cv::Rodrigues() -----\n";
 	cv::Mat rv;
-	cv::Rodrigues(rm1, rv);
+	cv::Rodrigues(rm1, rv);  //* build-in function in CV
 	cout << rv << endl;
 
-	auto rv_1 = o_mapping.so3ToRodrigues(rm1);
+	RotVec o_RV;
+	cv::Vec4d rod = o_mapping.so3ToRodrigues(rm1); //* rotation matrix to Rodrigues formula
+	cv::Vec3d rv_1 = o_RV.rodriguesToRotVec(rod);  //* Rodrigues formula to rotation vector
 	cout << rv_1 << endl;
 
 	return 0;

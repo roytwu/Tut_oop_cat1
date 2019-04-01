@@ -8,10 +8,10 @@
 class RotVec {
 public:
 	//* convert rotation vector to OpenCV's quaternion
-	cv::Vec4d rotVecToQuat(cv::Vec3d &);
+	cv::Vec4d rotVecToQuat(const cv::Vec3d &);
 
 	//* convert Rodrigues formula to rotation vector
-	//cv::Vec3d rodriguesToRotVec(cv::Vec4d &);
+	cv::Vec3d rodriguesToRotVec(const cv::Vec4d &);
 
 };
 

@@ -2,7 +2,7 @@
 #include "rotationVector.h"
 
 //* ----- convert rotation vector to OpenCV's quaternion -----
-cv::Vec4d RotVec::rotVecToQuat(cv::Vec3d &rv) {
+cv::Vec4d RotVec::rotVecToQuat(const cv::Vec3d &rv) {
 	double rv_x = rv(0);  
 	double rv_y = rv(1);  
 	double rv_z = rv(2);  
@@ -19,6 +19,10 @@ cv::Vec4d RotVec::rotVecToQuat(cv::Vec3d &rv) {
 
 
 //* ----- convert Rodrigues formula to rotation vector -----
-//cv::Vec3d rodriguesToRotVec(cv::Vec4d &rod) {
-//
-//}
+cv::Vec3d RotVec::rodriguesToRotVec(const cv::Vec4d &rod) {
+	double theta = rod(0);
+	cv::Vec3d rotVec(rod(1), rod(2), rod(3));
+	
+	rotVec = theta*rotVec;
+	return rotVec;
+}
