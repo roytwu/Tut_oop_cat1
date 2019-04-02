@@ -1,6 +1,7 @@
 //* File name:   rotationVector.h
 //* Developer:   Roy T Wu
-//* Description: special class for rotaion vectors                
+//* Description: class for rotaion vectors. Rotation vector (3 parameters) is a 
+//*              special form of Rodrigues formula (4 parameters), which is heavily used in OpenCV
 
 #pragma once
 #ifndef ROTATIONVECTOR

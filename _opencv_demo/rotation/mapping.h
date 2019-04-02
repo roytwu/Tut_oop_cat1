@@ -25,8 +25,9 @@ public:
 	//* mapping SO(3) to OpenCV's quaternion
 	cv::Vec4d SO3ToCVQuat(cv::Matx33d);    
 
-	//* convert SO(3) to Rodrigues formula
+	//* convert SO(3) to Rodrigues formula (similar to cv::Rodrigues())
 	cv::Vec4d so3ToRodrigues(cv::Matx33d &);
+
 
 	//* ----- ----- other representaitons mapping to SO(3) ----- -----
 	//* convert Euler angles to SO(3)
@@ -55,9 +56,6 @@ public:
 	//*vee map 
 	cv::Vec3d vee(const cv::Matx33d &) const;
 };
-
-
-
 
 
 #endif //MAPPING

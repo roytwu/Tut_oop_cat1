@@ -5,6 +5,7 @@
 #include "rotationVector.h"
 
 //* ----- convert rotation vector to unit quaternion -----
+//* @param: rv   rotation vector  
 cv::Vec4d RotVec::rotVecToQuat(const cv::Vec3d &rv) {
 	double rv_x = rv(0);  
 	double rv_y = rv(1);  
@@ -22,6 +23,7 @@ cv::Vec4d RotVec::rotVecToQuat(const cv::Vec3d &rv) {
 
 
 //* ----- convert Rodrigues formula to rotation vector -----
+//* @param: rod   Rodrigues formula 
 cv::Vec3d RotVec::rodriguesToRotVec(const cv::Vec4d &rod) {
 	double theta = rod(0);
 	cv::Vec3d rotVec(rod(1), rod(2), rod(3));
