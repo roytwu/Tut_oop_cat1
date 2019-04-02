@@ -1,5 +1,5 @@
 //* File name:   main.cpp
-//* Programmer:  Roy T Wu
+//* Developer:   Roy T Wu
 //* Description: Demonstrate mpping SO(3) to quaternion with OpenCV and Eigen        
 
 #include <iostream>
@@ -27,7 +27,7 @@ int main()
 	//cout << vec_foo2 << endl;
 
 	//* ---Step 1, start from Euler angle, conver to SO(3)
-	cv::Vec3d v_toto(0.5, CV_PI, -0.7);                  //* CV_PI is the OpenCV defined constant
+	cv::Vec3d v_toto(0.5, CV_PI, 0.7);                  //* CV_PI is the OpenCV defined constant
 	cv::Matx33d rm_toto = o_mapping.EulerToSO3(v_toto); //* create arbitrary rotation matrix
 	//cout << rm_toto << endl;
 

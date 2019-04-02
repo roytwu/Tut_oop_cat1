@@ -1,3 +1,6 @@
+//* File name:   rotationVector.cpp
+//* Developer:   Roy T Wu
+
 #include <iostream>
 #include "rotationVector.h"
 

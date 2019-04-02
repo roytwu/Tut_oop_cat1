@@ -1,4 +1,8 @@
-//* File name: mapping.h
+//* File name:   mapping.h
+//* Developer:   Roy T Wu
+//* Description: member functions of SO3Mapping class can be used to 
+//*              map SO(3) to other representations and vice versa      
+
 #pragma once
 #ifndef MAPPING
 #define MAPPING
@@ -14,12 +18,17 @@
 
 class SO3Mapping {
 public:
+	//* ----- ----- SO(3) mapping to other representaitons ----- -----
 	//* mapping SO(3) to Eigen's quaternion (Eigen::Quaternion<double>)
 	Eigen::Quaterniond SO3ToEigenQuat(cv::Matx33d); 
 
 	//* mapping SO(3) to OpenCV's quaternion
-	cv::Vec4d SO3ToCVQuat(cv::Matx33d);             
+	cv::Vec4d SO3ToCVQuat(cv::Matx33d);    
 
+	//* convert SO(3) to Rodrigues formula
+	cv::Vec4d so3ToRodrigues(cv::Matx33d &);
+
+	//* ----- ----- other representaitons mapping to SO(3) ----- -----
 	//* convert Euler angles to SO(3)
 	cv::Matx33d EulerToSO3(cv::Vec3d);
 
@@ -29,12 +38,8 @@ public:
 	//* convert CV's quaternion to CV SO(3)
 	cv::Matx33d CVQuatToSO3(cv::Vec4d &);
 
-	//* convert SO(3) to Rodrigues formula
-	cv::Vec4d so3ToRodrigues(cv::Matx33d &);
 
-
-	//* ----------------------------------------------
-
+	//* ----- ----- Not-important funcitons ----- -----
 	//* print out Eigen's quaternion
 	void printEigenQuat(Eigen::Quaterniond);
 
@@ -43,6 +48,7 @@ public:
 	
 
 //private:
+	//* ----- ----- hat map and vee map ----- -----
 	//* hat map
 	cv::Matx33d hat(const cv::Vec3d &) const;
 

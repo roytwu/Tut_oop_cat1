@@ -1,4 +1,7 @@
-//* File name: rotationVector.h
+//* File name:   rotationVector.h
+//* Developer:   Roy T Wu
+//* Description: special class for rotaion vectors                
+
 #pragma once
 #ifndef ROTATIONVECTOR
 #define ROTATIONVECTOR
@@ -14,8 +17,5 @@ public:
 	cv::Vec3d rodriguesToRotVec(const cv::Vec4d &);
 
 };
-
-
-
 
 #endif //ROTATIONVECTOR
