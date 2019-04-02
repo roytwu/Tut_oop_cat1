@@ -1,7 +1,7 @@
 #include <iostream>
 #include "rotationVector.h"
 
-//* ----- convert rotation vector to OpenCV's quaternion -----
+//* ----- convert rotation vector to unit quaternion -----
 cv::Vec4d RotVec::rotVecToQuat(const cv::Vec3d &rv) {
 	double rv_x = rv(0);  
 	double rv_y = rv(1);  
