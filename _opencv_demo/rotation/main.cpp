@@ -74,5 +74,12 @@ int main()
 	cv::Vec3d rv_1 = o_RV.rodriguesToRotVec(rod);  //* Rodrigues formula to rotation vector
 	cout << rv_1 << endl;
 
+
+	//* ===== ===== unit quaternion to SO(3) ===== =====
+	cout << "\n----- S(3) to SO(3) -----\n";
+	cv::Vec4d eyeQ(1.0, 0, 0, 0);
+	auto eyeSO3 = o_mapping.CVQuatToSO3(eyeQ);
+	cout << eyeSO3 << endl;
+
 	return 0;
 }

@@ -110,7 +110,8 @@ int main()
 	
 	cout << "\n----- Matrix concatenation -----\n";
 	cv::Matx34d output1;
-    cv::hconcat(mx_xPi, rv_xPi, output1); //* horizontal concatenation 
+	cv::Vec3d a(9, 9, 9);
+    cv::hconcat(mx_xPi, a, output1); //* horizontal concatenation 
 	cout << "Output of horizontal concatenation: \n" << output1 << endl << endl;
 
 	cv::Matx43d output2;
@@ -123,11 +124,17 @@ int main()
 
 	//* --- cross and dot product in vectors ---
 	cout << "\n----- Mat::cross, Mat::dot -----\n";
-	cv::Vec3d v_toto(1, 0.2, 0.7);
-	cv::Vec3d v_tata(0, -0.2, 1);
+	cv::Vec3d v_toto(1.0, 0.2, 0.7);
+	cv::Vec3d v_tata(0, -0.2, 1.1);
 	cout << v_toto.cross(v_tata) << endl; //*cross product
 	cout << v_toto.dot(v_tata) << endl;   //*dot product
 	cout << v_toto.mul(v_tata) << endl;   //*per-element multiplication
+
+	//* --- vector additions ---
+	cout << "\n----- vector additions -----\n";
+	cv::Vec3d v_sum = v_toto+v_tata;
+	cout << v_sum << endl;
+	cout << v_sum * 2 << endl;
 
 	cout << "\n----- vector conjugate -----\n";
 	//* a handy funciton in quaternion operation
