@@ -63,8 +63,10 @@ int main()
 
 	//* ===== ===== Rotation Vector ===== =====
 	cout << "\n----- testing cv::Rodrigues() -----\n";
-	cv::Vec3d euler1(1.2, -CV_PI, 0.7);
+	cv::Vec3d euler1(0, -CV_PI/2, 0);
 	cv::Matx33d rm1 = o_mapping.EulerToSO3(euler1);
+	cout << rm1 << endl;
+
 	cv::Mat rv;
 	cv::Rodrigues(rm1, rv);  //* build-in function in CV
 	cout << rv << endl;
@@ -80,6 +82,8 @@ int main()
 	cv::Vec4d eyeQ(1.0, 0, 0, 0);
 	auto eyeSO3 = o_mapping.CVQuatToSO3(eyeQ);
 	cout << eyeSO3 << endl;
+
+
 
 	return 0;
 }
