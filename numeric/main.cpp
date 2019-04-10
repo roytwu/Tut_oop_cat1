@@ -30,7 +30,7 @@ int main()
 	double sum_foo = std::accumulate(v_foo.begin(), v_foo.end(), 0.);  
 	cout << sum_foo << endl;
 
-	//* sum_foo1 is equivalent to  sum_foo
+	//* sum_foo1 is equivalent to sum_foo
 	double sum_foo1 = std::accumulate(v_foo.begin(), v_foo.end(), 0., myFunc1);
 	cout << sum_foo1 << endl;
 
