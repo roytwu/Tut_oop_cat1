@@ -16,11 +16,11 @@
 #include <vtkPoints.h>
 #include <vtkPolyData.h>
 #include <vtkPolyDataMapper.h>
+#include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
-#include <vtkRenderer.h>
 #include <vtkSmartPointer.h>
-
+#include <vtkTransform.h>
 
 using std::cout; 
 using std::endl; 
@@ -39,7 +39,7 @@ int main()
 		{ { 1, 1, 1 } },
 		{ { 0, 1, 1 } } } };
 	
-	// The ordering of the corner points on each face.
+	//* ordering of the corner points on each face
 	std::array<std::array<vtkIdType, 4>, 6> ordering = { { 
 		{ { 0, 1, 2, 3 } },
 		{ { 4, 5, 6, 7 } },
@@ -48,56 +48,59 @@ int main()
 		{ { 2, 3, 7, 6 } },
 		{ { 3, 0, 4, 7 } } } };
 
-	// We'll create the building blocks of polydata including data attributes.
+	//* create the building blocks of polydata including data attributes.
 	vtkSmartPointer<vtkPolyData>   cube    = vtkSmartPointer<vtkPolyData>::New();
 	vtkSmartPointer<vtkPoints>     points  = vtkSmartPointer<vtkPoints>::New();
 	vtkSmartPointer<vtkCellArray>  polys   = vtkSmartPointer<vtkCellArray>::New();
 	vtkSmartPointer<vtkFloatArray> scalars = vtkSmartPointer<vtkFloatArray>::New();
 
-	// Load the point, cell, and data attributes.
-	for (auto i = 0ul; i < pts.size(); ++i)
-	{
+	//* load the point, cell, and data attributes.
+	for (auto i = 0ul; i < pts.size(); ++i){
 		points->InsertPoint(i, pts[i].data());
 		scalars->InsertTuple1(i, i);
 	}
-	for (auto&& i : ordering)
-	{
+
+	for (auto&& i : ordering){
 		polys->InsertNextCell(vtkIdType(i.size()), i.data());
 	}
 
-	// We now assign the pieces to the vtkPolyData.
+	//* assign the pieces to the vtkPolyData.
 	cube->SetPoints(points);
 	cube->SetPolys(polys);
 	cube->GetPointData()->SetScalars(scalars);
 
-	// Now we'll look at it.
+	//* create mapper
 	vtkSmartPointer<vtkPolyDataMapper>cubeMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
 	cubeMapper->SetInputData(cube);
 	cubeMapper->SetScalarRange(cube->GetScalarRange());
+
+	//* create actor
 	vtkSmartPointer<vtkActor> cubeActor = vtkSmartPointer<vtkActor>::New();
 	cubeActor->SetMapper(cubeMapper);
 
-	// The usual rendering stuff.
+	//* create camera
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	camera->SetPosition(1, 1, 1);
-	camera->SetFocalPoint(0, 0, 0);
+	//camera->SetFocalPoint(0, 0, 0);
 
+	//* renderer and window
 	vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
-	vtkSmartPointer<vtkRenderWindow> renWin = vtkSmartPointer<vtkRenderWindow>::New();
-	renWin->AddRenderer(renderer);
+	vtkSmartPointer<vtkRenderWindow> rWind = vtkSmartPointer<vtkRenderWindow>::New();
+	rWind->AddRenderer(renderer);
+	rWind->SetSize(800, 600);
 
-	vtkSmartPointer<vtkRenderWindowInteractor> iren = vtkSmartPointer<vtkRenderWindowInteractor>::New();
-	iren->SetRenderWindow(renWin);
+	//* interactor
+	vtkSmartPointer<vtkRenderWindowInteractor> rWindInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	rWindInteractor->SetRenderWindow(rWind);
 
 	renderer->AddActor(cubeActor);
 	renderer->SetActiveCamera(camera);
 	renderer->ResetCamera();
 	renderer->SetBackground(colors->GetColor3d("Cornsilk").GetData());
 
-	renWin->SetSize(600, 600);
-
-	// interact with data
-	renWin->Render();
-	iren->Start();
+	
+	//* interact with data
+	rWind->Render();
+	rWindInteractor->Start();
 	return 0;
 }
