@@ -1,7 +1,7 @@
 //* File name:   main.cpp
 //* Developer:   Roy T Wu
-//* Description: first program about VTK   
-//*              code origin: https://lorensen.github.io/VTKExamples/site/Cxx/GeometricObjects/Axes/
+//* Description: creating mesh grid in VTK  
+//*              code origin: https://lorensen.github.io/VTKExamples/site/Cxx/StructuredGrid/BlankPoint/
                 
 #include <iostream>
 #include <string>
@@ -35,13 +35,13 @@ int main()
 	vtkSmartPointer<vtkStructuredGrid> structGridXZ = vtkSmartPointer<vtkStructuredGrid>::New();
 	vtkSmartPointer<vtkPoints> pointsXZ = vtkSmartPointer<vtkPoints>::New();
 
-	//* Create grid of points
+	//* create grid of points
 	for (int j = 0; j < gridSize; j++)
 	{
 		for (int i = 0; i < gridSize; i++)
 		{
 			pointsXY->InsertNextPoint(i, j, 0);  //* xy-plane
-			pointsXZ->InsertNextPoint(i, 0, j); //* xz-plane
+			pointsXZ->InsertNextPoint(i, 0, j);  //* xz-plane
 			counter++;
 		}
 	}
@@ -69,12 +69,13 @@ int main()
 	gridActorXY->SetMapper(gridMapperXY);
 	gridActorXY->GetProperty()->EdgeVisibilityOn();
 	gridActorXY->GetProperty()->SetEdgeColor(0, 0, 1);
+	gridActorXY->GetProperty()->SetColor(0.3, 0.3, 0.3);
 
 	vtkSmartPointer<vtkActor> gridActorXZ = vtkSmartPointer<vtkActor>::New();
 	gridActorXZ->SetMapper(gridMapperXZ);
 	gridActorXZ->GetProperty()->EdgeVisibilityOn();
 	gridActorXZ->GetProperty()->SetEdgeColor(0, 1, 0);
-	gridActorXZ->GetProperty()->SetColor(0, 0, 0);
+	gridActorXZ->GetProperty()->SetColor(0.3, 0.3, 0.3);
 
 
 	//* create a renderer, render window, and interactor
@@ -90,7 +91,7 @@ int main()
 	//* add the actor to the scene
 	renderer->AddActor(gridActorXY);
 	renderer->AddActor(gridActorXZ);
-	renderer->SetBackground(.3, .3, .3); // Background color green
+	renderer->SetBackground(.3, .3, .3); //* background color
 
 	//* render and interact
 	rWindow->Render();
