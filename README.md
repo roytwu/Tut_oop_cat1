@@ -22,6 +22,13 @@ Demo of matrix operation in OpenCV
 2. **rotation** --
   This project works on roation matices and unit quaternions specifically. And it demonstrate how to convert between OpenCV and Eigen.
 
+## _vtk
+Impplemented the Visualization Toolkit (VTK) in C++. The following projects are included: 
+1. **basic** -- The most baisc implementation of VTK
+2. **axes**  -- Creating a coordinate frame with 3 orthogoal axes
+3. **cubic** -- Creating a cubic
+4. **grid**  -- Creating grids in XY amd XZ plan
+
 ## eigen_demo
 Using Eigen libraray for quaternion related operations
 
@@ -59,7 +66,7 @@ Illustrate basic concepts about operator overloading
 
 
 
-🤖 Author 
+🤖 Developer 
 ------
 Roy T Wu
    
@@ -71,3 +78,4 @@ Roy T Wu
 - http://alrightchiu.github.io/SecondRound/
 - LeetCode - unique paths
 - C++ Primer (5th edition) ISBN-10: 0321714113
+- https://vtk.org/Wiki/VTK/Examples/Cxx
