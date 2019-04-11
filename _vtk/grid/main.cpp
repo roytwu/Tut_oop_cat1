@@ -8,18 +8,18 @@
 
 #include <vtkActor.h>
 #include <vtkDataSetMapper.h>
-#include <vtkIdList.h>
-#include <vtkMath.h>
+//#include <vtkIdList.h>
+//#include <vtkMath.h>
 #include <vtkProperty.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
-#include <vtkStructuredGridGeometryFilter.h>
+//#include <vtkStructuredGridGeometryFilter.h>
 #include <vtkSmartPointer.h>
 #include <vtkStructuredGrid.h>
-#include <vtkXMLStructuredGridWriter.h>
-#include <vtkXMLPolyDataWriter.h>
-#include <vtkXMLStructuredGridWriter.h>
+//#include <vtkXMLStructuredGridWriter.h>
+//#include <vtkXMLPolyDataWriter.h>
+//#include <vtkXMLStructuredGridWriter.h>
 
 using std::cout; 
 using std::endl; 
@@ -31,14 +31,13 @@ int main()
 	int counter = 0;
 	vtkSmartPointer<vtkStructuredGrid> structGridXY = vtkSmartPointer<vtkStructuredGrid>::New();
 	vtkSmartPointer<vtkPoints> pointsXY = vtkSmartPointer<vtkPoints>::New();
-
 	vtkSmartPointer<vtkStructuredGrid> structGridXZ = vtkSmartPointer<vtkStructuredGrid>::New();
 	vtkSmartPointer<vtkPoints> pointsXZ = vtkSmartPointer<vtkPoints>::New();
 
 	//* create grid of points
-	for (int j = 0; j < gridSize; j++)
+	for (int j = -gridSize; j < gridSize+1; j++)
 	{
-		for (int i = 0; i < gridSize; i++)
+		for (int i = -gridSize; i < gridSize+1; i++)
 		{
 			pointsXY->InsertNextPoint(i, j, 0);  //* xy-plane
 			pointsXZ->InsertNextPoint(i, 0, j);  //* xz-plane
@@ -47,19 +46,18 @@ int main()
 	}
 
 	//* specify the dimensions of the grid
-	structGridXY->SetDimensions(gridSize, gridSize, 1);
+	structGridXY->SetDimensions(gridSize*2+1, gridSize*2+1, 1);
 	structGridXY->SetPoints(pointsXY);
 	//structGridXY->BlankPoint(27);
 	structGridXY->Modified();
 
-	structGridXZ->SetDimensions(gridSize, gridSize, 1);
+	structGridXZ->SetDimensions(gridSize*2+1, gridSize*2+1, 1);
 	structGridXZ->SetPoints(pointsXZ);
 	structGridXZ->Modified();
 
 	//* create mapper 
 	vtkSmartPointer<vtkDataSetMapper> gridMapperXY = vtkSmartPointer<vtkDataSetMapper>::New();
 	gridMapperXY->SetInputData(structGridXY);
-
 	vtkSmartPointer<vtkDataSetMapper> gridMapperXZ = vtkSmartPointer<vtkDataSetMapper>::New();
 	gridMapperXZ->SetInputData(structGridXZ);
 
@@ -68,14 +66,13 @@ int main()
 	vtkSmartPointer<vtkActor> gridActorXY = vtkSmartPointer<vtkActor>::New();
 	gridActorXY->SetMapper(gridMapperXY);
 	gridActorXY->GetProperty()->EdgeVisibilityOn();
-	gridActorXY->GetProperty()->SetEdgeColor(0, 0, 1);
-	gridActorXY->GetProperty()->SetColor(0.3, 0.3, 0.3);
-
+	gridActorXY->GetProperty()->SetEdgeColor(0, 0, 0.9);
+	gridActorXY->GetProperty()->SetColor(.3, .3, .3);
 	vtkSmartPointer<vtkActor> gridActorXZ = vtkSmartPointer<vtkActor>::New();
 	gridActorXZ->SetMapper(gridMapperXZ);
 	gridActorXZ->GetProperty()->EdgeVisibilityOn();
-	gridActorXZ->GetProperty()->SetEdgeColor(0, 1, 0);
-	gridActorXZ->GetProperty()->SetColor(0.3, 0.3, 0.3);
+	gridActorXZ->GetProperty()->SetEdgeColor(0, .9, 0);
+	gridActorXZ->GetProperty()->SetColor(.3, .3, .3);
 
 
 	//* create a renderer, render window, and interactor

@@ -41,7 +41,7 @@ int main()
 	vtkSmartPointer<vtkActor> sphereActor = vtkSmartPointer<vtkActor>::New();
 	sphereActor->SetMapper(sphereMapper);
 
-	//* a renderer and render window
+	//* renderer and render window
 	vtkSmartPointer<vtkRenderer> renderer1 = vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkRenderWindow> rWindow = vtkSmartPointer<vtkRenderWindow>::New();
 	rWindow -> SetWindowName("window_axes");
