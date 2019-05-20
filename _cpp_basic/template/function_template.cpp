@@ -11,7 +11,7 @@ using std::endl;
 
 
 //* ---function template accept single parameter
-template <class FT>
+template <typename FT>
 FT getMax(FT a, FT b) {
 	FT result;
 	result = (a>b) ? a : b;
@@ -59,6 +59,29 @@ void Cus_Array<CT>::print() {
 	cout << endl;
 }
 
+//* ---another class template example
+template <class T, int N>
+class MySeq {
+public:
+	void setMember(int x, T value);
+	T getMember(int x);
+private:
+	T memBlock[N];
+};
+
+
+template <class T, int N>
+void MySeq<T, N>::setMember(int x, T value) {
+	memBlock[x] = value;
+}
+
+
+template <class T, int N>
+T MySeq<T, N>::getMember(int x) {
+	return memBlock[x];
+}
+
+
 
 //* ---no-type template: template metaporgramming 
 template <int N>
@@ -91,10 +114,19 @@ int main(){
 	o_bar.print();
 
 
+	//*class template, MySeq
+	cout << "\n----- class template, MySeq-----\n";
+	MySeq <double, 5> o_double;
+	o_double.setMember(0, 100.2);
+	o_double.setMember(2, 123.5);
+	cout << o_double.getMember(0) << endl;
+
+
 	//* no-type template
+	cout << "\n----- no-type template-----\n";
 	int toto = Factorial<5>::value;
 	int tata = Factorial<0>::value;
-	cout << endl << toto << ", " << tata << endl; 
+	cout << toto << ", " << tata << endl; 
 
 	return 0;
 }
