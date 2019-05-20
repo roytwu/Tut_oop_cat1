@@ -2,7 +2,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
 ## project name and language
-PROJECT(functionTemplate LANGUAGES CXX)
+PROJECT(_template LANGUAGES CXX)
 
 ## set source files
 SET(SOURCE_FILES function_template.cpp)
