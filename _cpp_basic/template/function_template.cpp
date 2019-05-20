@@ -10,7 +10,7 @@ using std::cout;
 using std::endl;
 
 
-//* ---function template accept single parameter
+//* ---function template accept single parameter---
 template <typename FT>
 FT getMax(FT a, FT b) {
 	FT result;
@@ -18,7 +18,7 @@ FT getMax(FT a, FT b) {
 	return(result);
 }
 
-//* ---function template accept more than one parameter
+//* ---function template accept more than one parameter---
 template <class FT1, class FT2>
 FT1 getMin(FT1 a, FT2 b) {
 	FT1 result;
@@ -27,7 +27,7 @@ FT1 getMin(FT1 a, FT2 b) {
 }
 
 
-//* ---class template
+//* ---class template---
 template <class CT>
 class Cus_Array {
 public:
@@ -59,12 +59,13 @@ void Cus_Array<CT>::print() {
 	cout << endl;
 }
 
-//* ---another class template example
-template <class T, int N>
+//* ---class template example with default values and types---
+template <class T =double, int N =10>
 class MySeq {
 public:
 	void setMember(int x, T value);
 	T getMember(int x);
+
 private:
 	T memBlock[N];
 };
@@ -83,7 +84,7 @@ T MySeq<T, N>::getMember(int x) {
 
 
 
-//* ---no-type template: template metaporgramming 
+//* ---no-type template: template metaporgramming---
 template <int N>
 struct Factorial {
 	enum { value = N*Factorial<N-1>::value };
@@ -96,15 +97,16 @@ struct Factorial<0> {
 
 
 
-//* ---main body
+//* ---main body---
 int main(){
+	cout << "\n----- function template-----\n";
 	//* function template output
 	cout << getMax<int>(5, 6)           << endl;
 	cout << getMax<double>(7.9, 3.1)    << endl;
 	cout << getMin<double, int>(1.3, 9) << endl;
 
-	//* class template output
-	cout << endl;
+	//* class template, Cur_Array
+	cout << "\n----- class template, Cur_Array-----\n";
 	int arr_int[5] = { 1, 2, 3, 4, 5 };
 	double arr_dou[5] = { 0.1, 2.2, 33.3, 0.444, 5 };
 	Cus_Array<int>  o_foo(arr_int, 5);
@@ -116,7 +118,7 @@ int main(){
 
 	//*class template, MySeq
 	cout << "\n----- class template, MySeq-----\n";
-	MySeq <double, 5> o_double;
+	MySeq<> o_double;             //* not need to specify parameters here
 	o_double.setMember(0, 100.2);
 	o_double.setMember(2, 123.5);
 	cout << o_double.getMember(0) << endl;
