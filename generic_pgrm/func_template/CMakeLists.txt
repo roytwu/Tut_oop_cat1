@@ -5,7 +5,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 PROJECT(_template LANGUAGES CXX)
 
 ## set source files
-SET(SOURCE_FILES function_template.cpp)
+SET(SOURCE_FILES main.cpp)
 
 ## add an executable to the project using the specified source files.
 ADD_EXECUTABLE(executable ${SOURCE_FILES})
