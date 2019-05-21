@@ -1,9 +1,11 @@
-//* File name:   main.cpp (optOverload)
-//* Developer:   Roy Wu
-//* Last upate:  01/25/2019
-//* Description: 
-//*    1. illustrating basic concepts of operator overloading
-//*    2. demonstrating assignment operator (=) overloading and compare it with copy constructor
+/* *********************************************************
+File name:   main.cpp (operator overload)
+Developer:   Roy Wu
+Last upate:  01/25/2019
+Description: 
+    1. illustrating basic concepts of operator overloading
+    2. demonstrating assignment operator (=) overloading and compare it with copy constructor
+********************************************************* */
 
 #include <iostream>
 #include <string>
