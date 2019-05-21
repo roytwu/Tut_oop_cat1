@@ -1,5 +1,5 @@
 /* ********************************************************* 
-File name:   function template.cpp 
+File name:   main.cpp (function template) 
 Programmer:  Roy Wu
 Description: Templates allows you to create a single function/class to 
              work with different data types. Templates are often used in larger codebase for the purpose of
@@ -8,7 +8,6 @@ Description: Templates allows you to create a single function/class to
 #include <iostream>
 using std::cout;
 using std::endl;
-
 
 //* ---function template accept single parameter---
 template <typename FT>
@@ -25,7 +24,6 @@ FT1 getMin(FT1 a, FT2 b) {
 	result = (a < b) ? a : b;
 	return(result);
 }
-
 
 
 
