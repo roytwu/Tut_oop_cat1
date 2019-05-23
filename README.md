@@ -14,6 +14,7 @@ This is a dirctory including many basic concepts about C++. Projects under this 
 4. **cmake_example** -- A good start to learn CMake
 5. **pass_by_reference** -- Straightforward example of passing strings and integers by reference 
 6. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference
+7. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
@@ -43,6 +44,14 @@ The project is about how to use the vector container in C++
 2. **read_from_CSV** -- Reading .csv files, this project includes vectors, file stream, boost libraries, and constructor overloading
 3. **unique_paths.cpp** -- a dynamic programming (DP) problem invovles using vectors
 
+## operator_overloading
+Illustrate basic concepts about operator overloading
+
+## generic_programming
+Generic Programming enables the programmer to write a general algorithm which will work with all data types, and it can be implemented in C++ using templates
+1. **class_template** -- examples of class template
+2. **func_template** --  examples of function template
+
 ##  data_structures 
 1. **binary_tree** --   Demonstrate how to build binary trees using class, and show 3 basic traversal methods in binary tree
    - pre-order: VLR  
@@ -53,15 +62,9 @@ The project is about how to use the vector container in C++
 	
 3. **matrix_library** -- Develope a demo library for matrix operation, obsolete project   
 
-	
-## file_stream
-Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
-
 ## optional
 Utilize the optional object from the Boost libaray
 
-## operator_overloading
-Illustrate basic concepts about operator overloading
 
 
 
