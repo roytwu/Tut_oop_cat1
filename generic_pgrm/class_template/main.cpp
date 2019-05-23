@@ -13,8 +13,7 @@ using std::endl;
 template <class CT>
 class Cus_Array {
 public:
-	//* constructor
-	Cus_Array(CT arr[], int s);
+	Cus_Array(CT arr[], int s);  //* constructor
 	void print();
 
 private:
@@ -53,12 +52,10 @@ private:
 	T memBlock[N];
 };
 
-
 template <class T, int N>
 void MySeq<T, N>::setMember(int x, T value) {
 	memBlock[x] = value;
 }
-
 
 template <class T, int N>
 T MySeq<T, N>::getMember(int x) {
@@ -71,8 +68,9 @@ T MySeq<T, N>::getMember(int x) {
 int main(){
 	//* class template, Cur_Array
 	cout << "\n----- class template, Cur_Array-----\n";
-	int arr_int[5] = { 1, 2, 3, 4, 5 };
+	int    arr_int[5] = { 1, 2, 3, 4, 5 };
 	double arr_dou[5] = { 0.1, 2.2, 33.3, 0.444, 5 };
+
 	Cus_Array<int>  o_foo(arr_int, 5);
 	o_foo.print();
 
@@ -85,7 +83,6 @@ int main(){
 	o_double.setMember(0, 100.2);
 	o_double.setMember(2, 123.5);
 	cout << o_double.getMember(0) << endl;
-
 
 	return 0;
 }
