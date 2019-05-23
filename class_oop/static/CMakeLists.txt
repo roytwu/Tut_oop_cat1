@@ -23,6 +23,7 @@ INCLUDE_DIRECTORIES(
 #* set source files
 SET(SOURCE_FILES 
   main.cpp
+  account.cpp
 )
 
 SET(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
