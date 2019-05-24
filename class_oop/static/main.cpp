@@ -4,20 +4,20 @@ Programmer:  Roy Wu
 Description: static class members/member funcitons
 ********************************************************* */
 
-#include <iostream>
-#include <vector>
+//#include <iostream>
 //#include <string>
+#include <vector>
 #include <Eigen/Core>              //* this needs to added before <opencv2/core/eigen.hpp>
 #include <Eigen/Dense>             //* Eigen library: Matrix
 #include <Eigen/Geometry>          //* Eigen library: quaternion
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp>
-
 #include "account.h"
-using std::cout; 
-using std::endl;
-//using std::string; 
 
+
+//using std::cout; 
+//using std::endl;
+//using std::string; 
 
 int main()
 {
@@ -34,8 +34,11 @@ int main()
 	r = o_ac1.findRate();  //* through an Account object
 	r = o_ac2->findRate(); //* through a pointer to an Account object
 
-	//a().findRate();
 
+
+	//* through an Account object reference
+	double result = ref_a().findRate();
+	cout << result << endl;
 
     return 0;
 }

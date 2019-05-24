@@ -1,9 +1,11 @@
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
 
-//#include <iostream>
+#include <iostream>
 #include <string>
 
+using std::cout;
+using std::endl;
 using std::string;
 
 class Account {
@@ -23,8 +25,8 @@ private:
 
 };
 
-
-Account & a();
+//* class refernce
+Account & ref_a();
 
 
 
