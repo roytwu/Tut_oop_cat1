@@ -15,6 +15,7 @@ This is a dirctory including many basic concepts about C++. Projects under this 
 5. **pass_by_reference** -- Straightforward example of passing strings and integers by reference 
 6. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference
 7. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
+8. **algorithm** -- Demo about functions in `<algorithm>`
 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
@@ -35,8 +36,9 @@ Using Eigen libraray for quaternion related operations
 
 ## class_oop
 This is a project about implementing class in C++. 
-1. **class_basic** -- Creating a class called "cat", which different cats can be named. And these cats can have different actions/mood defined as objects constructor & destructor    
+1. **class_basic** -- Creat a class called "cat", which different cats can be named. And these cats can have different actions/mood defined as objects constructor & destructor    
 2. **inheritance** -- Creat a super-class animal and its few child classes
+3. **static** -- illustrtate the use of static memebers of class
 	
 ## vector
 The project is about how to use the vector container in C++
