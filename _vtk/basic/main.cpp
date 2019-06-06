@@ -2,7 +2,7 @@
 //* Developer:   Roy T Wu
 //* Description: first program about VTK    
 
-#include <array>               //* std::array
+//#include <array>               //* std::array
 #include <iostream>
 #include <string>
 #include <vtkMath.h>
@@ -35,15 +35,17 @@ int main()
 
 	/* --- vtkPoints --- */ cout << "\n----- vtkPoints ----- \n";
 	//* smartPointer way to create and object
+	//* vtkPoints can be think as std::vector<cv::Point3d>
 	vtkSmartPointer<vtkPoints> vt_pts = vtkSmartPointer<vtkPoints>::New();
 	
-	//* insert vtkPoint to container
+	//* insert vtkPoint to container,
+	//* which is similar to std::vector::push_back()
 	vtkIdType id_pts[3];
 	id_pts[0] = vt_pts->InsertNextPoint(p0);
 	id_pts[1] = vt_pts->InsertNextPoint(p1);
 	id_pts[2] = vt_pts->InsertNextPoint(p2);
 	
-	double tempArr[3];             //*C-style array of double
+	double tempArr[3];             //* C-style array of double
 	vt_pts->GetPoint(2, tempArr);  //* copy vtkPoint component to another C-style array
 
 	//* loop through the elements of the C-style array
