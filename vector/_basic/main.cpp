@@ -1,6 +1,8 @@
-//File name: main.c
-//Author: Roy T Wu
-//basic concepts and syntax about vectors
+/* *********************************************************
+File name:   main.cpp (_basic)
+Programmer:  Roy Wu
+Description: basic concepts and syntax about vectors
+********************************************************* */
 
 #include <iostream>
 #include <vector>
@@ -12,7 +14,7 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::copy; //* copy elements from its input range into elements in the destination
-using std::ostream_iterator; //* writes an outpus stream
+using std::ostream_iterator; //* writes an output stream
 
 vector<string> func_GetString();
 
@@ -20,7 +22,7 @@ vector<string> func_GetString();
 int main(){
 	size_t size = 10;
 	//* Element count
-	vector<int> vec0; //* declare an empty vector
+	vector<int> vec0;       //* declare an empty vector
 	vector<int> vec1(size); //* declare a vector of size 10 with all values as 0
 
 	//* list initializer: use the value inside the curly braces as a list of element 
@@ -30,9 +32,9 @@ int main(){
 		vec2[i] = vec2[i]+i;
 	}
 	cout << "vec1[1] is " << vec1[1] << endl;
-	cout << "vec2[1] is " << vec2[1] << endl << endl;
+	cout << "vec2[1] is " << vec2[1] << "\n\n";
 
-	vector<int> vecA(10,1); //* vecA has 10 elements with value 1 (Element COunt)
+	vector<int> vecA(10,1); //* vecA has 10 elements with value 1 (Element Count)
 	vector<int> vecB{10,1}; //* vecB has 2 elements with values 10 and 1 (List Initializer)
 	cout << "vecA is ... ";
 	copy(vecA.begin(), vecA.end(), ostream_iterator<int>(cout, " "));
@@ -50,28 +52,28 @@ int main(){
 
 	//* initialize a vector like array
 	vector<double> vec3{1.01, 2.002, 3.0003}; 
+
 	//* initialize a vector from another vector
 	vector<double> vec4( vec3.begin(), vec3.end()); 
 	
+	//* range-based for loop
 	cout << "vec3 is ... ";
-	for (double x : vec3){ //* range-based for loop
-		cout << x << " ";
-	}
+	for (double x : vec3){ cout << x << " "; }
 	cout << endl;
 
-	cout << "vec4 is ... ";
 	//* use keyword "auto" in the range-based for loop
-	for (auto x : vec4){
-		cout << x << " ";
-	}
+	cout << "vec4 is ... ";
+	for (auto x : vec4){ cout << x << " "; }
 	cout << endl << endl;
 
 
-	//* declare a function that returns vector
+	//* ---declare a function that returns vector---
 	vector<string> vec_str = func_GetString();
-	cout << vec_str[0] << endl;   //* print the first element in the vector
+	
+	//* print the first element in the vector
+	cout << vec_str[0] << endl;   
 
-	//* delcaring a iterator itr, it can read and write vector<string> elements
+	//* delcare a iterator itr, it can read and write vector<string> elements
 	vector<string>::iterator itr; 
 
 	//* accessing elements using iterators
@@ -105,10 +107,7 @@ vector<string> func_GetString(){
 
 
 
-
 /*-----Note-----*/
 //* Define a vector of specific size can result in poor performance
 //* Starting with an empty vector and adding elements at run time is a better approach
 
-//* iterator use the increment operator (++) to "advance the iterator by one poisiton"
-//* which is logically similar to integer increment
