@@ -1,6 +1,9 @@
-//* File name:   main.cpp
-//* Developer:   Roy T Wu
-//* Description: first program about VTK    
+/* *********************************************************
+File name:   main.cpp (_vtkBasic)
+Programmer:  Roy Wu
+Description: first program of VTK 
+********************************************************* */
+
 
 //#include <array>               //* std::array
 #include <iostream>

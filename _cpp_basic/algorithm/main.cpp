@@ -28,13 +28,33 @@ int main()
 	for (auto i : v) { std::cout << i << " "; }
 	cout << endl;
 
-	//* applying unique()
+	
+	/* --- std::find() ----*/ cout << "\n----- find() -----\n";
+	//* elements to be searched
+	int target = 2;
+
+	//* iterator used to store the position of searched element
+	vector<int>::iterator it;
+
+	//* function call of find()
+	it = std::find(v.begin(), v.end(), target);
+
+	if (it != v.end()) {
+		cout << "Element " << target << "found at position: " 
+			 << it -v.begin()+1 << endl;
+	}
+	else {
+		cout << "Element not found...\n";
+	}
+
+
+	//* applying unique() to remove duplicate elements
+	//* aftering calling unique(), a call to resize the container is typicall
 	ip = std::unique(v.begin(), v.end());
 
 	//* resizing the vector so as to remove the undefined terms
 	auto new_size = std::distance(v.begin(), ip);
 	v.resize(new_size);
-
 
 	//* displaying the vector after applying unique()
 	cout << "\nAfter unique() the array...\n";
