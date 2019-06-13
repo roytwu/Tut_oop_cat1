@@ -1,5 +1,8 @@
-//file name: tiger.h
-//Programmer: Roy T Wu
+/* *********************************************************
+File name:   tiger.h (_inheritance)
+Programmer:  Roy T Wu
+Description: sub-sub-class
+********************************************************* */
 
 #ifndef TIGER_H_
 #define TIGER_H_
@@ -16,4 +19,4 @@ public:
 	void attackAntelope();
 };
 
-#endif //TIGER_H_
+#endif //* TIGER_H_

@@ -1,5 +1,8 @@
-//File name: tiger.cpp
-//Programmer: Roy T Wu
+/* *********************************************************
+File name:   tiger.cpp (_inheritance)
+Programmer:  Roy T Wu
+Description: sub-sub-class
+********************************************************* */
 
 #include <iostream>
 #include "cat.h"
@@ -7,8 +10,8 @@
 using std::cout;
 using std::endl;
 
-//no-argument constructor for Tiger
-//call a super-class constructor with an argument
+//* no-argument constructor for Tiger
+//* call a super-class constructor with an argument
 Tiger::Tiger(): Cat(77){
 	cout << "  --Tiger no-argument consructor called--" << endl;
 }

@@ -1,13 +1,16 @@
-//File name: main.cpp, 
-//           driver program of cat.cpp, animal.cpp, and tiger.cpp
-//Author: Roy T Wu, roywu2018@gmail.com
+/* *********************************************************
+File name:   main.cpp (_inheritance)
+             driver program of cat.cpp, animal.cpp, and tiger.cpp
+Programmer:  Roy Wu
+Description: Demo about inheritance
+********************************************************* */
 
 #include <iostream>
 #include "animal.h"
 #include "cat.h"
 #include "tiger.h"
-using std::cout;
-using std::endl;
+//using std::cout;
+//using std::endl;
 
 // //Return objects from functions
 // Cat *createCat(){
@@ -17,17 +20,17 @@ using std::endl;
 // }
 
 int main(){
-	cout << "*** Super class-'Animal' ***" << endl;
+	cout << "--- Super class-'Animal' ---" << endl;
 	Animal o_am(99);
 	o_am.speak();
 	o_am.info();
-	//o_am.jump(); //error!! Animal can't access its child class
+	//o_am.jump(); //*error!! Animal can't access its child class
 
 
-	cout << endl << "*** Child class-'Cat' ***" << endl;
+	cout << endl << "--- Child class-'Cat' ---" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->m_happy = true;
-	op_tom->speak(); //Cat can do what Animal can do
+	op_tom->speak();          //*Cat can do what Animal can do
 	op_tom->jump();
 	delete op_tom;
 
@@ -37,16 +40,16 @@ int main(){
 	delete op_kitty;
 
 
-	cout << endl << "*** Child class-'Tiger' ***" << endl;
+	cout << endl << "--- Child class-'Tiger' ---" << endl;
 	Tiger *op_bengal = new Tiger();
 	op_bengal->info();
-	op_bengal->speak();  //Tiger can do what Animal can do
-	op_bengal->jump();  //Tiger can do what Cat can do
+	op_bengal->speak();  //* Tiger can do what Animal can do
+	op_bengal->jump();   //* Tiger can do what Cat can do
 	op_bengal->attackAntelope();
 	delete op_bengal;
 
 	
-	cout << endl << "*** Polymorphism ***" << endl;
+	cout << endl << "--- Polymorphism ---" << endl;
 	Animal *op_animal = new Cat;  
 	op_animal->speak();
 	delete op_animal;

@@ -1,7 +1,7 @@
 /* *********************************************************
 File name:   main.cpp 
 Programmer:  Roy Wu
-Description: 
+Description: using virtaul functions to achieve runtime polymorphism
 ********************************************************* */
 //#include <array>               //* std::array
 #include <iostream>
