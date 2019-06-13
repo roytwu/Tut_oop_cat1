@@ -1,16 +1,17 @@
-/* 
-Structure of class "Cat" is defined in cat.h; functions of "Cat" are defined in cat.cpp
-In this program, name different cats like "tom", "nancy"
-*/
-//File name: main.cpp, driver program of cat.cpp
-//Author: Roy T Wu, roywu2018@gmail.com
+/* *********************************************************
+File name:   main.cpp, driver program of cat.cpp (_basicOOP)
+Programmer:  Roy Wu
+Description: Structure of class "Cat" is defined in cat.h; 
+             functions of "Cat" are defined in cat.cpp
+			 In this program, name different cats like "tom", "nancy"
+********************************************************* */
 
 #include <iostream>
 #include "cat.h"
 using std::cout;
 using std::endl;
 
-//Return objects from functions
+//* Return objects from functions
 Cat *createCat(){
 	Cat *op_Cat = new Cat();
 	op_Cat->makeAngry();
@@ -22,9 +23,9 @@ Cat *createCat(){
 }
 
 int main(){
-	Cat o_tom, o_nancy, o_bob; //define objects within class "Cat"
+	Cat o_tom, o_nancy, o_bob; //* define objects within class "Cat"
 	
-	//Test public key "happy"
+	//* Test public key "happy"
 	cout << endl << "Status of Tommy kitty:" << endl;
 	o_tom.m_happy = true; 
 	o_tom.speak();
@@ -35,12 +36,12 @@ int main(){
 	o_nancy.m_happy = false;
 	o_nancy.speak();
 
-	//Test private key "angry", which is a better coding practice
-	cout << endl << "Status of Bobby kitty:" << endl;
+	//* Test private key "angry", which is a better coding practice
+	cout << endl << "Status of Bobby kitty:\n";
 	o_bob.makeAngry();
 	o_bob.speak();
 
-	// use "new" operator
+	//* use "new" operator
 	cout << endl << endl;
 	Cat *op_john = new Cat();
 	(*op_john).jump();  //dereference the pointer first to get the object,
@@ -48,14 +49,14 @@ int main(){
 	delete op_john;     //whenever "new" is called, "delete" shall be called as well 
 
     cout << endl << endl;
-    // Return objets from functions 
+    //* Return objets from functions 
     Cat *op_emma = createCat();
     op_emma -> speak();
     cout << "Emma's ID: " << op_emma->getID() << endl;
     delete op_emma;
 
-    //We don't need an object to access the static varaible,
-    //since static varialbe is associated with the class, not with an object 
+    //* We don't need an object to access the static varaible,
+    //* since static varialbe is associated with the class, not with an object 
     cout << endl << "Static Variable: " << endl;
     cout << Cat::MAX << endl;
 
