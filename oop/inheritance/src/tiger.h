@@ -3,7 +3,6 @@ File name:   tiger.h (_inheritance)
 Programmer:  Roy T Wu
 Description: sub-sub-class
 ********************************************************* */
-
 #ifndef TIGER_H_
 #define TIGER_H_
 

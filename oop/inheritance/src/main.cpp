@@ -4,7 +4,6 @@ File name:   main.cpp (_inheritance)
 Programmer:  Roy Wu
 Description: Demo about inheritance
 ********************************************************* */
-
 #include <iostream>
 #include "animal.h"
 #include "cat.h"
@@ -20,14 +19,14 @@ Description: Demo about inheritance
 // }
 
 int main(){
-	cout << "--- Super class-'Animal' ---" << endl;
+	cout << "----- Super class-'Animal' -----" << endl;
 	Animal o_am(99);
 	o_am.speak();
 	o_am.info();
 	//o_am.jump(); //*error!! Animal can't access its child class
 
 
-	cout << endl << "--- Child class-'Cat' ---" << endl;
+	cout << "\n----- Child class-'Cat' -----" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->m_happy = true;
 	op_tom->speak();          //*Cat can do what Animal can do
@@ -40,7 +39,7 @@ int main(){
 	delete op_kitty;
 
 
-	cout << endl << "--- Child class-'Tiger' ---" << endl;
+	cout << "\n----- Child class-'Tiger' -----" << endl;
 	Tiger *op_bengal = new Tiger();
 	op_bengal->info();
 	op_bengal->speak();  //* Tiger can do what Animal can do
@@ -49,13 +48,13 @@ int main(){
 	delete op_bengal;
 
 	
-	cout << endl << "--- Polymorphism ---" << endl;
+	cout << endl << "----- Polymorphism -----" << endl;
 	Animal *op_animal = new Cat;  
 	op_animal->speak();
 	delete op_animal;
 
 
-    cout << endl << "Ending porgram..." <<endl;
+    cout << "\nEnding porgram..." << endl;
 	return 0;
 }
 

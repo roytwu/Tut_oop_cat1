@@ -1,6 +1,8 @@
-//file name: animal.h
-//Programmer: Roy T Wu
-
+/* *********************************************************
+File name:   animal.h (_inheritance)
+Programmer:  Roy Wu
+Description: super class header
+********************************************************* */
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 
@@ -21,7 +23,5 @@ public:
 	virtual void speak();    //virtual for polymorphism
 	void info();
 };
-
-
 
 #endif //ANIMAK_H_

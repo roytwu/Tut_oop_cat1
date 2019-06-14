@@ -3,12 +3,9 @@ File name:   animal.cpp (_inheritance)
 Programmer:  Roy Wu
 Description: super class
 ********************************************************* */
-
 #include <iostream>
 #include "animal.h"
 #include "cat.h"
-using std::cout;
-using std::endl;
 
 //* no-argument constructor
 Animal::Animal(){

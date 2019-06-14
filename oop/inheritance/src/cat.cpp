@@ -3,7 +3,6 @@ File name:   cat.cpp (_inheritance)
 Programmer:  Roy T Wu
 Description: sub-class
 ********************************************************* */
-
 #include <iostream>
 #include "animal.h"
 #include "cat.h"
@@ -11,7 +10,7 @@ using std::cout;
 using std::endl;
 
 //* static variables can't be initialized in the class, so, 
-//* it's common practive to initialize static variable in cpp file
+//* it's common practice to initialize static variable in cpp file
 int Cat::countObject = 0;
 
 Cat::Cat() //* no-argument consructor

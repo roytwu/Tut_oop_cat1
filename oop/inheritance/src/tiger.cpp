@@ -3,12 +3,10 @@ File name:   tiger.cpp (_inheritance)
 Programmer:  Roy T Wu
 Description: sub-sub-class
 ********************************************************* */
-
 #include <iostream>
 #include "cat.h"
 #include "tiger.h"
-using std::cout;
-using std::endl;
+
 
 //* no-argument constructor for Tiger
 //* call a super-class constructor with an argument
