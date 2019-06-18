@@ -2,7 +2,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 
 ## project name and language
-PROJECT(functionPointer LANGUAGES CXX)
+PROJECT(_funcPtr LANGUAGES CXX)
 
 ## set source files
 SET(SOURCE_FILES main.cpp)
