@@ -8,14 +8,15 @@ This is the repository about C++ and related open source libaries such as OpenCV
 ## _cpp basic 
 This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015 and CMake. It consists of the following sub-projects: 
 
-1. **function pointer** -- beginner level example of function pointer
-2. **template** -- Sample code about function templates
-3. **virtual** -- Sample code about `virtual void operator()()`
-4. **cmake_example** -- A good start to learn CMake
-5. **pass_by_reference** -- Straightforward example of passing strings and integers by reference 
-6. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference between passing string by value and passing string by reference
-7. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
-8. **algorithm** -- Demo about functions in `<algorithm>`
+1. **algorithm** -- Demo about functions in `<algorithm>`   
+2. **cmake_example** -- A good start to learn CMake   
+3. **enum** -- scoped and unscoped enumeration  
+4. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
+5. **function pointer** -- beginner level example of function pointer  
+6. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference   between passing string by value and passing string by reference  
+7. **pass_by_reference** -- Straightforward example of passing strings and integers by reference  
+8. **template** -- Sample code about function templates
+9. **virtual** -- Sample code about `virtual void operator()()` 
 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
@@ -34,11 +35,12 @@ Impplemented the Visualization Toolkit (VTK) in C++. The following projects are 
 ## eigen_demo
 Using Eigen libraray for quaternion related operations
 
-## class_oop
+## oop
 This is a project about implementing class in C++. 
 1. **class_basic** -- Creat a class called "cat", which different cats can be named. And these cats can have different actions/mood defined as objects constructor & destructor    
 2. **inheritance** -- Creat a super-class animal and its few child classes
 3. **static** -- illustrtate the use of static memebers of class
+4. **virtual_function** --  basic concepts of polymorphism
 	
 ## vector
 The project is about how to use the vector container in C++
@@ -66,7 +68,6 @@ Generic Programming enables the programmer to write a general algorithm which wi
 
 ## optional
 Utilize the optional object from the Boost libaray
-
 
 
 
