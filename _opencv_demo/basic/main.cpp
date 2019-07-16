@@ -1,7 +1,8 @@
-//* File name:   main.cpp
-//* Programmer:  Roy T Wu
-//* Description: Demo aoubt matrix operations in OpenCV
-
+/* *********************************************************
+File name:   main.cpp (_openCVBasic)
+Programmer:  Roy Wu
+Description: Demo aoubt matrix operations in OpenCV
+********************************************************* */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -68,7 +69,7 @@ int main()
 	//cout << o_xMF*o_xEye44 << endl << endl;    //* matrix multiplacation 
 
 
-	//* matrix truncation
+	//* --- matrix truncation ---
 	//* <2,2> is the height and weight of the small matrix. 
 	//* Value (0,0) is the starting point from which the matrix is cropped
 	cout << endl << "----- matrix truncation -----\n";
