@@ -67,6 +67,15 @@ int main()
 	cout << o_xMF.t() << endl;                 //* matrix transpose
 	//cout << o_xMF*o_xEye44 << endl << endl;    //* matrix multiplacation 
 
+
+	//* matrix truncation
+	//* <2,2> is the height and weight of the small matrix. 
+	//* Value (0,0) is the starting point from which the matrix is cropped
+	cout << endl << "----- matrix truncation -----\n";
+	cv::Matx22f o_dummy = o_xMF.get_minor<2, 2>(0, 0);
+	cout << o_dummy << endl;
+
+
     //* --- access columns in Matx ---
 	cout << endl << "----- access columns in Matx -----\n";
 	cout << o_xMF.col(0) << endl;                //* c-out 1st column
