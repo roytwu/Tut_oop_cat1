@@ -1,7 +1,8 @@
-//* File name:   main.cpp
-//* Programmer:  Roy T Wu
-//* Description: building blocks for Kalman filter 
-
+/* *********************************************************
+File name:   main.cpp (_kalman)
+Programmer:  Roy Wu
+Description: sandbox of Kalman filteting implementation
+********************************************************* */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -14,8 +15,6 @@ using std::cout;
 using std::endl;
 using std::string; 
 
-
-
 //void findMatrixSize(cv::Mat_<double> & m) 
 void findMatrixSize(cv::Mat & m)
 {
@@ -23,11 +22,9 @@ void findMatrixSize(cv::Mat & m)
 	cv::Size s = m.size();
 	int r1 = s.height;
 	int c1 = s.width;
-
 	//* approach #2 - without cv::Size
 	int r2 = m.rows;
 	int c2 = m.cols;
-
 	cout << "(" << r1 << ", " << c1 << ")" << endl;
 	cout << "(" << r2 << ", " << c2 << ")" << endl;
 }
@@ -40,7 +37,6 @@ int main()
 	cv::Mat h;
 	cv::hconcat(cv::Matx33d::all(0), cv::Matx33d::eye(), h);
 	cout << "Observation matrix H (3x6):  \n" << h << endl << endl;
-
 
 	//cout << "\n----- F -----\n";
 	double dt = 0.001;
@@ -56,7 +52,26 @@ int main()
 	//findMatrixSize(cv::Mat_<double>(f66));
 	findMatrixSize(cv::Mat(f66));
 
+	double arr_gc_row3[3][6] = { { 1.0, 0., 0., 0., 0., 0. },
+		{ 0., -1., 0., 0., 0., 0. },
+		{ 0., 0., -1., 0., 0., 0. } };
+	cv::Matx<double,3,6> foo3x6 = cv::Mat(3, 6, CV_64F, arr_gc_row3);
+	cout << "foo3x6 is ..\n" << foo3x6 << endl;
 
+
+	//* multiple matrix concatenation 
+	unsigned int type = CV_64F;
+	double e1[3][3] = { { 1,0,0 }, {0,1,0}, {0,0,1} };
+	double e2[3][3] = { { 2,0,0 },{ 0,2,0 },{ 0,0,2 } };
+	double e3[2][3] = { { 3,3,3},{ 3,3,3 } };
+	cv::Mat mat_e1 = cv::Mat(3, 3, type, e1);
+	cv::Mat mat_e2 = cv::Mat(3, 3, type, e2);
+	cv::Mat mat_e3 = cv::Mat(3, 3, type, e3);
+
+	std::vector<cv::Mat> matrices{mat_e1, mat_e2, mat_e3};
+	cv::Mat e123;
+	cv::vconcat(matrices, e123);
+	cout << e123 << endl;
 
     return 0;
 }

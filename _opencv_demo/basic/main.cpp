@@ -27,7 +27,7 @@ int main()
 	cv::Mat o_mat1(5, 5, CV_32FC2, cv::Scalar(1, 3));
 	cout << o_mat1 << endl << endl;
 
-	//* --- conver Mat reference to Mat_ reference ---
+	//* --- convert Mat reference to Mat_ reference ---
 	cv::Mat_<float>& o_matA = (cv::Mat_<float>&)o_mat1;
 	cout << o_matA << endl;
 
@@ -105,7 +105,8 @@ int main()
 
 	//* cv::Rodrigues transform between a rotation matrix to a rotation vector or vice versa
 	cout << endl << "----- cv::Rodrigues -----" << endl;
-	cv::Matx33d mx_xPi(1, 0, 0, 0, -1, 0, 0, 0, -1);  //* rotate pi along x-axis
+	//cv::Matx33d mx_xPi(1, 0, 0, 0, -1, 0, 0, 0, -1);  //* rotate pi along x-axis
+	cv::Mat mx_xPi=(cv::Mat_<double>(3,3) << 1, 0, 0, 0, -1, 0, 0, 0, -1);  //* rotate pi along x-axis
 	cv::Matx31d rv_xPi;
 	cv::Rodrigues(mx_xPi, rv_xPi);
 	cout << rv_xPi << endl;
@@ -160,6 +161,11 @@ int main()
 		cout << i << " ";
 	}
 	cout << endl;
+
+	cout << "\n----- convert std::vector to cv::Mat  -----\n";
+	cv::Mat o_mat22 = cv::Mat(v_4thCol);
+	cv::Matx22d o_mx22d ((double*)o_mat22.clone().ptr());
+	cout << o_mx22d << endl;
 
 
 
