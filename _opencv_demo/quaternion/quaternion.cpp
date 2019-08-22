@@ -23,7 +23,7 @@ cv::Vec4d S3::quatMultiplication(const cv::Vec4d &p, const cv::Vec4d &q) {
 	return r;
 }
 
-cv::Matx44d S3::rightToLeft(cv::Vec4d & p) {
+cv::Matx44d S3::rightToLeft(const cv::Vec4d & p) {
 	double p0 = p(0);  //*scalar part
 	double p1 = p(1);  //*vector part x
 	double p2 = p(2);  //*vector part y
@@ -38,6 +38,24 @@ cv::Matx44d S3::rightToLeft(cv::Vec4d & p) {
 
 	cv::Matx33d dummy = p0*cv::Matx33d::eye() - S3::hat(vecPart_vec);
 	cv::hconcat(vecPart_matx, dummy, row234);
+	cv::vconcat(row1, row234, result);
+	return result;
+}
+
+cv::Matx44d S3::quatMultMatx(const cv::Vec4d & p) {
+	double p0 = p(0);  //*scalar part
+	double p1 = p(1);  //*vector part x
+	double p2 = p(2);  //*vector part y
+	double p3 = p(3);  //*vector part z
+
+	cv::Matx14d row1(p0, -p1, -p2, -p3); //* 1x4
+	cv::Matx34d row234;                  //* 3x4
+	cv::Matx44d result;                  //* 4x4
+
+	cv::Vec3d vecPart_vec(p1, p2, p3);
+
+	cv::Matx33d dummy = p0*cv::Matx33d::eye() + S3::hat(vecPart_vec);
+	cv::hconcat(vecPart_vec, dummy, row234);
 	cv::vconcat(row1, row234, result);
 	return result;
 }

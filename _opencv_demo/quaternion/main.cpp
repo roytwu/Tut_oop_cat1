@@ -30,16 +30,17 @@ int main()
 	
 	cv::Vec4d output1;
 	cv::Vec4d output2;
+	cv::Vec4d output3;
 
 	output1 = S3::quatMultiplication(quat_toto, quat_tata);
 	cout << output1 << endl;
-
 
 	output2 = S3::rightToLeft(quat_tata) * quat_toto;
 	//output2 = cv::Mat(S3::rightToLeft(quat_tata)) * cv::Mat(quat_toto);
 	cout << output2 << endl;
 
-
+	output3 = S3::quatMultMatx(quat_toto) * quat_tata;
+	cout << output3 << endl;
 
 	////* ===== ===== unit quaternion to SO(3) ===== =====
 	//cout << "\n----- S(3) to SO(3) -----\n";

@@ -11,7 +11,11 @@ namespace S3
 
 	//* quaternion multiplication (alternative)
 	//* Let q and p be unit quaternion, and p*q = rightToLeft(q) *p 
-	cv::Matx44d rightToLeft(cv::Vec4d &);
+	cv::Matx44d rightToLeft(const cv::Vec4d &);
+
+	//* quaternion multiplication (matrix version 2)
+	//* p*q = quatMultMatx(p)*q
+	cv::Matx44d quatMultMatx(const cv::Vec4d &);
 
 	//* quaternion inverse
 	cv::Vec4d quatInverse(const cv::Vec4d &);
