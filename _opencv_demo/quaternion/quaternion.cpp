@@ -23,7 +23,7 @@ cv::Vec4d S3::quatMultiplication(const cv::Vec4d &p, const cv::Vec4d &q) {
 	return r;
 }
 
-cv::Matx44d rightToLeft(cv::Vec4d & p) {
+cv::Matx44d S3::rightToLeft(cv::Vec4d & p) {
 	double p0 = p(0);  //*scalar part
 	double p1 = p(1);  //*vector part x
 	double p2 = p(2);  //*vector part y
@@ -39,9 +39,8 @@ cv::Matx44d rightToLeft(cv::Vec4d & p) {
 	cv::Matx33d dummy = p0*cv::Matx33d::eye() - S3::hat(vecPart_vec);
 	cv::hconcat(vecPart_matx, dummy, row234);
 	cv::vconcat(row1, row234, result);
+	return result;
 }
-
-
 
 
 //* ----- ----- quaternion inverse ----- -----
