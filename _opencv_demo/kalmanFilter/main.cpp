@@ -32,6 +32,7 @@ void findMatrixSize(cv::Mat & m)
 
 int main()
 {
+	unsigned int type = CV_64F;
 	//cout << "\n----- H -----\n";
 	cv::Matx66d p0 = cv::Matx66d::eye(); //* state err covariance matx
 	cv::Mat h;
@@ -52,26 +53,33 @@ int main()
 	//findMatrixSize(cv::Mat_<double>(f66));
 	findMatrixSize(cv::Mat(f66));
 
-	double arr_gc_row3[3][6] = { { 1.0, 0., 0., 0., 0., 0. },
-		{ 0., -1., 0., 0., 0., 0. },
-		{ 0., 0., -1., 0., 0., 0. } };
-	cv::Matx<double,3,6> foo3x6 = cv::Mat(3, 6, CV_64F, arr_gc_row3);
-	cout << "foo3x6 is ..\n" << foo3x6 << endl;
-
-
-	//* multiple matrix concatenation 
-	unsigned int type = CV_64F;
-	double e1[3][3] = { { 1,0,0 }, {0,1,0}, {0,0,1} };
-	double e2[3][3] = { { 2,0,0 },{ 0,2,0 },{ 0,0,2 } };
-	double e3[2][3] = { { 3,3,3},{ 3,3,3 } };
+	cout << "\n----- concatenating multiple matrices -----\n";
+	double e0[3][4] = { {0,0,0,0}, {0,0,0,0}, {0,0,0,0} };
+	double e1[3][3] = { {1,1,1},   {1,1,1},   {1,1,1} };
+	double e2[3][2] = { {2,2},     {2,2},     {2,2} };
+	double e3[3][1] = { {3},       {3},       {3}  };
+	cv::Mat mat_e0 = cv::Mat(3, 4, type, e0);
 	cv::Mat mat_e1 = cv::Mat(3, 3, type, e1);
-	cv::Mat mat_e2 = cv::Mat(3, 3, type, e2);
-	cv::Mat mat_e3 = cv::Mat(3, 3, type, e3);
+	cv::Mat mat_e2 = cv::Mat(3, 2, type, e2);
+	cv::Mat mat_e3 = cv::Mat(3, 1, type, e3);
+	std::vector<cv::Mat> matrices{mat_e0, mat_e1, mat_e2, mat_e3};
+	cv::Mat e0123;
+	cv::hconcat(matrices, e0123);
+	cout << e0123 << endl;
 
-	std::vector<cv::Mat> matrices{mat_e1, mat_e2, mat_e3};
-	cv::Mat e123;
-	cv::vconcat(matrices, e123);
-	cout << e123 << endl;
+	cout << "\n----- Initialize cv::Mat in different ways -----\n";
+	double arr_foo[3][6] = { { 1.0, 0., 0., 0., 0., 0. },
+	                       	     { 0., -1., 0., 0., 0., 0. },
+		                         { 0., 0., -1., 0., 0., 0. } };
+	cv::Matx<double, 3, 6> foo3x6 = cv::Mat(3, 6, type, arr_foo);
+	cout << foo3x6 << endl;
+
+	//* initialize cv::Mat with all zeros
+	cv::Mat m_0_3x1 = cv::Mat::zeros(cv::Size(3,1), type); //* all zeros
+	cv::Mat m_1_3x1(cv::Size(3, 1), type, cv::Scalar(1));  //* all ones
+
+	//cout << m_1_3x1 << endl;
+
 
     return 0;
 }

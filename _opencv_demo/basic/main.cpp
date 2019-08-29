@@ -73,7 +73,7 @@ int main()
 	//* <2,2> is the height and weight of the small matrix. 
 	//* Value (0,0) is the starting point from which the matrix is cropped
 	cout << endl << "----- matrix truncation -----\n";
-	cv::Matx22f o_dummy = o_xMF.get_minor<2, 2>(0, 0);
+	cv::Matx33f o_dummy = o_xMF.get_minor<3, 3>(1, 1);
 	cout << o_dummy << endl;
 
 
