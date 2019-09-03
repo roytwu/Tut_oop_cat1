@@ -6,14 +6,9 @@ Description: sandbox of Kalman filteting implementation
 #include <iostream>
 #include <vector>
 #include <string>
-#include <Eigen/Core>              //* this needs to added before <opencv2/core/eigen.hpp>
-#include <Eigen/Dense>             //* Eigen library: Matrix
-#include <Eigen/Geometry>          //* Eigen library: quaternion
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/eigen.hpp> 
 using std::cout; 
 using std::endl;
-using std::string; 
 
 //void findMatrixSize(cv::Mat_<double> & m) 
 void findMatrixSize(cv::Mat & m)
@@ -69,17 +64,34 @@ int main()
 
 	cout << "\n----- Initialize cv::Mat in different ways -----\n";
 	double arr_foo[3][6] = { { 1.0, 0., 0., 0., 0., 0. },
-	                       	     { 0., -1., 0., 0., 0., 0. },
-		                         { 0., 0., -1., 0., 0., 0. } };
+	                       	 { 0., -1., 0., 0., 0., 0. },
+		                     { 0., 0., -1., 0., 0., 0. } };
 	cv::Matx<double, 3, 6> foo3x6 = cv::Mat(3, 6, type, arr_foo);
 	cout << foo3x6 << endl;
 
-	//* initialize cv::Mat with all zeros
-	cv::Mat m_0_3x1 = cv::Mat::zeros(cv::Size(3,1), type); //* all zeros
-	cv::Mat m_1_3x1(cv::Size(3, 1), type, cv::Scalar(1));  //* all ones
+	//* initialize cv::Mat with cv::Size
+	//* note that cv::Size is defined by (width, height)
+	cv::Mat m_0_3x1 = cv::Mat::zeros(cv::Size(3, 1), type); //* all zeros, row vector
+	cv::Mat m_2_3x1(cv::Size(1, 3), type, cv::Scalar(2));   //* all 2, column vector
+	
+	//* Vec3d by default output row vector
+	cv::Vec3d vec_a = cv::Vec3d(0, 7, 0);  
+	cv::Vec3d vec_b = cv::Vec3d(1, 1, 1);
+	cv::Vec3d vec_c = vec_a + vec_b;
+	cout << "vec_c is ... " << vec_c << endl;
 
-	//cout << m_1_3x1 << endl;
-
+	cv::Vec3d vec_d;
+	cout << "\n--- Scenario 1 ---\n";
+	cv::Mat mat_a = cv::Mat(1, 3, type, cv::Scalar(0)); //* initialize mat_a as row vector
+	vec_d = vec_a + cv::Vec3d(mat_a);     
+	cout << "mat_a is ... " << mat_a << endl;
+	cout << "vec_d is ... " << vec_d << endl;
+	
+	cout << "\n--- Scenario 2 ---\n";
+	mat_a = m_2_3x1 + cv::Mat(vec_b);  //* mat_a is automatically converted to column vector
+	vec_d = vec_a + cv::Vec3d(mat_a);  //* vec_d is  still a row vector
+	cout << "mat_a is ... \n" << mat_a << endl;
+	cout << "vec_d is ... " << vec_d << endl;
 
     return 0;
 }

@@ -60,9 +60,9 @@ int main()
 
 	//* cv::Matx with 4 by 4 float
 	cv::Matx44f o_xMF(11, 12, 13, 14,
-		21, 22, 23, 24,
-		31, 32, 33, 34,
-		41, 42, 43, 44);
+		              21, 22, 23, 24,
+		              31, 32, 33, 34,
+		              41, 42, 43, 44);
 	cv::Matx44f o_xEye44 = cv::Matx44f::eye(); //* identity matrix	 
     cout << o_xMF << endl;
 	cout << o_xMF.t() << endl;                 //* matrix transpose
@@ -167,8 +167,7 @@ int main()
 	cv::Matx22d o_mx22d ((double*)o_mat22.clone().ptr());
 	cout << o_mx22d << endl;
 
-
-
     return 0;
 }
 
+//* For coversion between cv::Mat and cv::Vec3d, see the Kalman project
