@@ -47,6 +47,12 @@ int main()
 	cv::Mat o_matToto = o_matBar.t();       //* matrix transpose
 	cout << o_matFB << endl << o_matToto << endl;
 
+	cout << "\n----- access cv::Mat element -----\n";
+	//* this can be extended to double (CV_64F) easily
+	float m = o_matBar.at<float>(0, 0);
+	float n = o_matBar.at<float>(1, 0);
+	cout << m << " " << n << endl;
+
 	//* --- Matx are template class whose size are known at comilation time ---
 	cout << endl << "----- class Matx -----\n";
 	double arr[3][3] = { {1.1, 1.2, 1.3}, {2.1, 2.2, 2.3}, {3.1, 3.2, 3.3} };
@@ -66,7 +72,6 @@ int main()
 	cv::Matx44f o_xEye44 = cv::Matx44f::eye(); //* identity matrix	 
     cout << o_xMF << endl;
 	cout << o_xMF.t() << endl;                 //* matrix transpose
-	//cout << o_xMF*o_xEye44 << endl << endl;    //* matrix multiplacation 
 
 
 	//* --- matrix truncation ---
@@ -89,6 +94,7 @@ int main()
 	cv::Mat o_mat4 = cv::Mat(o_xMF).colRange(0,3);  //* 1st to 3rd column, change to cv::Mat format
 	cv::Mat o_mat5 = o_mat4.rowRange(0,3);         
 	cout << o_mat5 << endl << endl;
+
 	
 	cout << "\n----- conversion between Eigen matrix and OpenCV matrix -----\n";
 	Eigen::MatrixXf em;       //* Eigen library, Dynamic float matrix 

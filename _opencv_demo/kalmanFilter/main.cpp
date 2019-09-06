@@ -27,7 +27,7 @@ void findMatrixSize(cv::Mat & m)
 
 int main()
 {
-	unsigned int type = CV_64F;
+	unsigned int type = CV_64F; //* CV_64 for double, CV_32 for float
 	//cout << "\n----- H -----\n";
 	cv::Matx66d p0 = cv::Matx66d::eye(); //* state err covariance matx
 	cv::Mat h;
@@ -89,9 +89,21 @@ int main()
 	
 	cout << "\n--- Scenario 2 ---\n";
 	mat_a = m_2_3x1 + cv::Mat(vec_b);  //* mat_a is automatically converted to column vector
-	vec_d = vec_a + cv::Vec3d(mat_a);  //* vec_d is  still a row vector
+	vec_d = cv::Vec3d(mat_a);  //* vec_d is  still a row vector
 	cout << "mat_a is ... \n" << mat_a << endl;
 	cout << "vec_d is ... " << vec_d << endl;
+
+
+	double arr_quatIdentity[4] = { 1., 0., 0., 0. };
+	cv::Mat dQ_CB = cv::Mat(1, 4, type, cv::Scalar(0.));
+	cout << "\ndQ_CB is ... \n" << dQ_CB << endl;
+
+	double arr_bar[4][4] = {{11, 12, 13, 14}, {21, 22, 23, 24},
+							{31, 32, 33, 34}, {41, 42, 43, 44} };
+	cv::Matx44d bar4x4 = cv::Mat(4, 4, type, arr_bar);
+	cv::Matx44d & pt_bar4x4 = bar4x4;
+	cv::Matx41d augPos = pt_bar4x4.col(3);       
+	cout << augPos << endl;
 
     return 0;
 }
