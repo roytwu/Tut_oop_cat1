@@ -24,6 +24,9 @@ Demo of matrix operation in OpenCV
   This project demonstrate how to create matrices and vectors in OpenCV, it also shows basic operations such as matrix multiplication, matrix transpose, matrix concatenation, inner product and cross product between 2 vectors, etc.
 2. **rotation** --
   This project works on roation matices and unit quaternions specifically. And it demonstrate how to convert between OpenCV and Eigen.
+3. **quaternion** --
+  Handles unit quaternion opeations and mapping between SO(3) and S(3)
+  
 
 ## _vtk
 Impplemented the Visualization Toolkit (VTK) in C++. The following projects are included: 
