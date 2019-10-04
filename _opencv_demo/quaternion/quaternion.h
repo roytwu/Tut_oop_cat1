@@ -8,7 +8,7 @@ namespace S3
 {
 	//* quaternion multiplication
 	cv::Vec4d quatMultiplication(const cv::Vec4d &, const cv::Vec4d &);
-
+	
 	//* quaternion multiplication (alternative)
 	//* Let q and p be unit quaternion, and p*q = rightToLeft(q) *p 
 	cv::Matx44d rightToLeft(const cv::Vec4d &);
@@ -29,6 +29,13 @@ namespace S3
 
 	//* convert angle-axis representation to quaternionn
 	cv::Vec4d rodriguesToQuat(const cv::Vec4d &);
+    
+    //* convert angle - axis representation rotation matrix
+    cv::Matx33d S3::rodriguesToSO3(const cv::Vec4d &);
+
+    //* convert rotation matrix to angle-axis representation
+    cv::Vec4d S3::SO3ToRodrigues(const cv::Matx33d &);
+
 
 	//* hat map: transform a 3x1 vector to a 3x3 skew-symmetric matrix 
 	//*          such that cross(x,y) = hat(x)*y

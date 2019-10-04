@@ -80,6 +80,10 @@ int main()
 	cv::Vec3d vec_c = vec_a + vec_b;
 	cout << "vec_c is ... " << vec_c << endl;
 
+	cv::Vec4d vec_result;
+	cv::vconcat(1, vec_a, vec_result);
+	cout << "vec_result is ... " << vec_result << endl;
+
 	cv::Vec3d vec_d;
 	cout << "\n--- Scenario 1 ---\n";
 	cv::Mat mat_a = cv::Mat(1, 3, type, cv::Scalar(0)); //* initialize mat_a as row vector
@@ -104,6 +108,7 @@ int main()
 	cv::Matx44d & pt_bar4x4 = bar4x4;
 	cv::Matx41d augPos = pt_bar4x4.col(3);       
 	cout << augPos << endl;
+
 
     return 0;
 }

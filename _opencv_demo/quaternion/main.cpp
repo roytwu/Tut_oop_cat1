@@ -48,5 +48,17 @@ int main()
 	//auto eyeSO3 = o_mapping.CVQuatToSO3(eyeQ);
 	//cout << eyeSO3 << endl;
 
+	//* ===== ===== testing ===== =====
+	cout << "\n*** real case testing: \n";
+	double e_06 = 0.000001;
+	cv::Vec4d q1(0.98536, -0.138276, -0.0842242, -0.0534023);
+	cv::Vec4d dq1(1, -1.39893*e_06, -1.06585*e_06, -1.93185*e_06);
+	//cv::Vec4d q1(0.985345, -0.13834, -0.0842713, -0.0534294);
+	//cv::Vec4d dq1(1, -4.39663*e_06, -2.86447*e_06, -0.666156*e_06);
+	cv::Vec4d result;
+	result = S3::quatMultiplication(q1, dq1);
+	cout << result << endl;
+
+
 	return 0;
 }

@@ -20,6 +20,7 @@ cv::Vec4d S3::quatMultiplication(const cv::Vec4d &p, const cv::Vec4d &q) {
 	double r3 = p0 * q3 + q0*p3 + (p1 * q2 - p2 * q1);
 
 	cv::Vec4d r(r0, r1, r2, r3);
+	r = r / norm(r);
 	return r;
 }
 
@@ -115,6 +116,44 @@ cv::Vec4d S3::rodriguesToQuat(const cv::Vec4d & aa) {
 
 	cv::Vec4d q(q0, qv[0], qv[1], qv[2]);
 	return q;
+}
+
+
+//* convert angle-axis representation rotation matrix
+//* @param aa     attitude in angle-axis representaiton (Rodrigues formula)
+cv::Matx33d S3::rodriguesToSO3(const cv::Vec4d & aa) {
+    double    angle = aa[0];
+    cv::Vec3d axis(aa[1], aa[2], aa[3]);
+    
+    axis = axis / cv::norm(axis);
+
+    cv::Matx33d eye = cv::Matx33d::eye();
+    cv::Matx33d R = eye + sin(angle)* hat(axis) + (1 - cos(angle))*hat(axis)*hat(axis);
+    return R;
+}
+
+
+//* convert rotation matrix to angle-axis representation
+//* @param aa     attitude in angle-axis representaiton (Rodrigues formula)
+cv::Vec4d S3::SO3ToRodrigues(const cv::Matx33d &R) {
+    double tr = cv::trace(R);
+    double theta = acos(0.5*(tr - 1));
+    cv::Vec4d output;
+
+    if (theta == 0) 
+    {
+        //* if thetat =0. null rotation
+        output = cv::Vec4d(0, 1, 0, 0);
+    }
+    else 
+    {
+        double dummy = 1 / (2 * sin(theta));
+        cv::Matx33d axisHat = dummy*(R - R.t());
+        cv::Vec3d axis = vee(axisHat);
+        output = cv::Vec4d(theta, axis(0), axis(1), axis(2));
+    }
+ 
+    return output;
 }
 
 
