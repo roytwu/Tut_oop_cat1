@@ -90,31 +90,58 @@ cv::Matx33d S3::cvQuatToSO3(const cv::Vec4d &q) {
 
 //* -mapping SO(3) to OpenCV's quaternion
 //* @param: rotm   rotation matrix   
-cv::Vec4d S3::SO3ToCVQuat(cv::Matx33d const& rotm) {
-	double tr = cv::trace(rotm);
-	double q0 = sqrt(tr + 1.0) / 2;    //* ambiguity
-									   //double q0 = -sqrt(tr + 1.0) / 2; //* ambiguity
+cv::Vec4d S3::SO3ToCVQuat(cv::Matx33d const& R) {
+	//double tr = cv::trace(R);
+	//double q0 = sqrt(tr + 1.0) / 2;    //* ambiguity
+	////double q0 = -sqrt(tr + 1.0) / 2; //* ambiguity
+	//cv::Vec3d dummy = vee(R - R.t());
+	//dummy = dummy / (4 * q0);
+	//cv::Vec4d q(q0, dummy(0), dummy(1), dummy(2));
+	//return q;
 
-	cv::Vec3d dummy = vee(rotm - rotm.t());
-	dummy = dummy / (4 * q0);
+    cv::Vec3d rotVec;
+    cv::Rodrigues(R, rotVec);
+    cv::Vec4d q = rotVecToQuat(rotVec);
+    return q;
+}
 
-	cv::Vec4d q(q0, dummy(0), dummy(1), dummy(2));
-	return q;
+//* convert quaternion to angle-axis representation
+//* @param q     quaternion
+cv::Vec4d S3::quatToRodrigues(const cv::Vec4d & q) {
+    double    q0 = q[0];
+    cv::Vec3d qv(q[1], q[2], q[3]);
+    cv::Vec4d output;
+
+    if (q0 == 1)
+    {
+        //* null rotation
+        output = cv::Vec4d(0, 1, 0, 0);
+    }
+    else
+    {
+        double angle = 2 * acos(q0);
+        double dummy = 1 / sqrt(1 - q0*q0);
+        cv::Vec3d axis = dummy*qv;
+        axis = axis / cv::norm(axis);
+
+        output = cv::Vec4d(angle, axis[0], axis[1], axis[2]);
+    }
+    return output;
 }
 
 
 //* convert angle-axis representation to quaternionn
 //* @param aa     attitude in angle-axis representaiton (Rodrigues formula)
 cv::Vec4d S3::rodriguesToQuat(const cv::Vec4d & aa) {
-	double    angle = aa[0];
-	cv::Vec3d axis(aa[1], aa[2], aa[3]);
+	double    angle = aa[0];             //* first element is angle
+	cv::Vec3d axis(aa[1], aa[2], aa[3]); //* the rest of 3 elements form the vector
 	
 	axis = axis / cv::norm(axis);  
 
 	double    q0 = cos(angle / 2);
     cv::Vec3d qv = sin(angle / 2)*axis;
-
 	cv::Vec4d q(q0, qv[0], qv[1], qv[2]);
+    q = q / cv::norm(q);
 	return q;
 }
 
@@ -136,26 +163,53 @@ cv::Matx33d S3::rodriguesToSO3(const cv::Vec4d & aa) {
 //* convert rotation matrix to angle-axis representation
 //* @param aa     attitude in angle-axis representaiton (Rodrigues formula)
 cv::Vec4d S3::SO3ToRodrigues(const cv::Matx33d &R) {
-    double tr = cv::trace(R);
-    double theta = acos(0.5*(tr - 1));
-    cv::Vec4d output;
+    //double tr = cv::trace(R);
+    //double theta = acos(0.5*(tr - 1)); //* unit: radian
+    //cv::Vec4d output;
 
-    if (theta == 0) 
-    {
-        //* if thetat =0. null rotation
-        output = cv::Vec4d(0, 1, 0, 0);
-    }
-    else 
-    {
-        double dummy = 1 / (2 * sin(theta));
-        cv::Matx33d axisHat = dummy*(R - R.t());
-        cv::Vec3d axis = vee(axisHat);
-        output = cv::Vec4d(theta, axis(0), axis(1), axis(2));
-    }
+    //if (theta == 0) 
+    //{
+    //    //* if thetat =0. null rotation
+    //    output = cv::Vec4d(0, 1, 0, 0);
+    //}
+    //else 
+    //{
+    //    double dummy = 1 / (2 * sin(theta));
+    //    cv::Matx33d axisHat = dummy*(R - R.t());
+    //    cv::Vec3d axis = vee(axisHat);
+    //    axis = axis / norm(axis);
+    //    output = cv::Vec4d(theta, axis(0), axis(1), axis(2));
+    //}
+
+    cv::Vec3d rotVec;
+    cv::Rodrigues(R, rotVec);
+    cv::Vec4d output = rotVecToRodrigues(rotVec);
  
     return output;
 }
 
+
+//* convert rotation vector to angle-axis representation
+//* @param rotVec       rotation vector
+cv::Vec4d S3::rotVecToRodrigues(const cv::Vec3d &rotVec) {
+    double angle = cv::norm(rotVec); 
+    cv::Vec3d axis = rotVec/angle;
+    cv::Vec4d output = cv::Vec4d(angle, axis(0), axis(1), axis(2));
+
+    return output;
+}
+
+//* convert rotation vector to quaternion
+//* @param rotVec       rotation vector
+cv::Vec4d S3::rotVecToQuat(const cv::Vec3d &rotVec) {
+    double norm = cv::norm(rotVec);
+    double q0 = cos(0.5*norm);
+    cv::Vec3d q = (sin(0.5*norm)*rotVec) / norm;
+    cv::Vec4d output = cv::Vec4d(q0, q(0), q(1), q(2));
+
+    output = output / cv::norm(output);
+    return output;
+}
 
 //* ----- ----- hat map ----- -----
 //* @param v    a 3x1 vector

@@ -17,23 +17,36 @@ int main()
 	cv::Matx33d rm_x_Pi(1, 0, 0, 0, -1, 0, 0, 0, -1); //* rotate pi along x-axis
 	SO3Mapping o_mapping;
 
-	//* ---Step 1, start from Euler angle, conver to SO(3)
-	cv::Vec3d v_toto(0.33, CV_PI, 0.6);  
-	cv::Vec3d v_tata(CV_PI, 0.1, 0.25);
+	//* ### start from Euler angle, convert to SO(3)
+	cv::Vec3d v_toto(0, CV_PI, 0.5*CV_PI);  
+	cv::Vec3d v_tata(CV_PI, 0., 0.0);
 	cv::Matx33d rm_toto = o_mapping.EulerToSO3(v_toto); 
 	cv::Matx33d rm_tata = o_mapping.EulerToSO3(v_tata);
-	
-	//* ---Step 2,  map SO(3) to  quaternion 
+    cout << "rm_toto is ...\n" << rm_toto << endl;
+    cout << "rm_tata is ...\n" << rm_tata << endl;
+
+    //* ### SO(3) <---> Rotation vector
+    cv::Vec3d rotVec_toto;
+    cv::Vec3d rotVec_tata;
+    cv::Rodrigues(rm_toto, rotVec_toto);
+    cv::Rodrigues(rm_tata, rotVec_tata);
+    cout << "\nrotVec_toto (from SO(3)) is ...\n" << rotVec_toto << endl;
+    cout << "\nrotVec_tata (from SO(3)) is ...\n" << rotVec_tata << endl;
+
+	//* ### SO(3) <---> quaternion 
 	cout << "\n*** quaternion in CV: \n";
-	cv::Vec4d quat_toto = o_mapping.SO3ToCVQuat(rm_toto);
-	cv::Vec4d quat_tata = o_mapping.SO3ToCVQuat(rm_tata);
+	cv::Vec4d quat_toto = S3::SO3ToCVQuat(rm_toto);
+	cv::Vec4d quat_tata = S3::SO3ToCVQuat(rm_tata);
+    cout << "\nquat_toto (from SO(3)) is ...\n" << quat_toto << endl;
+    cout << "\nquat_tata (from SO(3)) is ...\n" << quat_tata << endl;
 	
+    //* ### quaternion operation
 	cv::Vec4d output1;
 	cv::Vec4d output2;
 	cv::Vec4d output3;
 
 	output1 = S3::quatMultiplication(quat_toto, quat_tata);
-	cout << output1 << endl;
+	cout << "\nquatMultiplication ...\n"<< output1 << endl;
 
 	output2 = S3::rightToLeft(quat_tata) * quat_toto;
 	//output2 = cv::Mat(S3::rightToLeft(quat_tata)) * cv::Mat(quat_toto);
@@ -42,22 +55,31 @@ int main()
 	output3 = S3::quatMultMatx(quat_toto) * quat_tata;
 	cout << output3 << endl;
 
-	////* ===== ===== unit quaternion to SO(3) ===== =====
-	//cout << "\n----- S(3) to SO(3) -----\n";
-	//cv::Vec4d eyeQ(1.0, 0, 0, 0);
-	//auto eyeSO3 = o_mapping.CVQuatToSO3(eyeQ);
-	//cout << eyeSO3 << endl;
 
-	//* ===== ===== testing ===== =====
-	cout << "\n*** real case testing: \n";
-	double e_06 = 0.000001;
-	cv::Vec4d q1(0.98536, -0.138276, -0.0842242, -0.0534023);
-	cv::Vec4d dq1(1, -1.39893*e_06, -1.06585*e_06, -1.93185*e_06);
-	//cv::Vec4d q1(0.985345, -0.13834, -0.0842713, -0.0534294);
-	//cv::Vec4d dq1(1, -4.39663*e_06, -2.86447*e_06, -0.666156*e_06);
-	cv::Vec4d result;
-	result = S3::quatMultiplication(q1, dq1);
-	cout << result << endl;
+
+    //* ### SO(3) <---> angle axis 
+    cv::Vec4d rod_toto = S3::SO3ToRodrigues(rm_toto);
+    cout << "\nrod_toto (from SO(3)) is ...\n" << rod_toto << endl;
+    cv::Vec4d rod_tata = S3::SO3ToRodrigues(rm_tata);
+    cout << "\nrod_tata (from SO(3)) is ...\n" << rod_tata << endl;
+
+    //cv::Matx33d rm_toto2 = S3::rodriguesToSO3(rod_toto);
+    //cout << "\nrm_toto2 (from Rodrigues) is ...\n" << rm_toto2 << endl;
+    //cv::Matx33d rm_tata2 = S3::rodriguesToSO3(rod_tata);
+    //cout << "\nrm_tata2 (from Rodrigues) is ...\n" << rm_tata2 << endl;
+
+    ////* ### quaternion <---> angle axis
+    //cv::Vec4d rod_toto2 = S3::quatToRodrigues(quat_toto);
+    //cout << "\nrod_toto2 (from quat) is ...\n" << rod_toto2 << endl;
+
+    //cv::Vec4d rod_tata2 = S3::quatToRodrigues(quat_tata);
+    //cout << "\nrod_tata2 (from quat) is ...\n" << rod_tata2 << endl;
+
+    //cv::Vec4d quat_toto2 = S3::rodriguesToQuat(rod_toto2);
+    //cout << "\nquat_toto2 (from Rodrigues) is ...\n" << quat_toto2 << endl;
+    //cv::Vec4d quat_tata2 = S3::rodriguesToQuat(rod_tata2);
+    //cout << "\nquat_tata2 (from Rodrigues) is ...\n" << quat_tata2 << endl;
+
 
 
 	return 0;

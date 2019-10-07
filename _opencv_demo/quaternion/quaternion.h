@@ -20,22 +20,24 @@ namespace S3
 	//* quaternion inverse
 	cv::Vec4d quatInverse(const cv::Vec4d &);
 
-	//* convert CV quaternion to CV SO(3) 
+    //* -quaternion <---> SO(3) 
 	cv::Matx33d cvQuatToSO3(const cv::Vec4d &);
-
-	//* -mapping SO(3) to OpenCV's quaternion
-	//* @param: rotm   rotation matrix   
 	cv::Vec4d SO3ToCVQuat(cv::Matx33d const& rotm);
 
-	//* convert angle-axis representation to quaternionn
+    //* -quaternion <--->  angle-axis representation
+    cv::Vec4d quatToRodrigues(const cv::Vec4d &);
 	cv::Vec4d rodriguesToQuat(const cv::Vec4d &);
     
-    //* convert angle - axis representation rotation matrix
-    cv::Matx33d S3::rodriguesToSO3(const cv::Vec4d &);
+    //* -rotation matrix <---> angle-axis representation
+    cv::Vec4d SO3ToRodrigues(const cv::Matx33d &);
+    cv::Matx33d rodriguesToSO3(const cv::Vec4d &);
+    
 
-    //* convert rotation matrix to angle-axis representation
-    cv::Vec4d S3::SO3ToRodrigues(const cv::Matx33d &);
+    //* rotation vector ---> angle-axis representation
+    cv::Vec4d rotVecToRodrigues(const cv::Vec3d &);
 
+    //* rotation vector ---> unit quaternion
+    cv::Vec4d rotVecToQuat(const cv::Vec3d &);
 
 	//* hat map: transform a 3x1 vector to a 3x3 skew-symmetric matrix 
 	//*          such that cross(x,y) = hat(x)*y
