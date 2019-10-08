@@ -18,8 +18,8 @@ int main()
 	SO3Mapping o_mapping;
 
 	//* ### start from Euler angle, convert to SO(3)
-	cv::Vec3d v_toto(0, -0.1, -0.5*CV_PI);  
-	cv::Vec3d v_tata(0., 0.5*CV_PI, 0.);
+	cv::Vec3d v_toto(0, -0.1, -0.5*CV_PI); //* unit: radians
+	cv::Vec3d v_tata(0., 0., 0.);          //* unit: radians
 	cv::Matx33d rm_toto = o_mapping.EulerToSO3(v_toto); 
 	cv::Matx33d rm_tata = o_mapping.EulerToSO3(v_tata);
     cout << "rm_toto is (from Euler angles)...\n" << rm_toto << endl;

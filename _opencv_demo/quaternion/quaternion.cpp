@@ -1,4 +1,7 @@
+#include <iostream>
 #include "quaternion.h"
+using std::cout;
+using std::endl;
 
 //* ----- ----- quaternion multiplication ----- -----
 //* @param p    quaternion
@@ -99,7 +102,7 @@ cv::Vec4d S3::SO3ToCVQuat(cv::Matx33d const& R) {
 	//cv::Vec4d q(q0, dummy(0), dummy(1), dummy(2));
 	//return q;
 
-    cv::Vec3d rotVec;
+    cv::Vec3d rotVec(0., 0., 0.);
     cv::Rodrigues(R, rotVec);
     cv::Vec4d q = rotVecToQuat(rotVec);
     return q;
@@ -193,9 +196,16 @@ cv::Vec4d S3::SO3ToRodrigues(const cv::Matx33d &R) {
 //* @param rotVec       rotation vector
 cv::Vec4d S3::rotVecToRodrigues(const cv::Vec3d &rotVec) {
     double angle = cv::norm(rotVec); 
-    cv::Vec3d axis = rotVec/angle;
-    cv::Vec4d output = cv::Vec4d(angle, axis(0), axis(1), axis(2));
-
+    cv::Vec4d output;
+    if (angle == 0) 
+    {
+        output = cv::Vec4d(0., 1., 0., 0.); //* null rotation
+    }
+    else 
+    {
+        cv::Vec3d axis = rotVec / angle;
+        output = cv::Vec4d(angle, axis(0), axis(1), axis(2));
+    }
     return output;
 }
 
@@ -203,11 +213,19 @@ cv::Vec4d S3::rotVecToRodrigues(const cv::Vec3d &rotVec) {
 //* @param rotVec       rotation vector
 cv::Vec4d S3::rotVecToQuat(const cv::Vec3d &rotVec) {
     double norm = cv::norm(rotVec);
-    double q0 = cos(0.5*norm);
-    cv::Vec3d q = (sin(0.5*norm)*rotVec) / norm;
-    cv::Vec4d output = cv::Vec4d(q0, q(0), q(1), q(2));
+    cv::Vec4d output;
 
-    output = output / cv::norm(output);
+    if (norm == 0) 
+    {
+        output = cv::Vec4d(1., 0., 0., 0.); //*null rotation 
+    }
+    else
+    {
+        double q0 = cos(0.5*norm);
+        cv::Vec3d q = (sin(0.5*norm)*rotVec) / norm;
+        output = cv::Vec4d(q0, q(0), q(1), q(2));
+        output = output / cv::norm(output);
+    }
     return output;
 }
 
