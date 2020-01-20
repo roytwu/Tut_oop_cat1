@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include "inverseStr.h"
+#include "strInverse.h"
 using std::string;
 using std::cout;
 using std::endl;
@@ -12,18 +12,23 @@ using std::endl;
 
 int main(){
   	string str1 = "This is a string!";
-  	string str2 = "Rats live on NO evil star";
-	StringInverse o_flip;  	
+  	string str2 = "Rats live on NO evil star";	
+	string str3 = "No lemon, no melon~~";
 
   	cout << "Before inverse.. " << str1 << endl;
-  	cout << "After inverse... " << o_flip.flipString_xor(str1) << endl;
+  	cout << "After inverse... " << flipString_XOR(str1) << endl;
   	cout << endl;
 
-  	string newStr = o_flip.flipString_xor(str2);
+  	string newStr = flipString_XOR(str2);
   	cout << "Before inverse.. " << str2 << endl;
   	cout << "After inverse... " << newStr << endl;
 
-  	o_flip.flipString_swap(str2); 
+  	flipString_swap(str2); 
   	cout << endl << str2 << endl;
+
+	cout << "\n-------- 2020 Jan -------\n";
+	string result = stringInvXOR(str2);
+	cout << result << endl;
+
 	return 0 ;
 }
