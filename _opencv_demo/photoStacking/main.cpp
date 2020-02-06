@@ -22,8 +22,8 @@ int main()
     int height;
     int width; 
 
-    cv::String folder = "../images";
-    //cv::String fileName = "D:/RoyTWu/repo/learn_cpp/_opencv_demo/photoStacking/image001.png";
+    //cv::String folder = "../Indoor_Guitars";
+    cv::String folder = "../stackingSample/processed";
     std::vector<cv::String> fileNames;
     cv::glob(folder, fileNames);
 
@@ -34,7 +34,7 @@ int main()
     for (size_t i = 0; i < num; i++) 
     {
         cv::Mat img = cv::imread(fileNames[i]);
-        //cout << "type is ..." << img.channels() << endl;
+
         if (img.empty()) //* Check for invalid input
         {
             cout << "Could not open or find the image\n";
@@ -71,7 +71,6 @@ int main()
     
     //* Show our image inside it.
     //cv::imshow("Display window", img);
-    //cv::imwrite("../result.png", img);
     cv::imwrite("../result.png", avgImg);
 
     cv::waitKey(0);
