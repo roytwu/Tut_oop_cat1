@@ -1,7 +1,7 @@
 /* *********************************************************
 File name:   main.cpp (_openCVBasic)
 Programmer:  Roy Wu
-Description: Demo aoubt photo stacking
+Description: Demo of photo stacking
 ********************************************************* */
 #include <iostream>
 #include <vector>
@@ -23,7 +23,7 @@ int main()
     int width; 
 
     //cv::String folder = "../Indoor_Guitars";
-    cv::String folder = "../stackingSample/processed";
+    cv::String folder = "../stackingSample/aligned";
     std::vector<cv::String> fileNames;
     cv::glob(folder, fileNames);
 
@@ -58,19 +58,14 @@ int main()
         }
 
         cout << "Processing...\n";
-        //cout << "avgImg ..." << avgImg.size() << endl;
-        //cout << "imgTote ..." << imgTote[i].size() << ",   " << i << endl;
         cv::accumulate(imgTote[i], avgImg);
     }
     avgImg = (1.0 / num) * avgImg;
     cv::Mat img;
     //avgImg.convertTo(img, CV_8U);
 
-    //* Create a window for display.
-    //cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); 
-    
-    //* Show our image inside it.
-    //cv::imshow("Display window", img);
+    //cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); //* Create a window for display
+    //cv::imshow("Display window", img);                      //* Show our image inside it
     cv::imwrite("../result.png", avgImg);
 
     cv::waitKey(0);
