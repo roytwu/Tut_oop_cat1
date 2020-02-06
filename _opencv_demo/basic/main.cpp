@@ -22,8 +22,6 @@ int main()
 	//cv::waitKey(0); //wait infinitely until any keystroke in the window
 
 	//* --- make a 5x5 complex matrix filled with i+3j ---
-	//* CV_32FC2 means a 2-channel (complex) floating-point array
-	//* CV_8UC1 means a 8-bit single chaneel array
 	cv::Mat o_mat1(5, 5, CV_32FC2, cv::Scalar(1, 3));
 	cout << o_mat1 << endl << endl;
 
