@@ -23,7 +23,7 @@ int main()
     int width; 
 
     //cv::String folder = "../Indoor_Guitars";
-    cv::String folder = "../stackingSample/aligned";
+    cv::String folder = "../stackingSample/aligned/png";
     std::vector<cv::String> fileNames;
     cv::glob(folder, fileNames);
 
