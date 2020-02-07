@@ -1,5 +1,5 @@
-# Learn C++
-This is the repository about C++ and related open source libaries such as OpenCV and Eigen. The programs come with very verbose comments to address concepts and syntax of C++. Most projects are developed under Visual Studio 2015, and a few are developed under Linux GCC.
+# C++ Overview
+This is the repository about C++ and related open source libaries such as OpenCV and Eigen. The programs come with very verbose comments to address concepts and syntax of C++. Most projects are developed under Visual Studio and a few are developed under Linux GCC.
 
 
 💾 Projects
@@ -26,6 +26,9 @@ Demo of matrix operation in OpenCV
   This project works on roation matices and unit quaternions specifically. And it demonstrate how to convert between OpenCV and Eigen.
 3. **quaternion** --
   Handles unit quaternion opeations and mapping between SO(3) and S(3)
+4. **imageStacking** --
+  Noise removal by image averaging
+   
   
 
 ## _vtk
