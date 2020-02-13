@@ -1,7 +1,7 @@
 /* *********************************************************
-File name:   main.cpp (imageStacking)
+File name:   main.cpp 
 Programmer:  Roy Wu
-Description: Creating line patterns
+Description: Creating horizontal line pattern
 ********************************************************* */
 #include <iostream>
 #include <vector>
@@ -27,24 +27,26 @@ std::string type = ".png";
 int main()
 {
     int linewidth = 2;
-    cv::Vec3b clrWHT = cv::Vec3b(255, 255, 255);
+    cv::Vec3b clrWHT = cv::Vec3b(255, 255, 255); //* white
     cv::Mat3b black = cv::Mat3b::zeros(h, w);
+
     cv::Mat3b img = black.clone();
-    for (int idx = 0; idx < step; ++idx) {
-        for (int y = 0; y < h; ++y) {
+    for (int idx = 0; idx < step; ++idx) 
+    {
+        for (int y = 0; y < h; ++y) 
+        {
             const int pattern_pos = (y + idx) % step;
-            if (pattern_pos < 2) {
+            if (pattern_pos < 2) 
+            {
                 img(cv::Rect(0, y, h, 1)).setTo(clrWHT);
 
                 ss << name << y << type;
                 std::string fileName = "../result/" + ss.str();
                 ss.str("");
                 cv::imwrite(fileName, img);
-                std::cout << "fileName is ... " << fileName << std::endl;
+                cout << "fileName is ... " << fileName << endl;
             }
         }
     }
-
-
     return 0;
 }
