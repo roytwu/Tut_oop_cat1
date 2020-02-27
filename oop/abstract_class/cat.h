@@ -1,13 +1,14 @@
-//file name: cat.h; header file of cat.cpp
-//Programmer: Roy T Wu
-
+/* *********************************************************
+File name:   cat.h
+Author:      Roy T Wu
+Description:
+********************************************************* */
 #ifndef CAT_H_
 #define CAT_H_
+#include "animal.h"  //*mother class
 
-#include "animal.h"  //mother class
 
-
-//Cat is a sub-class of Animal
+//* Cat is a sub-class of Animal
 class Cat: public Animal{
 private:
 	static int countObject; 
@@ -15,9 +16,9 @@ private:
 	bool m_angry;
 
 public:
-	Cat();  //constructor
+	Cat();   //* constructor
 	Cat(int m_animalID);
-	~Cat();  //destructor
+	~Cat();  //* destructor
 	
 	bool m_happy;
 	void speak();
@@ -26,10 +27,9 @@ public:
 	void makeAngry();
 	void makeSad();
 
-	//make "MAX" read-only variable
+	//* make "MAX" read-only variable
 	static int const MAX = 99;
 	int getID();
 };
-
 
 #endif //CAT_H_

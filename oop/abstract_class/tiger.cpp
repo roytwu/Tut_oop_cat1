@@ -1,5 +1,3 @@
-//* File name: tiger.cpp
-//* Programmer: Roy T Wu
 
 #include <iostream>
 #include "cat.h"

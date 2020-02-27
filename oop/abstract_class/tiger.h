@@ -1,6 +1,8 @@
-//file name: tiger.h
-//Programmer: Roy T Wu
-
+/* *********************************************************
+File name:   tiger.h
+Author:      Roy T Wu
+Description:
+********************************************************* */
 #ifndef TIGER_H_
 #define TIGER_H_
 

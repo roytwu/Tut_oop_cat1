@@ -16,8 +16,8 @@ using std::endl;
 class Base 
 {
 public:
-	virtual void print() { cout << "print base class\n"; }
-	        void show()  { cout << "show base class\n"; }
+	virtual void print() { cout << "print base class (virtual)   \n"; } //* virtual function
+	        void show()  { cout << "show base class (non-virtual)\n"; }  
 };
 
 class Derived : public Base
