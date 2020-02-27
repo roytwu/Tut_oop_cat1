@@ -1,5 +1,4 @@
 #include <iostream>
-#include "animal.h"
 #include "cat.h"
 using std::cout;
 using std::endl;

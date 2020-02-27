@@ -10,20 +10,10 @@ Description: All the source files are based from "inheritance" project
 using std::cout;
 using std::endl;
 
-// //Return objects from functions
-// Cat *createCat(){
-// 	Cat *op_Cat = new Cat();
-// 	op_Cat->makeAngry();
-// 	return op_Cat;
-// }
-
 int main(){
-	cout << "*** Super class-'Animal' ***" << endl;
-	//Animal o_am(99);  //* instantiation is not allowed for abstract class
-	//o_am.speak();
-	//o_am.info();
+	//Animal o_am(99);  //* this won't work, instantiation is not allowed for abstract class
 
-	cout << "\n\n*** Child class-'Cat' ***" << endl;
+	cout << "*** Child class-'Cat' ***" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->m_happy = true;
 	op_tom->speak(); //* Cat can do what Animal can do
@@ -45,7 +35,7 @@ int main(){
 	delete op_bengal;
 
 	
-	cout << "\n*** Polymorphism ***" << endl;
+	cout << "\n\n*** Polymorphism ***" << endl;
 	Animal *op_animal = new Cat;  
 	op_animal->speak();
 	delete op_animal;

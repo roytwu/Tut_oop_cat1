@@ -5,14 +5,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 PROJECT(_abstractClass LANGUAGES CXX)
 
 ## set source files
-SET(SOURCE_FILES main.cpp animal.cpp cat.cpp tiger.cpp)
+SET(SOURCE_FILES main.cpp cat.cpp tiger.cpp)
 SET(CMAKE_CXX_STANDARD 14)  #equivalent to adding a flag such as -std=gnu++14
 
 
 SET(USE_LIBRARY       ON)
 SET(BUILD_SHARED_LIBS OFF)
 MESSAGE(STATUS "Compile sources into a library?${USE_LIBRARY}$")
-LIST(APPEND _sources animal.cpp cat.cpp tiger.cpp)
+LIST(APPEND _sources cat.cpp tiger.cpp)
 
 ## Two apporaches:
 ## 1. Build message.hpp/.cpp into a library, and then linke the resulting library

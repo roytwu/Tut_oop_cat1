@@ -5,7 +5,7 @@ Description:
 ********************************************************* */
 #ifndef CAT_H_
 #define CAT_H_
-#include "animal.h"  //*mother class
+#include "animal.hpp"  //*mother class
 
 
 //* Cat is a sub-class of Animal

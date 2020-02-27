@@ -5,7 +5,6 @@ Description:
 ********************************************************* */
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
-
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -16,17 +15,19 @@ private:
 	int m_animalID;
 	
 public:
-	Animal();                //*no-argument constructor
-	Animal(int m_animalID);  //*parameterized contstructor
-	virtual ~Animal();       //*make destructor virtual for polymorphism
+	//* no-argument constructor
+	Animal() {};       
 
-	virtual void speak() = 0;  //* pure virtual function --> abstract class!
-	void info();
+	//* parameterized contstructor
+	Animal(int m_animalID) { this->m_animalID = m_animalID;};
+
+	//*make destructor virtual for polymorphism
+	virtual ~Animal()	{};
+
+	//* pure virtual function --> abstract class!
+	virtual void speak() = 0;  
+	
+	void info() { cout << "  animalID is ... " << m_animalID << endl; };
 };
-
-
-void Animal::info() {
-	cout << "  animalID is ... " << m_animalID << endl;
-}
 
 #endif //*ANIMAK_H_
