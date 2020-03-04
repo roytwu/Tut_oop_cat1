@@ -1,6 +1,6 @@
 /* *********************************************************
 File name:   animal.cpp (_inheritance)
-Programmer:  Roy Wu
+Author:      Roy Wu
 Description: super class
 ********************************************************* */
 #include <iostream>
@@ -14,13 +14,17 @@ Animal::Animal(){
 }
 
 //* parameterized constructor
-Animal::Animal(int m_animalID){
+Animal::Animal(int m_animalID)
+{
 	this->m_animalID = m_animalID;
 	cout << "  --Animal parameterized consructor called--" << endl;
 }
 
 //* destructor
-Animal::~Animal(){}	
+Animal::~Animal()
+{
+	cout << "Destructor (Animal) is called...\n";
+}	
 
 
 void Animal::speak(){ 

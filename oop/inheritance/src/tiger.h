@@ -1,6 +1,5 @@
 /* *********************************************************
-File name:   tiger.h (_inheritance)
-Programmer:  Roy T Wu
+Author:      Roy T Wu
 Description: sub-sub-class
 ********************************************************* */
 #ifndef TIGER_H_
@@ -14,6 +13,7 @@ using std::endl;
 class Tiger: public Cat{
 public:
 	Tiger();
+	~Tiger();
 
 	void attackAntelope();
 };

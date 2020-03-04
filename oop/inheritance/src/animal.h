@@ -1,11 +1,9 @@
 /* *********************************************************
-File name:   animal.h (_inheritance)
-Programmer:  Roy Wu
-Description: super class header
+Author:      Roy Wu
+Description: super class
 ********************************************************* */
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
-
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -16,11 +14,11 @@ private:
 	int m_animalID;
 	
 public:
-	Animal();                //no-argument constructor
-	Animal(int m_animalID);  //parameterized contstructor
-	virtual ~Animal();       //make destructor virtual for polymorphism
+	Animal();                //* no-argument constructor
+	Animal(int m_animalID);  //* parameterized contstructor
+	virtual ~Animal();       //* make destructor virtual for polymorphism
 
-	virtual void speak();    //virtual for polymorphism
+	virtual void speak();    //* virtual for polymorphism
 	void info();
 };
 

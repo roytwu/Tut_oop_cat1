@@ -1,6 +1,5 @@
 /* *********************************************************
-File name:   cat.cpp (_inheritance)
-Programmer:  Roy T Wu
+Author:      Roy T Wu
 Description: sub-class
 ********************************************************* */
 #include <iostream>

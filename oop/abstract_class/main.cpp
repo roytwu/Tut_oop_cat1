@@ -13,7 +13,7 @@ using std::endl;
 int main(){
 	//Animal o_am(99);  //* this won't work, instantiation is not allowed for abstract class
 
-	cout << "*** Child class-'Cat' ***" << endl;
+	cout << "*** Child class - 'Cat' ***" << endl;
 	Cat *op_tom = new Cat(); 
 	op_tom->m_happy = true;
 	op_tom->speak(); //* Cat can do what Animal can do
@@ -26,7 +26,7 @@ int main(){
 	delete op_kitty;
 
 
-	cout << "\n\n*** Child class-'Tiger' ***" << endl;
+	cout << "\n\n*** Child class - 'Tiger' ***" << endl;
 	Tiger *op_bengal = new Tiger();
 	op_bengal->info();
 	op_bengal->speak();  //* Tiger can do what Animal can do

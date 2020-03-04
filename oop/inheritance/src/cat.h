@@ -1,6 +1,5 @@
 /* *********************************************************
-File name:   cat.h (_inheritance)
-Programmer:  Roy T Wu
+Author:      Roy T Wu
 Description: sub-class
 ********************************************************* */
 #ifndef CAT_H_
