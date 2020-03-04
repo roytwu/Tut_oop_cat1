@@ -14,7 +14,7 @@ int Cat::countObject = 0;
 
 Cat::Cat() //* no-argument consructor
 {
-	cout << "  --Cat no-argument consructor called.--" << endl;
+	cout << "\t--Cat no-argument consructor called.--" << endl;
 	m_angry = false;
 	m_id = ++countObject;  //* prefix increment
 }
@@ -22,11 +22,10 @@ Cat::Cat() //* no-argument consructor
 //* call a super-class constructor with an argument
 Cat::Cat(int m_animalID): Animal(m_animalID) //pameterized consructor inheritance
 {	
-	cout << "  --Cat parameterized consructor called.--" << endl;
+	cout << "\t--Cat parameterized consructor called.--" << endl;
 	m_angry = false;
 	m_id = ++countObject;  //* prefix increment
 }
-
 
 
 Cat::~Cat() //* destructor function
@@ -35,34 +34,39 @@ Cat::~Cat() //* destructor function
 }
 
 //* member functions can be defined outside the class body
-void Cat::makeAngry(){
+void Cat::makeAngry()
+{
 	m_angry = true;
 }
 
 
-void Cat::makeSad(){
+void Cat::makeSad()
+{
 	m_angry = false;
 }
 
 
-void Cat::speak(){
+void Cat::speak()
+{
 	if(m_happy){
-		cout << "  Meouww! kitty is happy!(cat speaking)" << endl;	
+		cout << "\tMeouww! kitty is happy!(cat speaking)" << endl;	
 	} 
 	else if(m_angry){
-		cout << "  krrr!! Fuck off!(cat speaking)" << endl;
+		cout << "\tkrrr!! Fuck off!(cat speaking)" << endl;
 	}
 	else{
-		cout << "  Ssssss...(cat speaking)" << endl;
+		cout << "\tSsssss...(cat speaking)" << endl;
 	}
 }
 
 
-void Cat::jump(){
-	cout << "  Cat jumps into a muddy puddle!" << endl;
+void Cat::jump()
+{
+	cout << "\tCat jumps into a muddy puddle!" << endl;
 }
 
 
-int Cat::getID(){
+int Cat::getID()
+{
 	return m_id;
 }

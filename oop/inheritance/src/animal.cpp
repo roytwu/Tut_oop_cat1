@@ -10,27 +10,27 @@ Description: super class
 //* no-argument constructor
 Animal::Animal(){
 	int m_animalID =0;
-	cout << "  --Animal no-argument consructor called--" << endl;
+	cout << "\t--Animal no-argument consructor called--" << endl;
 }
 
 //* parameterized constructor
 Animal::Animal(int m_animalID)
 {
 	this->m_animalID = m_animalID;
-	cout << "  --Animal parameterized consructor called--" << endl;
+	cout << "\t--Animal parameterized consructor called--" << endl;
 }
 
 //* destructor
 Animal::~Animal()
 {
-	cout << "Destructor (Animal) is called...\n";
+	cout << "*Destructor (Animal) is called...\n";
 }	
 
 
 void Animal::speak(){ 
-	cout << "  Grrrrr...(animal speaking)" << endl; 
+	cout << "\tGrrrrr...(animal speaking)" << endl; 
 }
 
 void Animal::info(){ 
-	cout << "  animalID is ... " << m_animalID << endl; 
+	cout << "\tanimalID is ... " << m_animalID << endl; 
 }

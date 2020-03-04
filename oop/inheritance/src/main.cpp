@@ -1,7 +1,8 @@
 /* *********************************************************
 File name:   main.cpp (_inheritance)
 Author:      Roy Wu
-Description: Demo about inheritance
+Description: 2018       - Demo about inheritance
+             03/04/2020 - shared ponters implementation
 ********************************************************* */
 #include <iostream>
 #include <memory>
@@ -41,14 +42,23 @@ int main(){
 
 	cout << "\n\n----- Sub-sub class 'Tiger' -----\n";
 	std::shared_ptr<Tiger> o_bengal(new Tiger);
-	//Tiger *op_bengal = new Tiger();
 	o_bengal->info();
-	o_bengal->speak();  //* Tiger can do what Animal can do
-	o_bengal->jump();   //* Tiger can do what Cat can do
+	o_bengal->speak();          //* Tiger can do what Animal can do
 	o_bengal->attackAntelope();
-	//delete op_bengal;
+	//delete op_bengal;         //* no need to "delete" the shared pointer
 
+	//* using make_shared() to construct a shared pointer
+	std::shared_ptr<Tiger> o_siberian = std::make_shared<Tiger>();
+	cout << "\n Tiger obhject #2\n";
+	cout << "\tSiberian pointer count... " << o_siberian.use_count() << endl;
+	o_siberian->info();
+	o_siberian->jump();         //* Tiger can do what Cat can do
 	
+	//* share ownership of resource
+	std::shared_ptr<Tiger> oSib2(o_siberian);
+	cout << "\tSiberian pointer count... " << o_siberian.use_count() << endl;
+	oSib2->info();
+
 	cout << endl << "\n\n----- Polymorphism -----\n";
 	Animal *op_animal = new Cat;  
 	op_animal->speak();
