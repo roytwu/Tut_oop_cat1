@@ -47,22 +47,27 @@ int main(){
 	o_bengal->attackAntelope();
 	//delete op_bengal;         //* no need to "delete" the shared pointer
 
-	//* using make_shared() to construct a shared pointer
+	//* ---using make_shared() to construct a shared pointer
 	std::shared_ptr<Tiger> o_siberian = std::make_shared<Tiger>();
 	cout << "\n Tiger obhject #2\n";
 	cout << "\tSiberian pointer count... " << o_siberian.use_count() << endl;
 	o_siberian->info();
 	o_siberian->jump();         //* Tiger can do what Cat can do
 	
-	//* share ownership of resource
+	//* ---share ownership of resource
 	std::shared_ptr<Tiger> oSib2(o_siberian);
 	cout << "\tSiberian pointer count... " << o_siberian.use_count() << endl;
 	oSib2->info();
 
-	cout << endl << "\n\n----- Polymorphism -----\n";
-	Animal *op_animal = new Cat;  
-	op_animal->speak();
+	cout << "\n\n===== ===== Polymorphism ===== =====\n";
+	Animal *op_animal = new Cat;  //* old-school approach
+	op_animal->speak();           //* function overriding
 	delete op_animal;
+
+	cout << "\n\n----- Polymorphism (shared-pointer) -----\n";
+	std::shared_ptr<Animal> oAni = std::make_shared<Cat>(88);  
+	oAni->speak();               //* function overriding
+	oAni->info();
 
 
     cout << "\nEnding porgram..." << endl;
