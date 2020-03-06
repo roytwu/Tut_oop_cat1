@@ -1,8 +1,8 @@
- /* *********************************************************
- File name:   main.cpp (_funcPtr)
- Programmer:  Roy Wu
- Description: basic concepts of funciton pointer
- ********************************************************* */
+/* *********************************************************
+File name:   main.cpp (_funcPtr)
+Author:      Roy Wu
+Description: basic concepts of funciton pointer
+********************************************************* */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -13,8 +13,10 @@ using std::string;
 
 
 //* a function with void return type and no parameters
-void test_alpha() {
+bool test_alpha() {
 	cout << "Hello, I am test function alpha!" << endl;
+
+	return true;
 }
 
 //* a function with void return type and 2 parameters
@@ -28,8 +30,10 @@ int main()
 	//* calling up function in a regular way
 	test_alpha();
 
-	//* a variable called p_testA, which is a pointer to function with a void return type and no parameters
-	void(*p_testA)();
+	//* a variable called p_testA, which is a pointer to function with void return type and no parameters
+	bool(*p_testA)();
+	bool(*p_testA2)();
+	//* a variable called p_testB, which is a pointer to function with bool return type and no parameters
 	void(*p_testB)();
 
 	//* syntax1
@@ -37,12 +41,12 @@ int main()
 	(*p_testA)();
 
 	//* syntax2
-	p_testB = test_alpha;
-	p_testB();
+	p_testA2 = test_alpha;
+	p_testA2();
 
 	//* syntax3
-	void(*p_testC)() = test_alpha;
-	p_testC();
+	bool(*p_testA3)() = test_alpha;
+	p_testA3();
 
 	//* a pointer to a function that take parameter type int and string and return void
 	void(*p_testD)(int, string) = test_beta;
