@@ -1,9 +1,11 @@
+/* *********************************************************
+Author:      Roy Wu
+Description: static class members/member funcitons
+********************************************************* */
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
-
 #include <iostream>
 #include <string>
-
 using std::cout;
 using std::endl;
 using std::string;
@@ -15,13 +17,13 @@ public:
 
 	static double findRate() { return rate; }
 	//static void findRate(double);
+	double amount = 100;
 
 private:
 	string owner;
-	double amount = 100;
-
+	
 	static double rate;
-	static double initRate();
+	//static double initRate();
 
 };
 

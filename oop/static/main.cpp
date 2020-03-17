@@ -1,6 +1,5 @@
 /* *********************************************************
-File name:   main.cpp (function template)
-Programmer:  Roy Wu
+Author:      Roy Wu
 Description: static class members/member funcitons
 ********************************************************* */
 
@@ -13,8 +12,6 @@ Description: static class members/member funcitons
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp>
 #include "account.h"
-
-
 //using std::cout; 
 //using std::endl;
 //using std::string; 

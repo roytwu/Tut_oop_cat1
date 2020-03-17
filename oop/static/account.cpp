@@ -1,3 +1,7 @@
+/* *********************************************************
+Author:      Roy Wu
+Description: static class members/member funcitons
+********************************************************* */
 #include "account.h"
 
 //* initialize private static member of class
