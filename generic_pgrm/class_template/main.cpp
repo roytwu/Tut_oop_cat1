@@ -1,70 +1,15 @@
 /* ********************************************************* 
-File name:   main.cpp (class template)
-Programmer:  Roy Wu
-Description: Templates allows you to create a single function/class to 
-             work with different data types. Templates are often used in larger codebase for the purpose of
-             code reusability and flexibility of the programs.
+Author:      Roy Wu
+Description: Templates allows one to create a single function/class to work with different data types. 
+             Templates are often used in larger codebase for the purpose of 
+			 code reusability and flexibility of the programs.
 ********************************************************* */
 #include <iostream>
+#include "CusArray.hpp"
+#include "MySeq.hpp"
 using std::cout;
 using std::endl;
 
-//* ---class template---
-template <class CT>
-class Cus_Array {
-public:
-	Cus_Array(CT arr[], int s);  //* constructor
-	void print();
-
-private:
-	CT  *ptr;
-	int size;
-};
-
-//* constructor
-template <class CT>
-Cus_Array<CT>::Cus_Array(CT arr[], int s) {
-	ptr = new CT[s];
-	size = s;
-	for (int i=0; i<size; i++) {
-		ptr[i] = arr[i];
-	}
-}
-
-//* member function 
-template <class CT>
-void Cus_Array<CT>::print() {
-	for (int i=0; i<size; i++) {
-		cout << " " << *(ptr + i);
-	}
-	cout << endl;
-}
-
-
-//* ---class template example with default values and types---
-template <class T =double, int N =10>
-class MySeq {
-public:
-	void setMember(int x, T value);
-	T getMember(int x);
-
-private:
-	T memBlock[N];
-};
-
-template <class T, int N>
-void MySeq<T, N>::setMember(int x, T value) {
-	memBlock[x] = value;
-}
-
-template <class T, int N>
-T MySeq<T, N>::getMember(int x) {
-	return memBlock[x];
-}
-
-
-
-//* ---main body---
 int main(){
 	//* class template, Cur_Array
 	cout << "\n----- class template, Cur_Array-----\n";
