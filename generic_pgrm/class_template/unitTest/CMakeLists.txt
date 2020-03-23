@@ -11,21 +11,13 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
 #* project name and language
 PROJECT(_testTemplate LANGUAGES CXX)
 
-#FIND_PACKAGE(OpenCV REQUIRED)
-#(Boost COMPONENTS unit_test_framework REQUIRED) #* 03/13
-
 #*Read environment variable to custom name
-#SET(OpenCV_DIR       $ENV{OpenCV_DIR})
-#SET(EIGEN            $ENV{EIGEN_DIR})
-#SET(BOOST_R          $ENV{BOOST_ROOT})
 SET(BOOST            $ENV{BOOST_INCLUDEDIR})
 
 INCLUDE_DIRECTORIES(
   ${OpenCV_INCLUDE_DIRS} #* defined by OpenCV in OpenCVConfig.cmake 
   ${EIGEN}/include/eigen3/
   ${BOOST}
-  #${BOOST}/lib/
-  #${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}  #* 03/13
 )
 
 #* set source files

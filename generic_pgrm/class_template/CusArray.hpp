@@ -1,16 +1,16 @@
 /* *********************************************************
 Author:      Roy Wu
-Description:
+Description: create custom array with different data types
 ********************************************************* */
-#ifndef CusArray
-#define CusArray
+#ifndef CUSARRAY
+#define CUSARRAY
 
 //* ---class template---
 template <class CT>
-class Cus_Array 
+class CusArray 
 {
 public:
-	Cus_Array(CT arr[], int s);  //* constructor
+	CusArray(CT arr[], int s);  //* constructor
 	void print();
 
 private:
@@ -20,7 +20,7 @@ private:
 
 //* constructor
 template <class CT>
-Cus_Array<CT>::Cus_Array(CT arr[], int s) 
+CusArray<CT>::CusArray(CT arr[], int s) 
 {
 	ptr = new CT[s];
 	size = s;
@@ -32,7 +32,7 @@ Cus_Array<CT>::Cus_Array(CT arr[], int s)
 
 //* member function 
 template <class CT>
-void Cus_Array<CT>::print() 
+void CusArray<CT>::print() 
 {
 	for (int i = 0; i < size; i++) 
 	{
@@ -43,4 +43,4 @@ void Cus_Array<CT>::print()
 
 
 
-#endif //* CusArray
+#endif //* CUSARRAY

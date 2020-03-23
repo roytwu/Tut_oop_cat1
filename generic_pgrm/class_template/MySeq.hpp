@@ -1,6 +1,6 @@
 /* *********************************************************
 Author:      Roy Wu
-Description: 
+Description: custom array and fill in arry element by element
 ********************************************************* */
 #ifndef MYSEQ
 #define MYSEQ
@@ -19,10 +19,13 @@ public:
 	};
 
 	//* destructor 
-	~MySeq() {};
+	~MySeq() 
+	{
+		std::cout << "MySeq Destructor is called..\n";
+	};
 	
-	void setMember(int x, T value);
-	T    getMember(int x);
+	void setMember(int position, T value);
+	T    getMember(int position);
 	int  testInt = 100; //* used in unit test
 
 private:
@@ -32,16 +35,24 @@ private:
 
 //* --- setMember ---
 template <class T, int N>
-void MySeq<T, N>::setMember(int x, T value) 
+void MySeq<T, N>::setMember(int position, T value) 
 {
-	memBlock[x] = value;
+	memBlock[position] = value;
 }
 
 
 //* --- getMember ---
 template <class T, int N>
-T MySeq<T, N>::getMember(int x) 
+T MySeq<T, N>::getMember(int position) 
 {
-	return memBlock[x];
+	int size = sizeof(memBlock) / sizeof(*memBlock);
+	try 
+	{
+		return memBlock[position];
+	}
+	catch (...)
+	{
+		std::cout << "something is wrong\n";
+	}
 }
 #endif //* MYSEQ
