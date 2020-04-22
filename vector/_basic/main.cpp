@@ -1,9 +1,7 @@
 /* *********************************************************
-File name:   main.cpp (_basic)
-Programmer:  Roy Wu
+Author:      Roy Wu
 Description: basic concepts and syntax about vectors
 ********************************************************* */
-
 #include <iostream>
 #include <vector>
 #include <algorithm> //* copy
