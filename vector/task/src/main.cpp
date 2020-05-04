@@ -1,133 +1,120 @@
 
+#include <algorithm>  //* fior lexicographical_compare()
 #include <iostream>
 #include <cstdint>
 #include <string>
 #include <vector>
-#include <boost/algorithm/string.hpp>
-#include <boost/logic/tribool.hpp>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-//#incldue <arpa/inet.h>  
 
-//* assuming packet comes in a vector, or putting all the bits into a vector
-//* parsing the packet fields into a vector, so the output is vector <vector >
-std::vector< std::vector<bool> > parsePacket(std::vector<bool> packet)
+//* password
+std::string pw = "$this*Is#The&PassWord!"; 
+
+//* --- compare 2 strings leicographically ---
+std::string pwVerfication (std::string input)
 {
-	vector<bool>::iterator itr;
-	std::vector< std::vector<bool> > dataList; //* data container after parsing
-
-	//* header
-	//* iterate through 4 bytes, save them to bitContainer
-	for (itr=packet.begin(); itr<packet.begin()+4*8; itr++)
+	std::string output;
+	if (input == pw)
 	{
-		bitContainer.push_back(itr);
+		//std::cout << "correct password\n";
+		output = "00";
 	}
-	dataList.push_back(std::move(bitContainer));  //*moving parsed data to the findal container
-	packet.erase(packet.begin(), packet.begin()+4*8);  //* removing parsed data from packet, in order to use "begin()"" again
-
-	//* ID
-	for (itr=packet.begin(); itr<packet.begin()+4*8; itr++)
+	else if (input < pw) 
 	{
-		bitContainer.push_back(itr);
+		//std::cout << "input is leicographically less than the PW\n";
+		output = "0100";
 	}
-	dataList.push_back(std::move(bitContainer));
-	packet.erase(packet.begin(), packet.begin()+4*8);
-
-	//* Data Length
-	for (itr=packet.begin(); itr<packet.begin()+1*8; itr++)
+	else if (input > pw)
 	{
-		bitContainer.push_back(itr);
+		//std::cout << "input is leicographically greater than the PW\n";
+		output = "01ff";
 	}
-	dataList.push_back(std::move(bitContainer));
-	packet.erase(packet.begin(), packet.begin()+1*8);
-
-
-	//* checksum
-	//* paring the data from the back side
-	std::vector<bool> MD5;
-	for (itr=packet.end()-16*8; itr<packet.end(); itr++)
-	{
-		MD5.push_back(itr);
-	}
-	packet.erase(packet.end()-16*8, packet.end());
-
-	//* data
-	//* now there is only data in the packet
-	for (itr=packet.begin(); itr<packet.end(); itr++)
-	{
-		bitContainer.push_back(itr);
-	}
-	dataList.push_back(std::move(bitContainer));
-	dataList.push_back(MD5);
-
-	return dataList;
+	return output;
 }
-
-
 
 
 
 int main()
 {
-	//* create a socket
-	int listening = socket(AF_INET, SOCK_DGRAM, 0)
-	if (listerning == -1)
-	{
-		std::cerr << "cannot create a socket";
-		return -1;
-	}
-
-
-	//* bind the socket to a IP/port
-	sockaddr_in podl;
-	podl.sin_family = AF_INET;
-	podl.sin_port = htons(10000);  //* little to big endian
-	inet_pton(AF_INET, "0.0.0.0", &podl.sin_address);
-
-
-	//* Mark the socket for listen
-	if (listen(listening, SOMAXCONN)==-1)
-	{
-		std::cerr << "cannot listen";
-		return -2;
-	}
-
-	sockaddr_in client;
-	socklen_t clientSize = sizeof(client);
-	int clientSocket = accept(listening, (sockaddr*)&client, &slientSize);
+	std::string output; //* intial guess, empty!
+	std::string vf;     //* verification string
 	
+	//* base shall have all the allowable characteristics 
+	//* list them according to Unicode characteristics 
+	std::vector <std::string> base{"!", "#", "$", "%", "&", "(", ")", "*", "+", "-",
+								   "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+								   "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+								   "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+	                               "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+								   "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 
-	//* Accept a call
-	char buf[4096];
-	
-	while (true)
+	std::vector<std::string>::iterator itr;
+
+	bool flag = 0;  
+	while (flag != 1 )
 	{
-		memset(buff, 0, 4096); //* zero the buffer
-
-		//* waing for message
-		int bytesIn = recvfrom(listening, buf, 4096, 0, (sockadr*)&client, &clientSize);
-		if (bytesIn ==-1)
+		for (itr = base.begin(); itr!=base.end(); ++itr)
 		{
-			std::cerr("connection fails...\n");
-			break;
-		}
-
-		//* Display message
-		char clientIP[256];
-		memset(clientIP, 0, 256); //* zero the buffer
-
-		std::cout << "Received: " << std::string(buf, 0, bytesIn) << std::endl;
-
-		inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
-		std::cout << "Message received\n";
-
-	}
-
-	close(listening);
-
+			std::string increment = output + (*itr);
 	
-	//std::vector<bool> packet; 
+			vf = pwVerfication(increment);
+
+			if (vf == "00")
+			{
+				//* entire password found
+				flag = 1;  
+				output = increment;
+				break;
+			}
+			else if (vf == "01ff")
+			{
+				//* find one character, break, to look for the next one
+				std::cout << "itr is..." << *(itr-1) << std::endl;
+				output = output + *(itr-1);
+				break;
+			}
+		}
+	}
+	std::cout << "Output is ... " << output << std::endl;
+	
+	
+	//* --- approach 2, not finished
+	//* for each character, apply pwVerfication() at the middle point of base
+	//* and only look at the half side of the vector, this shall reduce the times of probeing
+
+	/*
+	int sizeV = base.size();
+	int pos;
+	std::vector<std::string>::iterator itr2;
+	itr2 =base.begin();
+
+	pos = sizeV/2; 
+	
+	bool flag2 = 0;
+	while (flag2 == 0){
+		vf = pwVerfication(*(itr2+pos));
+		if (vf == "00")
+		{
+			std::cout << "itr2 is ..." << *(itr2+pos);
+			flag2 = 1;  
+		}
+		else if (vf == "0100")
+		{
+			sizeV = sizeV/2;;
+			pos = pos +sizeV/2;
+			std::cout << "too small..." << pos << std::endl;
+		}
+		else if (vf == "01ff")
+		{
+			sizeV = sizeV/2;
+			pos = pos -sizeV/2;
+			std::cout << "too large";
+		}
+	}	
+	*/
+
+
     std::cout << "\nEnd of the porgram...\n";
 	return 0;
 }
