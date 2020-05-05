@@ -45,7 +45,7 @@ SET(BUILD_SHARED_LIBS OFF)
 
 
 #* add an executable to the project using the specified source files.
-ADD_EXECUTABLE(executable 
+ADD_EXECUTABLE(exeTDD 
   ${SOURCE_FILES}
 )
 
