@@ -1,6 +1,5 @@
 /* *********************************************************
-File name:   main.cpp (algorithm)
-Programmer:  Roy Wu
+Authro:      Roy Wu
 Description: examples of funcitons in std::algorithm
 ********************************************************* */
 #include <iostream>
@@ -29,9 +28,9 @@ int main()
 	cout << endl;
 
 	
-	/* --- std::find() ----*/ cout << "\n----- find() -----\n";
-	//* elements to be searched
-	int target = 2;
+	/* --- std::find() ----*/ 
+	cout << "\n----- std::find() -----\n";
+	int target = 2; //* elements to be searched
 
 	//* iterator used to store the position of searched element
 	vector<int>::iterator it;
@@ -40,7 +39,7 @@ int main()
 	it = std::find(v.begin(), v.end(), target);
 
 	if (it != v.end()) {
-		cout << "Element " << target << "found at position: " 
+		cout << "Element ``" << target << "'' found at position: " 
 			 << it -v.begin()+1 << endl;
 	}
 	else {

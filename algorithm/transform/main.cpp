@@ -1,7 +1,10 @@
+/* *********************************************************
+Authro:      Roy Wu
+Description: examples of funcitons in std::algorithm
+********************************************************* */
 #include <iostream>
 #include <vector>
 #include <string>
-#include <utility>
 using std::cout; 
 using std::endl;
 using std::string; 
