@@ -50,6 +50,6 @@ ADD_EXECUTABLE(exeTDD
 )
 
 #* tell CMake that the library target has to be linked into the executable target
-TARGET_LINK_LIBRARIES(executable
+TARGET_LINK_LIBRARIES(exeTDD
   ${OpenCV_LIBS}
 )

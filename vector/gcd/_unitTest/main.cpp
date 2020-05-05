@@ -33,18 +33,26 @@ BOOST_AUTO_TEST_CASE(my_test)
     //* 3rd test cases, 7 elements
     int testArr3[] = {30, 15, 35, 75, 10, 20, 100 };
     
+    //* 4th test cases, 10 elements
+    int testArr4[] = {7*10, 7*9, 7*8, 7*7, 7*6, 7*5, 7*4, 7*3, 7*2, 7*11};
+    
+    //* ----- ----- ----- -----
+    //* 7 ways to detect and report the same error
+    //* ----- ----- ----- -----
 
+    //* #1 continues on error
+    BOOST_CHECK(findGCD(5, testArr1) == 1);   
 
-    //* ---seven ways to detect and report the same error:
-    BOOST_CHECK(findGCD(2, 2) == 4);          //* #1 continues on error
+    //* #2 throws on error
+    BOOST_REQUIRE(findGCD(6, testArr2) == 4); 
 
-    BOOST_REQUIRE(add(2, 2) == 4);        //* #2 throws on error
+    //* #3 continues on error
+    if (findGCD(7, testArr3) != 5)
+        BOOST_ERROR("Ouch... something is wrong");  
 
-    if (add(2, 2) != 4)
-        BOOST_ERROR("Ouch...");           //* #3 continues on error
-
-    if (add(2, 2) != 4)
-        BOOST_FAIL("Ouch...");            //* #4 throws on error
+    //* #4 throws on error
+    if (findGCD(10, testArr4) != 7)
+        BOOST_FAIL("Ouch...");            
 
     //if (add(2, 2) != 4) throw "Ouch...";  //* #5 throws on error
 
