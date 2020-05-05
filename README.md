@@ -7,16 +7,14 @@ This is the repository about C++ and related open source libaries such as OpenCV
 
 ## _cpp basic 
 This is a dirctory including many basic concepts about C++. Projects under this direcotry are devepled under Visual Studio 2015 and CMake. It consists of the following sub-projects: 
-
-1. **algorithm** -- Demo about functions in `<algorithm>`   
-2. **cmake_example** -- A good start to learn CMake   
-3. **enum** -- scoped and unscoped enumeration  
-4. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
-5. **function pointer** -- beginner level example of function pointer  
-6. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference   between passing string by value and passing string by reference  
-7. **pass_by_reference** -- Straightforward example of passing strings and integers by reference  
-8. **template** -- Sample code about function templates
-9. **virtual** -- Sample code about `virtual void operator()()` 
+ 
+1. **cmake_example** -- A good start to learn CMake   
+2. **enum** -- scoped and unscoped enumeration  
+3. **file_stream** -- Demonstreate how to use `<fstream>`: reading files, writing files, and parsing files  
+4. **function pointer** -- beginner level example of function pointer  
+5. **inverse_a_string** -- Inverse a string with bitwise XOR `^` and `std::swap()` respectively. Also, demonstrate the difference   between passing string by value and passing string by reference  
+6. **pass_by_reference** -- Straightforward example of passing strings and integers by reference  
+7. **virtual** -- Sample code about `virtual void operator()()` 
 
 ## _opencv_demo
 Demo of matrix operation in OpenCV
@@ -28,8 +26,7 @@ Demo of matrix operation in OpenCV
   Handles unit quaternion opeations and mapping between SO(3) and S(3)
 4. **imageStacking** --
   Noise removal by image averaging
-   
-  
+     
 
 ## _vtk
 Impplemented the Visualization Toolkit (VTK) in C++. The following projects are included: 
@@ -53,9 +50,15 @@ The project is about how to use the vector container in C++
 1. **_basic** -- Basic functions about vectors. Aslo have a example of using range-based for loop
 2. **read_from_CSV** -- Reading .csv files, this project includes vectors, file stream, boost libraries, and constructor overloading
 3. **unique_paths.cpp** -- a dynamic programming (DP) problem invovles using vectors
+4. **iterator** -- demo to use built-in vector interator
+5. **gcd**  -- find the greatest common divider from a series of integers
+
 
 ## operator_overloading
 Illustrate basic concepts about operator overloading
+1. **assignment_operator** -- assignment operator (=) overloading
+2. **explicit** -- the use of keyword "explicit"
+3. **functionCall_operator** 
 
 ## generic_programming
 Generic Programming enables the programmer to write a general algorithm which will work with all data types, and it can be implemented in C++ using templates
